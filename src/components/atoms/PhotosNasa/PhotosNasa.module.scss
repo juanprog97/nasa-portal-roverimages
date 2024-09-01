@@ -1,0 +1,15 @@
+.ImgContainer {
+  @apply h-auto max-w-sm;
+  &[data-loaded='false'] {
+    @apply bg-image-template aspect-square w-full bg-cover blur-[80px];
+    img {
+      @apply w-0;
+    }
+  }
+  &[data-loaded='true'] {
+    @apply inline-block blur-none transition-all duration-150 ease-linear;
+    img {
+      @apply block h-auto w-full;
+    }
+  }
+}

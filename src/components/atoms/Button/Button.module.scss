@@ -2,16 +2,16 @@
   @apply rounded-md p-3 text-base text-white;
 
   &[data-color='red'] {
-    @apply bg-red-200 shadow-[0px_3px_1px_1px] shadow-red-300 transition-all delay-100 ease-out;
+    @apply bg-red-200 shadow-[0px_3px_1px_1px] shadow-red-300 transition-all duration-100 ease-out;
 
     &:hover {
-      @apply bg-red-400 shadow-[0px_1px_30px_0px] shadow-red-300 transition-all delay-100 ease-out;
+      @apply bg-red-400 shadow-[0px_1px_30px_0px] shadow-red-300 transition-all duration-100 ease-out;
     }
   }
   &[data-color='blue'] {
-    @apply bg-blue-200 shadow-[0px_3px_1px_1px] shadow-blue-400 transition-all delay-150 ease-out;
+    @apply bg-blue-200 shadow-[0px_3px_1px_1px] shadow-blue-400 transition-all duration-150 ease-out;
     &:hover {
-      @apply bg-blue-300 shadow-[0px_1px_30px_0px] shadow-blue-300 transition-all delay-150 ease-out;
+      @apply bg-blue-300 shadow-[0px_1px_30px_0px] shadow-blue-300 transition-all duration-150 ease-out;
     }
   }
 }

@@ -1,3 +1,4 @@
+'use client';
 import { default as ButtonAs } from '@mui/material/ButtonBase';
 import stylesButton from './Button.module.scss';
 
@@ -6,11 +7,11 @@ type AllowedColor = 'red' | 'blue';
 type ButtonProps = {
   color?: AllowedColor;
   label?: string;
-  children?: string;
+  children?: any;
   styles?: string;
   onClick?: () => void;
 };
-export const Button = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   styles,
   color = 'red',
@@ -26,3 +27,5 @@ export const Button = ({
     </ButtonAs>
   );
 };
+
+export default Button;
