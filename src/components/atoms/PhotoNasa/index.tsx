@@ -1,18 +1,19 @@
+'use client';
 import { RefObject } from 'react';
 import styles from './PhotosNasa.module.scss';
 import { useImageLoaded } from '@/hooks';
 
-type PhotosNasaProps = {
+type PhotoNasaProps = {
   src?: string;
   alt?: string;
   cssProps?: string;
 };
 
-const PhotosNasa: React.FC<PhotosNasaProps> = ({
+const PhotoNasa: React.FC<PhotoNasaProps> = ({
   src = '',
   alt = '',
   cssProps = '',
-}: PhotosNasaProps) => {
+}: PhotoNasaProps) => {
   const [refImg, loaded, onLoad] = useImageLoaded();
 
   return (
@@ -22,4 +23,4 @@ const PhotosNasa: React.FC<PhotosNasaProps> = ({
   );
 };
 
-export default PhotosNasa;
+export default PhotoNasa;

@@ -6,8 +6,8 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: ['class', ':global(.dark)'],
   theme: {
-    darkMode: ['selector', '[data-mode="dark"]'],
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -30,7 +30,11 @@ const config: Config = {
         400: '#00276B',
       },
       white: '#FFFFFF',
+      whitedirty: '#F5F5F5',
       black: '#18191A',
+      grey: '#E0E0E0',
+      darkbg: '#18191A',
+      shadowdark: '#242526',
     },
     fontSize: {
       sm: '0.8rem',
