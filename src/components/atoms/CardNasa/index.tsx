@@ -1,3 +1,4 @@
+'use client';
 import CardStyle from './CardNasa.module.scss';
 
 type CardNasaProps = {

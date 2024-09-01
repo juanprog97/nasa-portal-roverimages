@@ -7,7 +7,7 @@ type AllowedType = 'toogle-dark' | 'base';
 type SwitchBaseProps = {
   handleToogle?: () => void;
   state?: boolean;
-  type: AllowedType;
+  type?: AllowedType;
 };
 
 const DarkModeSwitch = styled(Switch)(({ theme }) => ({
@@ -105,9 +105,8 @@ const SwitchBase: React.FC<SwitchBaseProps> = ({
   state = false,
   type = 'base',
 }: SwitchBaseProps) => {
-  if (type == 'base')
-    return <SimpleSwitch checked={state} onChange={handleToogle} />;
-  else return <DarkModeSwitch checked={state} onChange={handleToogle} />;
+  if (type == 'base') return <SimpleSwitch onChange={handleToogle} />;
+  else return <DarkModeSwitch onChange={handleToogle} />;
 };
 
 export default SwitchBase;

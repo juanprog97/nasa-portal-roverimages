@@ -1,0 +1,28 @@
+.ButtonStyle {
+  @apply flex items-center justify-center rounded-full border-2 border-white bg-darkbg p-2 transition-colors duration-200 ease-in-out md:h-20 md:w-20 md:border-4;
+
+  .ArrowStyle {
+    @apply pointer-events-none flex duration-75 ease-in;
+    &[data-direction='left'] {
+      @apply translate-x-[15%];
+    }
+    &[data-direction='right'] {
+      @apply translate-x-[5%];
+    }
+  }
+  &:active {
+    @apply bg-whitedirty transition-colors duration-200 ease-in-out;
+  }
+
+  &:hover {
+    .ArrowStyle {
+      @apply transition-transform duration-75 ease-out;
+      &[data-direction='left'] {
+        @apply translate-x-[-5%];
+      }
+      &[data-direction='right'] {
+        @apply translate-x-[25%];
+      }
+    }
+  }
+}
