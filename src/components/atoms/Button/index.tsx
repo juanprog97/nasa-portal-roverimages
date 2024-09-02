@@ -1,6 +1,7 @@
 'use client';
 import { default as ButtonAs } from '@mui/material/ButtonBase';
 import stylesButton from './Button.module.scss';
+import { useDarkMode } from '@/hooks';
 
 type AllowedColor = 'red' | 'blue';
 
@@ -21,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
     <ButtonAs
       data-color={color}
       className={`${stylesButton.ButtonNasa} ${styles}`}
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       {children}
     </ButtonAs>

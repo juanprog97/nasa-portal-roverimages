@@ -1,29 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useLocalStorage } from '.';
+import { DarkModeContext } from '@/context';
+import { useContext } from 'react';
 
 const useDarkMode = () => {
-  const [state, setLocalStorage] = useLocalStorage('theme', () => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-    } else return 'light';
-  });
-  const [darkMode, setDarkMode] = useState<string>(state);
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (darkMode == 'dark') document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-      setLocalStorage(darkMode);
-    }
-  }, [darkMode]);
-
-  const toogleDarkMode = () => {
-    const newState = darkMode === 'dark' ? 'light' : 'dark';
-    setDarkMode(newState);
-  };
-
-  return [darkMode, toogleDarkMode] as const;
+  const context = useContext(DarkModeContext);
+  if (!context) {
+    throw new Error('useDarkMode debe ser usado dentro de DarkModeProvider');
+  }
+  return context;
 };
 
 export default useDarkMode;

@@ -6,7 +6,7 @@ import Button, {
 import { OverridableStringUnion } from '@mui/types';
 import { FC } from 'react';
 
-type ButtonCircle = {
+type ButtonCircleProps = {
   variant?: OverridableStringUnion<
     'text' | 'outlined' | 'contained',
     ButtonPropsVariantOverrides
@@ -25,12 +25,12 @@ type ButtonCircle = {
   >;
 };
 
-const ButtonCircle: FC<ButtonCircle> = ({
+const ButtonCircle: FC<ButtonCircleProps> = ({
   children,
   onClick = () => {},
   variant = 'outlined',
   color = 'inherit',
-}: ButtonCircle) => {
+}: ButtonCircleProps) => {
   return (
     <Button
       onClick={onClick}

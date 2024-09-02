@@ -1,5 +1,26 @@
 import type { Config } from 'tailwindcss';
 
+export const colors = {
+  red: {
+    100: '#FC2200',
+    200: '#E01E00',
+    300: '#B61800',
+    400: '#941400',
+  },
+  blue: {
+    100: '#0052E0',
+    200: '#0B3D91',
+    300: '#003694',
+    400: '#00276B',
+  },
+  white: '#FFFFFF',
+  whitedirty: '#F5F5F5',
+  black: '#18191A',
+  grey: '#E0E0E0',
+  darkbg: '#18191A',
+  shadowdark: '#242526',
+};
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -16,26 +37,7 @@ const config: Config = {
         'image-template': "url('/images/template-galaxy.webp')",
       },
     },
-    colors: {
-      red: {
-        100: '#FC2200',
-        200: '#E01E00',
-        300: '#B61800',
-        400: '#941400',
-      },
-      blue: {
-        100: '#0052E0',
-        200: '#0B3D91',
-        300: '#003694',
-        400: '#00276B',
-      },
-      white: '#FFFFFF',
-      whitedirty: '#F5F5F5',
-      black: '#18191A',
-      grey: '#E0E0E0',
-      darkbg: '#18191A',
-      shadowdark: '#242526',
-    },
+    colors,
     fontSize: {
       sm: '0.8rem',
       base: '1rem',

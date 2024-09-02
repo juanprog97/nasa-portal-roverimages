@@ -23,12 +23,13 @@
       "@/molecules": ["./src/components/molecules/*"],
       "@/organisms": ["./src/components/organisms/*"],
       "@/templates": ["./src/components/templates/*"],
-      "@/context": ["./src/context/*"],
+      "@/context": ["./src/context/index"],
       "@/hooks": ["./src/hooks/index"],
       "@/interfaces": ["./src/interfaces/*"],
       "@/pages": ["./src/pages/*"],
       "@/services": ["./src/services/*"],
-      "@/utils": ["./src/utils/*"]
+      "@/utils": ["./src/utils/index"],
+      "@/tailwindConfig": ["./tailwind.config.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
