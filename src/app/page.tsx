@@ -9,6 +9,9 @@ import {
   ButtonCircle,
   Dialog,
   Drawer,
+  Popover,
+  ButtonPopover,
+  PopoverContent,
 } from '@/components/atoms';
 import { useDarkMode } from '@/hooks';
 import { useEffect, useState } from 'react';
@@ -19,7 +22,7 @@ export default function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <DarkModeProvider children={undefined}>
+      <DarkModeProvider>
         <Button styles='font-semibold p-10' color='blue'>
           Hola
         </Button>
@@ -41,7 +44,11 @@ export default function Home() {
           <Icon icon='close' fontSize='medium' />
         </ButtonCircle>
         <Dialog open={openModal}>Holaa</Dialog>
-        <Drawer open={true}>hola</Drawer>
+        <Drawer open={false}>hola</Drawer>
+        <Popover>
+          <ButtonPopover>holaa</ButtonPopover>
+          <PopoverContent>erda</PopoverContent>
+        </Popover>
       </DarkModeProvider>
     </main>
   );

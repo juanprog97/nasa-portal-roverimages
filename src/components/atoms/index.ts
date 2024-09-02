@@ -6,4 +6,5 @@ export { default as Dialog } from './Dialog';
 export { default as Drawer } from './Drawer';
 export { default as Icon } from './Icon';
 export { default as PhotoNasa } from './PhotoNasa';
+export * from './Popover';
 export { default as SwitchBase } from './SwitchBase';
