@@ -8,17 +8,13 @@ const useScrollObserver = (threshold: number) => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
 
-      // Verificar si está en la parte superior
       setIsAtTop(scrollPosition === 0);
 
-      // Verificar si ha desplazado más allá del umbral
       setHasScrolled(scrollPosition > threshold);
     };
+    handleScroll();
 
-    // Agregar el evento de scroll
     window.addEventListener('scroll', handleScroll);
-
-    // Limpiar el evento al desmontar el componente
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

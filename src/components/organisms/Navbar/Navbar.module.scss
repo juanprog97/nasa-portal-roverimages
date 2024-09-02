@@ -1,14 +1,21 @@
 .NavBarStyle {
-  @apply fixed top-0 h-20 w-[100vw];
+  @apply fixed top-0 h-20 w-full px-6;
 
   &[data-top='false'] {
-    @apply bg-transparent pointer-events-none transition-all duration-100 ease-in-out;
+    @apply pointer-events-none bg-transparent transition-all duration-100 ease-in-out;
+    .TextMessage {
+      @apply hidden;
+    }
   }
   &[data-top='true'] {
-    @apply fixed top-0 bg-whitedirty shadow-[0px_0px_1px_0px_rgb(0,0,0,0.1)] shadow-blue-400 transition-all duration-75 ease-out;
+    @apply dark:bg-black-400 fixed top-0 bg-whitedirty shadow-[0px_0px_1px_0px_rgb(0,0,0,0.1)] shadow-blue-400 transition-all duration-75 ease-out;
   }
 }
 
 .NavContainerElement {
-  @apply relative flex h-full w-full items-center;
+  @apply pointer-events-auto relative flex h-full w-full items-center justify-between;
+}
+
+.TextMessage {
+  @apply px-2 text-sm font-semibold dark:text-white md:px-4 md:text-base xl:text-xl;
 }

@@ -7,8 +7,14 @@ import React, {
   ReactNode,
 } from 'react';
 
+/**
+ * UseDarkMode
+ * @property {AllowedState} isDarkMode - state darkmode.
+ * @property {Function} toggleDarkMode - toogleDarkMode
+ */
 interface DarkModeContextProps {
-  isDarkMode: AllowedState;
+  isDarkMode: boolean;
+  stateTheme: AllowedState;
   toggleDarkMode: () => void;
 }
 
@@ -21,20 +27,19 @@ type AllowedState = 'dark' | 'light';
 export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [state, setDarkMode] = useLocalStorage('theme', () => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-    } else return 'light';
-  });
-
-  const [isDarkMode, setIsDarkMode] = useState<AllowedState>(
-    state as AllowedState
+  const [stateTheme, setThemeMode] = useState<AllowedState>(
+    useLocalStorage('theme', () => {
+      if (typeof window !== 'undefined') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      } else return 'light';
+    }) as unknown as AllowedState
   );
 
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(stateTheme == 'dark');
   useEffect(() => {
-    if (isDarkMode == 'dark') {
+    if (stateTheme == 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
@@ -42,9 +47,9 @@ export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => {
+    setThemeMode((prevMode) => {
       const newMode = prevMode == 'dark' ? 'light' : 'dark';
-      setDarkMode(newMode === 'dark' ? 'light' : 'dark');
+      setIsDarkMode(newMode === 'dark');
       if (newMode == 'dark') {
         document.documentElement.classList.add('dark');
       } else {
@@ -55,7 +60,9 @@ export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   return (
-    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+    <DarkModeContext.Provider
+      value={{ isDarkMode, stateTheme, toggleDarkMode }}
+    >
       {children}
     </DarkModeContext.Provider>
   );

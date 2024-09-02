@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white dark:bg-shadowdark;
+  @apply dark:bg-black-300 min-w-[300px] overflow-auto;
 }
 
 @layer utilities {

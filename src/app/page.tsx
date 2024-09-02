@@ -22,12 +22,13 @@ import { Navbar } from '@/components/organisms';
 export default function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
+    <main className='dark:bg-black-300 flex min-h-screen flex-col items-center justify-between bg-white p-24'>
       <DarkModeProvider>
+        <Navbar />
         <Button styles='font-semibold p-10' color='blue'>
           Hola
         </Button>
-        <Navbar />
+
         <Button
           onClick={() => setOpenModal((openModal) => !openModal)}
           styles='font-semibold p-10'
