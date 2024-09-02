@@ -23,7 +23,7 @@ const ButtonArrow: FC<ButtonArrowProps> = ({
       <div data-direction={direction} className={styles.ArrowStyle}>
         <Icon
           icon={direction == 'right' ? 'arrow_forward_ios' : 'arrow_back_ios'}
-          sx={{ fontSize: sm ? 25 : 40 }}
+          sx={{ fontSize: sm ? 25 : 40, color: 'white' }}
         />
       </div>
     </button>
