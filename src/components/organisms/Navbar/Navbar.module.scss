@@ -1,0 +1,14 @@
+.NavBarStyle {
+  @apply fixed top-0 h-20 w-[100vw];
+
+  &[data-top='false'] {
+    @apply bg-transparent pointer-events-none transition-all duration-100 ease-in-out;
+  }
+  &[data-top='true'] {
+    @apply fixed top-0 bg-whitedirty shadow-[0px_0px_1px_0px_rgb(0,0,0,0.1)] shadow-blue-400 transition-all duration-75 ease-out;
+  }
+}
+
+.NavContainerElement {
+  @apply relative flex h-full w-full items-center;
+}

@@ -1,3 +1,4 @@
+'use client';
 import { Button, Popover as PopoverBase, SxProps } from '@mui/material';
 import { FC, createContext, useContext, useState } from 'react';
 import PopupState, {

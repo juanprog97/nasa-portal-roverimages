@@ -1,4 +1,5 @@
-import { useDarkMode } from '@/context';
+'use client';
+import { useDarkMode } from '@/hooks';
 import { colors } from '@/utils';
 import { Drawer as DrawerBase } from '@mui/material';
 import { FC } from 'react';

@@ -34,7 +34,7 @@ export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   );
 
   useEffect(() => {
-    if (isDarkMode) {
+    if (isDarkMode == 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
@@ -45,7 +45,7 @@ export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
     setIsDarkMode((prevMode) => {
       const newMode = prevMode == 'dark' ? 'light' : 'dark';
       setDarkMode(newMode === 'dark' ? 'light' : 'dark');
-      if (newMode) {
+      if (newMode == 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
@@ -59,13 +59,4 @@ export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
       {children}
     </DarkModeContext.Provider>
   );
-};
-
-// Hook para usar el contexto
-export const useDarkMode = () => {
-  const context = useContext(DarkModeContext);
-  if (!context) {
-    throw new Error('useDarkMode debe ser usado dentro de DarkModeProvider');
-  }
-  return context;
 };

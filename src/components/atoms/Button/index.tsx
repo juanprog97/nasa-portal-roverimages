@@ -18,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   color = 'red',
   onClick = () => {},
 }: ButtonProps) => {
+  
   return (
     <ButtonAs
       data-color={color}

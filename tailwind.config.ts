@@ -14,9 +14,12 @@ export const colors = {
     400: '#00276B',
   },
   white: '#FFFFFF',
+  transparent: 'transparent',
   whitedirty: '#F5F5F5',
   black: '#18191A',
   grey: '#E0E0E0',
+  redcolornasa: '#DB362D',
+  greyborder: '#999999',
   darkbg: '#18191A',
   shadowdark: '#242526',
 };

@@ -17,6 +17,7 @@ import { useDarkMode } from '@/hooks';
 import { useEffect, useState } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import { DarkModeProvider } from '@/context';
+import { Navbar } from '@/components/organisms';
 
 export default function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -25,6 +26,28 @@ export default function Home() {
       <DarkModeProvider>
         <Button styles='font-semibold p-10' color='blue'>
           Hola
+        </Button>
+        <Navbar />
+        <Button
+          onClick={() => setOpenModal((openModal) => !openModal)}
+          styles='font-semibold p-10'
+          color='blue'
+        >
+          Modal
+        </Button>
+        <Button
+          onClick={() => setOpenModal((openModal) => !openModal)}
+          styles='font-semibold p-10'
+          color='blue'
+        >
+          Modal
+        </Button>
+        <Button
+          onClick={() => setOpenModal((openModal) => !openModal)}
+          styles='font-semibold p-10'
+          color='blue'
+        >
+          Modal
         </Button>
         <Button
           onClick={() => setOpenModal((openModal) => !openModal)}

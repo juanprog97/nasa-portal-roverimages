@@ -1,0 +1,8 @@
+.ColorNasa {
+  path {
+    @apply fill-redcolornasa dark:fill-whitedirty;
+  }
+}
+.LogoNasa {
+  @apply pointer-events-none z-10 h-[30%] w-[3%] md:w-[5%];
+}
