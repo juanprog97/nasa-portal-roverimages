@@ -1,7 +1,6 @@
 'use client';
 import {
   Button,
-  PhotoNasa,
   CardNasa,
   SwitchBase,
   Icon,
@@ -12,14 +11,15 @@ import {
   Popover,
   ButtonPopover,
   PopoverContent,
-  ContainerFloat,
+  PhotoImage,
+  SelectButton,
 } from '@/components/atoms';
 import { useDarkMode } from '@/hooks';
-import { useEffect, useState } from 'react';
-import HomeIcon from '@mui/icons-material/Home';
+import { useState } from 'react';
 import { DarkModeProvider } from '@/context';
-import { Navbar } from '@/components/organisms';
-import ButtonFloating from '@/components/molecules/ButtonBubbleFloating';
+import { ContainerFloat, Navbar } from '@/components/organisms';
+import { ButtonFloating } from '@/components/molecules';
+import { RadioGroup } from '@mui/material';
 
 export default function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -30,7 +30,11 @@ export default function Home() {
         <Button styles='font-semibold p-10' color='blue'>
           Hola
         </Button>
-
+        <RadioGroup>
+          <SelectButton>asldkaklsdkljasdljkasdjklasdjklasd</SelectButton>
+          <SelectButton>asldkaklsdkljasdljkasdjklasdjklasd</SelectButton>
+          <SelectButton>asldkaklsdkljasdljkasdjklasdjklasd</SelectButton>
+        </RadioGroup>
         <ContainerFloat
           styles='flex flex-col gap-y-[2rem]'
           vertical='bottom'
@@ -54,7 +58,7 @@ export default function Home() {
         >
           Modal
         </Button>
-        <PhotoNasa src='https://static01.nyt.com/images/2023/09/09/multimedia/09isaacson-book-2-bpcw-esp1/09isaacson-book-2-bpcw-articleLarge.jpg?quality=75&auto=webp&disable=upscale' />
+        <PhotoImage src='https://static01.nyt.com/images/2023/09/09/multimedia/09isaacson-book-2-bpcw-esp1/09isaacson-book-2-bpcw-articleLarge.jpg?quality=75&auto=webp&disable=upscale' />
         <CardNasa>
           asdasdas
           <Icon icon='home' fontSize='medium' />

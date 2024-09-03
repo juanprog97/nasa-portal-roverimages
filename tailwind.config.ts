@@ -40,10 +40,17 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'image-template': "url('/images/template-galaxy.webp')",
+      },
+      keyframes: {
+        blur: {
+          '0%': { filter: 'blur(0px)' },
+          '50%': { filter: 'blur(10px)' },
+          '100%': { filter: 'blur(0px)' },
+        },
+      },
+      animation: {
+        blur: 'blur 3s ease-in-out infinite',
       },
     },
     colors,

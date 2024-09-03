@@ -1,6 +1,6 @@
 'use client';
 import { RefObject } from 'react';
-import styles from './PhotosNasa.module.scss';
+import styles from './PhotoImage.module.scss';
 import { useImageLoaded } from '@/hooks';
 
 type PhotoNasaProps = {
@@ -9,7 +9,7 @@ type PhotoNasaProps = {
   cssProps?: string;
 };
 
-const PhotoNasa: React.FC<PhotoNasaProps> = ({
+const PhotoImage: React.FC<PhotoNasaProps> = ({
   src = '',
   alt = '',
   cssProps = '',
@@ -23,4 +23,4 @@ const PhotoNasa: React.FC<PhotoNasaProps> = ({
   );
 };
 
-export default PhotoNasa;
+export default PhotoImage;
