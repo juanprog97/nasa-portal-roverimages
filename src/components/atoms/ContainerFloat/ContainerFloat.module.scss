@@ -1,0 +1,22 @@
+.ContainerFloat {
+  @apply fixed z-40 w-fit;
+
+  &[data-vertical='top'] {
+    @apply top-[1%];
+  }
+  &[data-vertical='center'] {
+    @apply top-[50%];
+  }
+  &[data-vertical='bottom'] {
+    @apply bottom-[1%];
+  }
+  &[data-horizontal='left'] {
+    @apply left-[1%];
+  }
+  &[data-horizontal='center'] {
+    @apply left-[50%];
+  }
+  &[data-horizontal='right'] {
+    @apply right-[1%];
+  }
+}

@@ -15,9 +15,8 @@ const Drawer: FC<DrawerProps> = ({ children, open = false }: DrawerProps) => {
     <DrawerBase
       sx={{
         '& .MuiDrawer-paper': {
-          backgroundColor:
-            isDarkMode == 'dark' ? colors['darkbg'] : colors['whitedirty'],
-          color: isDarkMode == 'dark' ? colors['whitedirty'] : colors['darkbg'],
+          backgroundColor: isDarkMode ? colors['darkbg'] : colors['whitedirty'],
+          color: isDarkMode ? colors['whitedirty'] : colors['darkbg'],
         },
       }}
       open={open}

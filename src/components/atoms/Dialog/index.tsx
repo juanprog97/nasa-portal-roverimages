@@ -16,9 +16,8 @@ const Dialog: FC<DialogProps> = ({ open = false, children }: DialogProps) => {
     <DialogBase
       sx={{
         '& .MuiDialog-paper': {
-          backgroundColor:
-            isDarkMode == 'dark' ? colors['darkbg'] : colors['whitedirty'],
-          color: isDarkMode == 'dark' ? colors['whitedirty'] : colors['darkbg'],
+          backgroundColor: isDarkMode ? colors['darkbg'] : colors['whitedirty'],
+          color: isDarkMode ? colors['whitedirty'] : colors['darkbg'],
         },
       }}
       fullScreen={true}
