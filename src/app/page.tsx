@@ -12,7 +12,7 @@ import {
   ButtonPopover,
   PopoverContent,
   PhotoImage,
-  SelectButton,
+  RadioButton,
 } from '@/components/atoms';
 import { useDarkMode } from '@/hooks';
 import { useState } from 'react';
@@ -31,9 +31,8 @@ export default function Home() {
           Hola
         </Button>
         <RadioGroup>
-          <SelectButton>asldkaklsdkljasdljkasdjklasdjklasd</SelectButton>
-          <SelectButton>asldkaklsdkljasdljkasdjklasdjklasd</SelectButton>
-          <SelectButton>asldkaklsdkljasdljkasdjklasdjklasd</SelectButton>
+          <RadioButton value='option3' />
+          <RadioButton value='option2' />
         </RadioGroup>
         <ContainerFloat
           styles='flex flex-col gap-y-[2rem]'

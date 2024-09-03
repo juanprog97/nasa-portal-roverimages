@@ -9,5 +9,5 @@ export { default as Icon } from './Icon';
 export { default as LogoNasa } from './LogoNasa';
 export { default as PhotoImage } from './PhotoImage';
 export * from './Popover';
-export { default as SelectButton } from './SelectButton';
+export { default as RadioButton } from './RadioButton';
 export { default as SwitchBase } from './SwitchBase';

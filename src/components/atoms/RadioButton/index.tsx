@@ -1,14 +1,14 @@
 import { FC, useRef, useState } from 'react';
 import { Radio } from '@mui/material';
 
-type SelectButtonProps = {
+type RadioButtonProps = {
   value?: string;
 };
 
-const SelectButton: FC<SelectButtonProps> = ({
+const RadioButton: FC<RadioButtonProps> = ({
   value = '',
-}: SelectButtonProps) => {
+}: RadioButtonProps) => {
   return <Radio value={value} />;
 };
 
-export default SelectButton;
+export default RadioButton;
