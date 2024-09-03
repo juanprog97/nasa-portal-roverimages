@@ -1,0 +1,18 @@
+.ButtonOptionStyle {
+  @apply cursor-pointer rounded-[20px] border-2 border-solid px-[25px] py-[5px];
+  &[data-selected='true'] {
+    @apply bg-skyblue-200 dark:text-skyblue-300 dark:bg-skyblack-400 border-skyblue-100 text-white transition-colors duration-75 ease-linear dark:border-white dark:text-white;
+    &:hover {
+      @apply bg-skyblue-200 dark:bg-skyblack-400 transition-colors duration-75 ease-linear;
+    }
+  }
+  &[data-selected='false'] {
+    @apply dark:bg-skyblack-100 border-skyblue-100 bg-whitedirty transition-colors duration-75 ease-linear dark:border-white;
+    &:hover {
+      @apply bg-skyblue-100 dark:bg-skyblack-200 text-white transition-colors duration-75 ease-linear;
+    }
+  }
+}
+.TypographyStyle {
+  @apply text-base font-semibold;
+}

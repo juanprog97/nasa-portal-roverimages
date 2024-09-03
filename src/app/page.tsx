@@ -12,7 +12,7 @@ import {
   ButtonPopover,
   PopoverContent,
   PhotoImage,
-  RadioButton,
+  ButtonOptions,
 } from '@/components/atoms';
 import { useDarkMode } from '@/hooks';
 import { useState } from 'react';
@@ -23,6 +23,11 @@ import { RadioGroup } from '@mui/material';
 
 export default function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [value, setValue] = useState<string>('option1');
+
+  const handleChange = (newValue: string) => {
+    setValue(newValue);
+  };
   return (
     <main className='flex min-h-screen flex-col items-center justify-between bg-white p-24 dark:bg-black-300'>
       <DarkModeProvider>
@@ -30,9 +35,26 @@ export default function Home() {
         <Button styles='font-semibold p-10' color='blue'>
           Hola
         </Button>
-        <RadioGroup>
-          <RadioButton value='option3' />
-          <RadioButton value='option2' />
+        <RadioGroup value={value}>
+          <ButtonOptions
+            selectedValue={value}
+            value='option3'
+            label='erd1'
+            onChange={handleChange}
+          />
+          <ButtonOptions
+            value='option2'
+            label='erd2'
+            selectedValue={value}
+            onChange={handleChange}
+          />
+
+          <ButtonOptions
+            value='option1'
+            label='erd3'
+            selectedValue={value}
+            onChange={handleChange}
+          />
         </RadioGroup>
         <ContainerFloat
           styles='flex flex-col gap-y-[2rem]'
