@@ -41,8 +41,6 @@ const ButtonCircle: FC<ButtonCircleProps> = ({
         justifyContent: 'center',
         borderRadius: '100%',
         display: 'flex',
-        minWidth: '50px',
-        height: '50px',
       }}
       variant={variant}
       color={color}

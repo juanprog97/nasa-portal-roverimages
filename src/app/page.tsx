@@ -14,12 +14,12 @@ import {
   ButtonOptions,
   CardBase,
 } from '@/components/atoms';
+import { consoleMessage } from '@/utils';
 import { useDarkMode } from '@/hooks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DarkModeProvider } from '@/context';
 import { ContainerFloat, Navbar } from '@/components/organisms';
 import { ButtonFloating, CardPresentation } from '@/components/molecules';
-import { RadioGroup } from '@mui/material';
 import { CardDataPresentation, FavoriteSearch, uuidv4 } from '@/utils';
 import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
 
@@ -32,7 +32,9 @@ export default function Home() {
     { id: uuidv4().toString(), value: 'ep3', label: 'test3' },
     { id: uuidv4().toString(), value: 'ep4', label: 'test4' },
   ];
-
+  useEffect(() => {
+    consoleMessage();
+  }, []);
   const dataCard: CardDataPresentation = {
     id: uuidv4().toString(),
     imgsrc:
@@ -68,19 +70,19 @@ export default function Home() {
         </ContainerFloat>
         <Button
           onClick={() => setOpenModal((openModal) => !openModal)}
-          styles='font-semibold p-10'
+          className='p-10 font-semibold'
           color='blue'
         >
           Modal
         </Button>
         <Button
           onClick={() => setOpenModal((openModal) => !openModal)}
-          styles='font-semibold p-10'
+          className='p-10 font-semibold'
           color='blue'
         >
           Modal
         </Button>
-        <CardPresentation data={dataCard} />
+        <CardPresentation data={dataCard}  />
         <SwitchBase />
         <ButtonArrow direction='left' />
         <ButtonCircle>

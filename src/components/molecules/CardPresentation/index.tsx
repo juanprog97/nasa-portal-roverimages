@@ -12,12 +12,14 @@ import { colors } from '@/utils';
 
 type CardPresentationProps = {
   data: CardDataPresentation;
-  onChangeLike: (id: string, isLike: boolean) => void;
+  onChangeLike?: (id: string, isLike: boolean) => void;
+  onClickFullScreen?: (id: string) => void;
 };
 
 const CardPresentation: FC<CardPresentationProps> = ({
   data,
   onChangeLike = (id, isLike: boolean) => {},
+  onClickFullScreen = () => {},
 }: CardPresentationProps) => {
   const [isFavorite, setStateFavorite] = useState<boolean>(false);
 
@@ -26,6 +28,11 @@ const CardPresentation: FC<CardPresentationProps> = ({
       onChangeLike(data.id, isFavorite);
     }
     setStateFavorite((value) => !value);
+  };
+  const handleClickFullScreen = () => {
+    if (!!onClickFullScreen) {
+      onClickFullScreen(data.id);
+    }
   };
 
   return (
@@ -46,12 +53,17 @@ const CardPresentation: FC<CardPresentationProps> = ({
         </p>
       </div>
       <div className={styles.InteractionButton}>
-        <Button className='btn btn-primary font-semibold'>FullScreen</Button>
+        <Button
+          className='btn btn-primary font-semibold'
+          onClick={handleClickFullScreen}
+        >
+          FullScreen
+        </Button>
         <ButtonCircle className={styles.ButtonCircle} onClick={handleClickLike}>
           <Icon
             icon={isFavorite ? 'favorite' : 'favorite_outlined'}
             sx={{
-              fontSize: 40,
+              fontSize: 20,
               color: colors.redcolornasa,
             }}
           />

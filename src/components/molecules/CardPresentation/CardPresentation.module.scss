@@ -1,5 +1,5 @@
 .CardStyle {
-  @apply flex w-[400px] flex-col items-start p-3;
+  @apply flex w-[100px] max-w-[400px] flex-col items-start p-3 md:w-full;
 }
 
 .InteractionButton {
@@ -7,11 +7,11 @@
 }
 
 .ButtonCircle {
-  @apply h-[50px] w-[50px] border-none shadow-md dark:bg-black-400;
+  @apply aspect-square h-auto w-6 items-center border-none shadow-md dark:bg-black-400;
 }
 
 .detailInfo {
-  @apply flex w-full flex-col items-start justify-center px-3;
+  @apply mt-5 flex w-full flex-col items-start justify-center gap-3 px-3;
   p {
     @apply text-start text-base md:text-xl xl:text-2xl;
   }
