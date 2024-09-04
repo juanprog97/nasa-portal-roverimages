@@ -1,7 +1,7 @@
 .ImgContainer {
-  @apply aspect-auto h-auto max-w-sm;
+  @apply h-auto w-full min-w-[200px] pb-7;
   &[data-loaded='false'] {
-    @apply animate-blur aspect-square w-full bg-[rgba(61,59,59,0.33)] bg-image-template bg-cover shadow-[0_4px_30px_rgba(0,0,0,0.1)] blur-[8.4px];
+    @apply aspect-square w-full animate-blur bg-[rgba(61,59,59,0.33)] bg-image-template bg-cover shadow-[0_4px_30px_rgba(0,0,0,0.1)] blur-[8.4px];
     img {
       @apply w-0 origin-center scale-0 blur-[10px];
     }

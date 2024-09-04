@@ -9,20 +9,19 @@ type ButtonProps = {
   color?: AllowedColor;
   label?: string;
   children?: any;
-  styles?: string;
   onClick?: () => void;
+  className?: string;
 };
 const Button: React.FC<ButtonProps> = ({
   children,
-  styles,
   color = 'red',
   onClick = () => {},
+  className = '',
 }: ButtonProps) => {
-  
   return (
     <ButtonAs
       data-color={color}
-      className={`${stylesButton.ButtonNasa} ${styles}`}
+      className={`${stylesButton.ButtonNasa} ${className}`}
       onClick={onClick}
     >
       {children}

@@ -1,7 +1,6 @@
 'use client';
 import {
   Button,
-  CardNasa,
   SwitchBase,
   Icon,
   ButtonArrow,
@@ -13,14 +12,15 @@ import {
   PopoverContent,
   PhotoImage,
   ButtonOptions,
+  CardBase,
 } from '@/components/atoms';
 import { useDarkMode } from '@/hooks';
 import { useState } from 'react';
 import { DarkModeProvider } from '@/context';
 import { ContainerFloat, Navbar } from '@/components/organisms';
-import { ButtonFloating } from '@/components/molecules';
+import { ButtonFloating, CardPresentation } from '@/components/molecules';
 import { RadioGroup } from '@mui/material';
-import { FavoriteSearch, uuidv4 } from '@/utils';
+import { CardDataPresentation, FavoriteSearch, uuidv4 } from '@/utils';
 import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
 
 export default function Home() {
@@ -32,6 +32,16 @@ export default function Home() {
     { id: uuidv4().toString(), value: 'ep3', label: 'test3' },
     { id: uuidv4().toString(), value: 'ep4', label: 'test4' },
   ];
+
+  const dataCard: CardDataPresentation = {
+    id: uuidv4().toString(),
+    imgsrc:
+      'http://mars.jpl.nasa.gov/msl-raw-images/msss/01000/mcam/1000ML0044631190305216E04_DXXX.jpg',
+    earthDate: '2015-05-30',
+    roverName: 'Curiosity',
+    solDate: 100,
+    statusRover: true,
+  };
   const handleChange = (newValue: string) => {
     console.log(newValue);
   };
@@ -39,10 +49,9 @@ export default function Home() {
     <main className='flex min-h-screen flex-col items-center justify-between bg-white p-24 dark:bg-black-300'>
       <DarkModeProvider>
         <Navbar />
-        <Button styles='font-semibold p-10' color='blue'>
+        <Button className='p-10 font-semibold' color='blue'>
           Hola
         </Button>
-
         <ListFavoritesSearch
           listOptions={data}
           onChange={handleChange}
@@ -71,11 +80,7 @@ export default function Home() {
         >
           Modal
         </Button>
-        <PhotoImage src='https://static01.nyt.com/images/2023/09/09/multimedia/09isaacson-book-2-bpcw-esp1/09isaacson-book-2-bpcw-articleLarge.jpg?quality=75&auto=webp&disable=upscale' />
-        <CardNasa>
-          asdasdas
-          <Icon icon='home' fontSize='medium' />
-        </CardNasa>
+        <CardPresentation data={dataCard} />
         <SwitchBase />
         <ButtonArrow direction='left' />
         <ButtonCircle>

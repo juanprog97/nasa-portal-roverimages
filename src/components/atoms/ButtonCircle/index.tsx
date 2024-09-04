@@ -12,6 +12,7 @@ type ButtonCircleProps = {
     ButtonPropsVariantOverrides
   >;
   children?: any;
+  className?: string;
   onClick?: () => void;
   color?: OverridableStringUnion<
     | 'inherit'
@@ -30,16 +31,18 @@ const ButtonCircle: FC<ButtonCircleProps> = ({
   onClick = () => {},
   variant = 'outlined',
   color = 'inherit',
+  className = '',
 }: ButtonCircleProps) => {
   return (
     <Button
+      className={className}
       onClick={onClick}
       style={{
         justifyContent: 'center',
         borderRadius: '100%',
         display: 'flex',
-        width: '80px',
-        height: '80px',
+        minWidth: '50px',
+        height: '50px',
       }}
       variant={variant}
       color={color}

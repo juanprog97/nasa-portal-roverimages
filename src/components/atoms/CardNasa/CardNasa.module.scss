@@ -1,6 +1,0 @@
-.CardNasa {
-  @apply bg-whitedirty text-darkbg shadow-grey dark:bg-darkbg dark:shadow-shadowdark aspect-square min-w-[200px] rounded-lg shadow-[0px_10px_0px_0px] transition-shadow duration-100 ease-out dark:text-white;
-  &:hover {
-    @apply shadow-grey dark:bg-darkbg dark:shadow-shadowdark shadow-[10px_10px_0px_0px] transition-shadow duration-100 ease-out;
-  }
-}

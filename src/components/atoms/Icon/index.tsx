@@ -4,6 +4,7 @@ import {
   Icon as IconWrapper,
   IconPropsSizeOverrides,
   SxProps,
+  Theme,
 } from '@mui/material';
 
 import { OverridableStringUnion } from '@mui/types';
@@ -14,7 +15,7 @@ type IconProps = {
     'inherit' | 'large' | 'medium' | 'small',
     IconPropsSizeOverrides
   >;
-  sx?: CSSProperties;
+  sx?: SxProps<Theme>;
   ariaHidden?: boolean;
 };
 
@@ -25,7 +26,7 @@ const IconA: FC<IconProps> = ({
   ariaHidden = false,
 }: IconProps) => {
   return (
-    <IconWrapper aria-hidden={ariaHidden} fontSize={fontSize} style={sx}>
+    <IconWrapper aria-hidden={ariaHidden} fontSize={fontSize} sx={sx}>
       {icon}
     </IconWrapper>
   );
