@@ -1,0 +1,7 @@
+.GroupListButtons {
+  @apply flex flex-row gap-4;
+}
+
+.SkeletonRadioButton {
+  @apply animate-colorBlinkLight dark:animate-colorBlinkDark block h-8 w-24 rounded-[20px] bg-skyblue-100 dark:bg-skyblack-100;
+}

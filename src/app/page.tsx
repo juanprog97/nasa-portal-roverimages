@@ -20,13 +20,20 @@ import { DarkModeProvider } from '@/context';
 import { ContainerFloat, Navbar } from '@/components/organisms';
 import { ButtonFloating } from '@/components/molecules';
 import { RadioGroup } from '@mui/material';
+import { FavoriteSearch, uuidv4 } from '@/utils';
+import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
 
 export default function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [value, setValue] = useState<string>('option1');
 
+  const data: FavoriteSearch[] = [
+    { id: uuidv4().toString(), value: 'ep1', label: 'test1' },
+    { id: uuidv4().toString(), value: 'ep2', label: 'test2' },
+    { id: uuidv4().toString(), value: 'ep3', label: 'test3' },
+    { id: uuidv4().toString(), value: 'ep4', label: 'test4' },
+  ];
   const handleChange = (newValue: string) => {
-    setValue(newValue);
+    console.log(newValue);
   };
   return (
     <main className='flex min-h-screen flex-col items-center justify-between bg-white p-24 dark:bg-black-300'>
@@ -35,27 +42,12 @@ export default function Home() {
         <Button styles='font-semibold p-10' color='blue'>
           Hola
         </Button>
-        <RadioGroup value={value}>
-          <ButtonOptions
-            selectedValue={value}
-            value='option3'
-            label='erd1'
-            onChange={handleChange}
-          />
-          <ButtonOptions
-            value='option2'
-            label='erd2'
-            selectedValue={value}
-            onChange={handleChange}
-          />
 
-          <ButtonOptions
-            value='option1'
-            label='erd3'
-            selectedValue={value}
-            onChange={handleChange}
-          />
-        </RadioGroup>
+        <ListFavoritesSearch
+          listOptions={data}
+          onChange={handleChange}
+          valueDefault='ep1'
+        />
         <ContainerFloat
           styles='flex flex-col gap-y-[2rem]'
           vertical='bottom'

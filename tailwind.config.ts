@@ -60,9 +60,19 @@ const config: Config = {
           '50%': { filter: 'blur(10px)' },
           '100%': { filter: 'blur(0px)' },
         },
+        colorBlinkLight: {
+          '0%, 100%': { backgroundColor: colors.skyblue[100] },
+          '50%': { backgroundColor: colors.transparent },
+        },
+        colorBlinkDark: {
+          '0%, 100%': { backgroundColor: colors.skyblack[100] },
+          '50%': { backgroundColor: colors.transparent },
+        },
       },
       animation: {
         blur: 'blur 3s ease-in-out infinite',
+        colorBlinkLight: 'colorBlinkLight 1.5s infinite',
+        colorBlinkDark: 'colorBlinkDark 1.5s infinite',
       },
     },
     colors,

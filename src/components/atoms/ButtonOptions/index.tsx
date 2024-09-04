@@ -1,3 +1,4 @@
+'use client';
 import { FC, useRef, useState } from 'react';
 import {
   FormControlLabel,
@@ -11,8 +12,8 @@ import { colors } from '@/utils';
 import styles from './ButtonOptions.module.scss';
 
 type ButtonOptionsProps = {
-  value?: string;
-  label?: string;
+  value: string;
+  label: string;
   onChange?: (value: any) => void;
   sx?: SxProps<Theme>;
   selectedValue: string;
@@ -25,7 +26,6 @@ const ButtonOptions: FC<ButtonOptionsProps> = ({
   onChange = (val) => {},
 }: ButtonOptionsProps) => {
   const selected = selectedValue === value;
-  const { isDarkMode } = useDarkMode();
 
   return (
     <FormControlLabel
@@ -37,7 +37,6 @@ const ButtonOptions: FC<ButtonOptionsProps> = ({
       }
       onClick={() => onChange(value)}
       className={styles.ButtonOptionStyle}
-      // sx={themeButton}
     />
   );
 };
