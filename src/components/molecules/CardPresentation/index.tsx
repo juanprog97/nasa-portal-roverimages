@@ -5,7 +5,7 @@ import {
   Icon,
   PhotoImage,
 } from '@/components/atoms';
-import { CardDataPresentation } from '@/utils';
+import { CardDataPresentation } from '@/models';
 import React, { FC, useState } from 'react';
 import styles from './CardPresentation.module.scss';
 import { colors } from '@/utils';

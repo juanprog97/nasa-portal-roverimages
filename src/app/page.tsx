@@ -1,21 +1,14 @@
 'use client';
 import {
   Button,
-  SwitchBase,
-  Icon,
   ButtonArrow,
-  ButtonCircle,
   Dialog,
   Drawer,
   Popover,
   ButtonPopover,
   PopoverContent,
-  PhotoImage,
-  ButtonOptions,
-  CardBase,
 } from '@/components/atoms';
 import { consoleMessage } from '@/utils';
-import { useDarkMode } from '@/hooks';
 import { useEffect, useState } from 'react';
 import { DarkModeProvider } from '@/context';
 import {
@@ -24,7 +17,7 @@ import {
   Navbar,
 } from '@/components/organisms';
 import { ButtonFloating, CardPresentation } from '@/components/molecules';
-import { CardDataPresentation, FavoriteSearch, uuidv4 } from '@/utils';
+import { FavoriteSearch, uuidv4 } from '@/utils';
 import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
 
 export default function Home() {
@@ -39,15 +32,7 @@ export default function Home() {
   useEffect(() => {
     consoleMessage();
   }, []);
-  const dataCard: CardDataPresentation = {
-    id: uuidv4().toString(),
-    imgsrc:
-      'http://mars.jpl.nasa.gov/msl-raw-images/msss/01000/mcam/1000ML0044631190305216E04_DXXX.jpg',
-    earthDate: '2015-05-30',
-    roverName: 'Curiosity',
-    solDate: 100,
-    statusRover: true,
-  };
+
   const handleChange = (newValue: string) => {
     console.log(newValue);
   };
@@ -58,7 +43,7 @@ export default function Home() {
         <Button className='p-10 font-semibold' color='blue'>
           Hola
         </Button>
-        <ListCardPhotosInfinite />
+
         <ListFavoritesSearch
           listOptions={data}
           onChange={handleChange}
@@ -87,18 +72,16 @@ export default function Home() {
         >
           Modal
         </Button>
-        <CardPresentation data={dataCard} />
-        <SwitchBase />
+
         <ButtonArrow direction='left' />
-        <ButtonCircle>
-          <Icon icon='close' fontSize='medium' />
-        </ButtonCircle>
+
         <Dialog open={openModal}>Holaa</Dialog>
         <Drawer open={false}>hola</Drawer>
         <Popover>
           <ButtonPopover>holaa</ButtonPopover>
           <PopoverContent>erda</PopoverContent>
         </Popover>
+        <ListCardPhotosInfinite />
       </DarkModeProvider>
     </main>
   );

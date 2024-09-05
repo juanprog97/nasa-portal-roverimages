@@ -4,27 +4,36 @@ import { FilterProps, formatparameter } from '@/utils';
 import { photosDetailsAdapter } from '@/adapters';
 
 const useScrollInfinite = (filter?: Partial<FilterProps>) => {
-  const fetcher = (url: string) =>
-    fetchPhotos(filter)
-      .get(url)
-      .then((res) => res.data);
+  const fetcher = async ({ page }: { page: number }) => {
+    const response = await fetchPhotos(page, filter).call;
+
+    return response.data.photos;
+  };
+  const SWR_OPTIONS = {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    dedupingInterval: 500,
+  };
 
   const getKey = (pageIndex: number, previousPageData: any) => {
     if (previousPageData && !previousPageData.length) return null;
-    return `/photos?page=${pageIndex + 1}${formatparameter(filter)}`;
+    return { page: pageIndex + 1 };
   };
 
   const { data, error, size, setSize, isValidating } = useSWRInfinite(
     getKey,
-    fetcher
+    fetcher,
+    SWR_OPTIONS
   );
-  console.log(data, 'sda');
+
   const dataQ = data ? [].concat(...data) : [];
   const photos = photosDetailsAdapter(dataQ);
   return {
-    photos,
+    photos: photos,
     error,
     isLoading: !data && !error,
+    isReachingEnd: data && data[data.length - 1]?.length === 0,
+    loadMore: () => setSize(size + 1),
     isValidating,
   };
 };

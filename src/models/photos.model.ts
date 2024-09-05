@@ -4,5 +4,5 @@ export interface CardDataPresentation {
   earthDate: string;
   roverName: string;
   solDate: number;
-  statusRover: boolean;
+  camera: string;
 }
