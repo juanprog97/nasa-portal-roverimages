@@ -23,11 +23,12 @@
       "@/molecules": ["./src/components/molecules/*"],
       "@/organisms": ["./src/components/organisms/*"],
       "@/templates": ["./src/components/templates/*"],
+      "@/adapters": ["./src/adapters/index"],
       "@/context": ["./src/context/index"],
       "@/hooks": ["./src/hooks/index"],
-      "@/interfaces": ["./src/interfaces/*"],
+      "@/models": ["./src/models/index"],
       "@/pages": ["./src/pages/*"],
-      "@/services": ["./src/services/*"],
+      "@/services": ["./src/services/index"],
       "@/utils": ["./src/utils/index"],
       "@/tailwindConfig": ["./tailwind.config.ts"]
     }

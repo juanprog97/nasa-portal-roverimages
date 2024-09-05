@@ -3,12 +3,8 @@ export interface FavoriteSearch {
   value: string;
   id: string;
 }
-
-export interface CardDataPresentation {
-  id: string;
-  imgsrc: string;
-  earthDate: string;
-  roverName: string;
-  solDate: number;
-  statusRover: boolean;
-}
+export type FilterProps = {
+  sol: string;
+  earth_date: string;
+  camera: string;
+};

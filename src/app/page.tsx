@@ -18,7 +18,11 @@ import { consoleMessage } from '@/utils';
 import { useDarkMode } from '@/hooks';
 import { useEffect, useState } from 'react';
 import { DarkModeProvider } from '@/context';
-import { ContainerFloat, Navbar } from '@/components/organisms';
+import {
+  ContainerFloat,
+  ListCardPhotosInfinite,
+  Navbar,
+} from '@/components/organisms';
 import { ButtonFloating, CardPresentation } from '@/components/molecules';
 import { CardDataPresentation, FavoriteSearch, uuidv4 } from '@/utils';
 import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
@@ -54,6 +58,7 @@ export default function Home() {
         <Button className='p-10 font-semibold' color='blue'>
           Hola
         </Button>
+        <ListCardPhotosInfinite />
         <ListFavoritesSearch
           listOptions={data}
           onChange={handleChange}
@@ -82,7 +87,7 @@ export default function Home() {
         >
           Modal
         </Button>
-        <CardPresentation data={dataCard}  />
+        <CardPresentation data={dataCard} />
         <SwitchBase />
         <ButtonArrow direction='left' />
         <ButtonCircle>
