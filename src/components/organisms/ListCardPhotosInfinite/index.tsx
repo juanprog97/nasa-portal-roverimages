@@ -37,7 +37,7 @@ const ListCardPhotosInfinite = () => {
   }, [isReachingEnd, isValidating]);
 
   if (isLoading) return <Spinners type='loading' />;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <Spinners type='error' />;
   return (
     <div className={styles.ContainerGeneral}>
       <motion.div
@@ -49,7 +49,6 @@ const ListCardPhotosInfinite = () => {
           <CardPresentation index={index} key={photos.id} data={photos} />
         ))}
       </motion.div>
-
       <div className='fixed bottom-[0] flex h-[120px] w-full justify-center'>
         {isValidating && <Spinners type='loading' />}
         {isReachingEnd && <Spinners type='finished' />}
