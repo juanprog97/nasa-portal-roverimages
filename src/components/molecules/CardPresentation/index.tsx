@@ -13,6 +13,7 @@ import { RefObject } from 'react';
 
 type CardPresentationProps = {
   data: CardDataPresentation;
+  index?: number;
   onChangeLike?: (id: string, isLike: boolean) => void;
   onClickFullScreen?: (id: string) => void;
 };
@@ -21,6 +22,7 @@ const CardPresentation: FC<CardPresentationProps> = ({
   data,
   onChangeLike = (id, isLike: boolean) => {},
   onClickFullScreen = () => {},
+  index,
 }: CardPresentationProps) => {
   const [isFavorite, setStateFavorite] = useState<boolean>(false);
 
@@ -37,7 +39,7 @@ const CardPresentation: FC<CardPresentationProps> = ({
   };
 
   return (
-    <CardBase className={styles.CardStyle}>
+    <CardBase custom={index} className={styles.CardStyle}>
       <PhotoImage
         src={data.imgsrc}
         alt={`${data.solDate}-${data.camera}-${data.roverName}`}

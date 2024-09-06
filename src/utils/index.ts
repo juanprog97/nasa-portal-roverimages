@@ -1,4 +1,4 @@
-export * from './base';
+export * from './const';
 export { default as colors } from './colors';
 export * from './console';
 export * from './date';

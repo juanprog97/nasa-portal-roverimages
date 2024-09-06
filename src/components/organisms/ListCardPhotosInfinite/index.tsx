@@ -6,6 +6,16 @@ import { useEffect } from 'react';
 import { CardDataPresentation } from '@/models';
 import { CardPresentation } from '@/components/molecules';
 import { Spinners } from '@/components/atoms';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const variants = {
+  open: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+  },
+  closed: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
+};
 
 const ListCardPhotosInfinite = () => {
   const { photos, error, loadMore, isReachingEnd, isLoading, isValidating } =
@@ -30,11 +40,15 @@ const ListCardPhotosInfinite = () => {
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div className={styles.ContainerGeneral}>
-      <div className={styles.ContainerListCard}>
-        {photos.map((photos: CardDataPresentation) => (
-          <CardPresentation key={photos.id} data={photos} />
+      <motion.div
+        initial={false}
+        animate='open'
+        className={styles.ContainerListCard}
+      >
+        {photos.map((photos: CardDataPresentation, index: number) => (
+          <CardPresentation index={index} key={photos.id} data={photos} />
         ))}
-      </div>
+      </motion.div>
 
       <div className='fixed bottom-[0] flex h-[120px] w-full justify-center'>
         {isValidating && <Spinners type='loading' />}
