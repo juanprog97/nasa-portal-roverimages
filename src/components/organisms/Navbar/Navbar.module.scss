@@ -1,5 +1,5 @@
 .NavBarStyle {
-  @apply fixed top-0 h-20 w-full px-6;
+  @apply xs:px-6 fixed top-0 z-40 h-20 w-full p-[2%];
 
   &[data-top='false'] {
     @apply pointer-events-none bg-transparent transition-all duration-100 ease-in-out;
@@ -8,7 +8,7 @@
     }
   }
   &[data-top='true'] {
-    @apply dark:bg-black-400 fixed top-0 bg-whitedirty shadow-[0px_0px_1px_0px_rgb(0,0,0,0.1)] shadow-blue-400 transition-all duration-75 ease-out;
+    @apply fixed top-0 bg-whitedirty shadow-[0px_0px_1px_0px_rgb(0,0,0,0.1)] shadow-blue-400 transition-all duration-75 ease-out dark:bg-black-200;
   }
 }
 
@@ -17,5 +17,5 @@
 }
 
 .TextMessage {
-  @apply px-2 text-sm font-semibold dark:text-white md:px-4 md:text-base xl:text-xl;
+  @apply xs:block hidden px-2 text-sm font-semibold dark:text-white md:px-4 md:text-base xl:text-xl;
 }

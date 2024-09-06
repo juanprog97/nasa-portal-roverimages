@@ -19,6 +19,7 @@ import {
 import { ButtonFloating, CardPresentation } from '@/components/molecules';
 import { FavoriteSearch, uuidv4 } from '@/utils';
 import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
+import { Main } from '@/components/templates';
 
 export default function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -37,19 +38,18 @@ export default function Home() {
     console.log(newValue);
   };
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between bg-white p-24 dark:bg-black-300'>
+    <>
       <DarkModeProvider>
-        <Navbar />
-        <Button className='p-10 font-semibold' color='blue'>
+        <Main />
+        {/* <Button className='p-10 font-semibold' color='blue'>
           Hola
-        </Button>
-
-        <ListFavoritesSearch
+        </Button> */}
+        {/* <ListFavoritesSearch
           listOptions={data}
           onChange={handleChange}
           valueDefault='ep1'
-        />
-        <ContainerFloat
+        /> */}
+        {/* <ContainerFloat
           styles='flex flex-col gap-y-[2rem]'
           vertical='bottom'
           horizontal='left'
@@ -57,32 +57,29 @@ export default function Home() {
           <ButtonFloating type='filters' arialLabel='filters-action' />
           <ButtonFloating type='filters' arialLabel='filters-action' />
           <ButtonFloating type='filters' arialLabel='filters-action' />
-        </ContainerFloat>
-        <Button
+        </ContainerFloat> */}
+        {/* <Button
           onClick={() => setOpenModal((openModal) => !openModal)}
           className='p-10 font-semibold'
           color='blue'
         >
           Modal
-        </Button>
-        <Button
+        </Button> */}
+        {/* <Button
           onClick={() => setOpenModal((openModal) => !openModal)}
           className='p-10 font-semibold'
           color='blue'
         >
           Modal
-        </Button>
-
-        <ButtonArrow direction='left' />
-
-        <Dialog open={openModal}>Holaa</Dialog>
+        </Button> */}
+        {/* <ButtonArrow direction='left' /> */}
+        {/* <Dialog open={openModal}>Holaa</Dialog>
         <Drawer open={false}>hola</Drawer>
         <Popover>
           <ButtonPopover>holaa</ButtonPopover>
           <PopoverContent>erda</PopoverContent>
-        </Popover>
-        <ListCardPhotosInfinite />
+        </Popover> */}
       </DarkModeProvider>
-    </main>
+    </>
   );
 }

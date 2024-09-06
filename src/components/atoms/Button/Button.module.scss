@@ -1,5 +1,5 @@
 .ButtonNasa {
-  @apply rounded-md p-3 text-base text-white;
+  @apply rounded-md p-1 text-[0.8rem] text-white sm:p-3 sm:text-base;
 
   &[data-color='red'] {
     @apply bg-red-200 shadow-[0px_3px_1px_1px] shadow-red-300 transition-all duration-100 ease-out;

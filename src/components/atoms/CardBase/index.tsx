@@ -1,4 +1,5 @@
 'use client';
+import { MutableRefObject } from 'react';
 import CardStyle from './CardBase.module.scss';
 
 type CardProps = {

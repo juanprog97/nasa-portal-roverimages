@@ -1,9 +1,19 @@
 .CardStyle {
-  @apply flex w-[100px] max-w-[400px] flex-col items-start p-3 md:w-full;
+  @apply relative flex w-[100px] max-w-[400px] flex-col items-start p-3 md:w-full;
+  &:hover {
+    .InteractionButton {
+      .buttonFullScreen {
+        @apply pointer-events-auto opacity-100 transition-opacity duration-200 ease-in;
+      }
+    }
+  }
 }
 
 .InteractionButton {
   @apply flex w-full flex-row justify-around p-5;
+  .buttonFullScreen {
+    @apply xs:absolute xs:right-[10%] xs:top-[5%] xs:opacity-0 xs:transition-opacity xs:duration-200 xs:ease-out xs:pointer-events-none h-[50px] w-[50px] self-end font-semibold;
+  }
 }
 
 .ButtonCircle {

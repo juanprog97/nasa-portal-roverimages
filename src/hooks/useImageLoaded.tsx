@@ -5,18 +5,22 @@ const useImageLoaded = () => {
   const refImg = useRef<HTMLImageElement | null>(null);
 
   const onLoad = () => {
-    setTimeout(() => {
-      setLoaded(true);
-    }, 3000);
+    setLoaded(true);
   };
 
   useEffect(() => {
-    if (refImg.current && refImg.current.complete) {
-      onLoad();
+    if (refImg.current) {
+      const handleImageLoad = () => {
+        onLoad();
+      };
+      refImg.current.addEventListener('load', handleImageLoad);
+      return () => {
+        refImg?.current?.removeEventListener('load', handleImageLoad);
+      };
     }
   });
 
-  return [refImg, loaded, onLoad];
+  return [refImg, loaded];
 };
 
 export default useImageLoaded;

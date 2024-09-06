@@ -12,7 +12,7 @@ const useScrollInfinite = (filter?: Partial<FilterProps>) => {
   const SWR_OPTIONS = {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    dedupingInterval: 500,
+    dedupingInterval: 200,
   };
 
   const getKey = (pageIndex: number, previousPageData: any) => {

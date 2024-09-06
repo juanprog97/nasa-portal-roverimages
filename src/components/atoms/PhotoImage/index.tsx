@@ -14,11 +14,16 @@ const PhotoImage: React.FC<PhotoNasaProps> = ({
   alt = '',
   cssProps = '',
 }: PhotoNasaProps) => {
-  const [refImg, loaded, onLoad] = useImageLoaded();
+  const [refImg, loaded] = useImageLoaded();
 
   return (
     <div data-loaded={loaded} className={`${styles.ImgContainer}${cssProps}`}>
-      <img ref={refImg as RefObject<HTMLImageElement>} alt={alt} src={src} />
+      <img
+        loading='lazy'
+        ref={refImg as RefObject<HTMLImageElement>}
+        alt={alt}
+        src={src}
+      />
     </div>
   );
 };

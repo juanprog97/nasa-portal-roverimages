@@ -1,15 +1,15 @@
 .ImgContainer {
-  @apply h-auto w-full min-w-[200px];
+  @apply flex aspect-square h-auto w-full min-w-[200px] items-center justify-center bg-[rgba(61,59,59,0.33)] shadow-[0_4px_30px_rgba(0,0,0,0.1)];
   &[data-loaded='false'] {
-    @apply aspect-square w-full animate-blur bg-[rgba(61,59,59,0.33)] bg-image-template bg-cover shadow-[0_4px_30px_rgba(0,0,0,0.1)] blur-[8.4px];
+    @apply bg-image-template bg-cover blur-[8.4px];
     img {
-      @apply w-0 origin-center scale-0 blur-[10px];
+      @apply w-full blur-[8.4px];
     }
   }
   &[data-loaded='true'] {
-    @apply inline-block blur-none;
+    @apply bg-none blur-[0px];
     img {
-      @apply block h-auto w-full scale-100 blur-none transition-all duration-1000 ease-in-out;
+      @apply blur-[0px] transition-all duration-75 ease-out;
     }
   }
 }

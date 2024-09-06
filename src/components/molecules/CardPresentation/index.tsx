@@ -6,9 +6,10 @@ import {
   PhotoImage,
 } from '@/components/atoms';
 import { CardDataPresentation } from '@/models';
-import React, { FC, useState } from 'react';
+import React, { FC, MutableRefObject, useState } from 'react';
 import styles from './CardPresentation.module.scss';
 import { colors } from '@/utils';
+import { RefObject } from 'react';
 
 type CardPresentationProps = {
   data: CardDataPresentation;
@@ -37,27 +38,33 @@ const CardPresentation: FC<CardPresentationProps> = ({
 
   return (
     <CardBase className={styles.CardStyle}>
-      <PhotoImage src={data.imgsrc} alt={'sadas'} />
+      <PhotoImage
+        src={data.imgsrc}
+        alt={`${data.solDate}-${data.camera}-${data.roverName}`}
+      />
       <div className={styles.detailInfo}>
         <p>
-          <b>📅☀️Solar Date:</b> 11000
+          <b>📅☀️Solar Date:</b> {data.solDate}
         </p>
         <p>
-          <b>📅🌎Earth Date:</b> 12-20-2024
+          <b>📅🌎Earth Date:</b> {data.earthDate}
         </p>
         <p>
-          <b>🤖Rover:</b>Curiosity
+          <b>🤖Rover: </b>
+          {data.roverName}
         </p>
         <p>
-          <b>Status: </b>✅Active 🔴Disable
+          <b>📷Camera: </b>
+          {data.camera}
         </p>
       </div>
+
       <div className={styles.InteractionButton}>
         <Button
-          className='btn btn-primary font-semibold'
+          className={styles.buttonFullScreen}
           onClick={handleClickFullScreen}
         >
-          FullScreen
+          <Icon icon='open_in_full' />
         </Button>
         <ButtonCircle className={styles.ButtonCircle} onClick={handleClickLike}>
           <Icon

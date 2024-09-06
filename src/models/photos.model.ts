@@ -3,6 +3,6 @@ export interface CardDataPresentation {
   imgsrc: string;
   earthDate: string;
   roverName: string;
-  solDate: number;
+  solDate: string;
   camera: string;
 }
