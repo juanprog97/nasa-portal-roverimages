@@ -7,21 +7,18 @@ import {
   Popover,
   ButtonPopover,
   PopoverContent,
+  CardFilter,
 } from '@/components/atoms';
 import { consoleMessage } from '@/utils';
 import { useEffect, useState } from 'react';
 import { DarkModeProvider } from '@/context';
-import {
-  ContainerFloat,
-  ListCardPhotosInfinite,
-  Navbar,
-} from '@/components/organisms';
+import { ContainerFloat, ListCardPhotosInfinite } from '@/components/organisms';
 import { ButtonFloating, CardPresentation } from '@/components/molecules';
 import { FavoriteSearch, uuidv4 } from '@/utils';
 import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
-import { Main } from '@/components/templates';
+import { Content, Navbar } from '@/components/templates';
 
-export default function Home() {
+export function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const data: FavoriteSearch[] = [
@@ -38,18 +35,38 @@ export default function Home() {
     console.log(newValue);
   };
   return (
-    <>
-      <DarkModeProvider>
-        <Main />
-        {/* <Button className='p-10 font-semibold' color='blue'>
+    <DarkModeProvider>
+      <Navbar />
+      <div>saslsadlkalskdj</div>
+      <div>saslsadlkalskdj</div>
+      <div>saslsadlkalskdj</div>
+      <div>saslsadlkalskdj</div>
+      <div>saslsadlkalskdj</div>
+      <CardFilter>SADSA</CardFilter>
+      {/* <Content /> */}
+    </DarkModeProvider>
+  );
+}
+
+export default Home;
+
+{
+  /* <Main /> */
+}
+{
+  /* <Button className='p-10 font-semibold' color='blue'>
           Hola
-        </Button> */}
-        {/* <ListFavoritesSearch
+        </Button> */
+}
+{
+  /* <ListFavoritesSearch
           listOptions={data}
           onChange={handleChange}
           valueDefault='ep1'
-        /> */}
-        {/* <ContainerFloat
+        /> */
+}
+{
+  /* <ContainerFloat
           styles='flex flex-col gap-y-[2rem]'
           vertical='bottom'
           horizontal='left'
@@ -57,29 +74,34 @@ export default function Home() {
           <ButtonFloating type='filters' arialLabel='filters-action' />
           <ButtonFloating type='filters' arialLabel='filters-action' />
           <ButtonFloating type='filters' arialLabel='filters-action' />
-        </ContainerFloat> */}
-        {/* <Button
+        </ContainerFloat> */
+}
+{
+  /* <Button
           onClick={() => setOpenModal((openModal) => !openModal)}
           className='p-10 font-semibold'
           color='blue'
         >
           Modal
-        </Button> */}
-        {/* <Button
+        </Button> */
+}
+{
+  /* <Button
           onClick={() => setOpenModal((openModal) => !openModal)}
           className='p-10 font-semibold'
           color='blue'
         >
           Modal
-        </Button> */}
-        {/* <ButtonArrow direction='left' /> */}
-        {/* <Dialog open={openModal}>Holaa</Dialog>
+        </Button> */
+}
+{
+  /* <ButtonArrow direction='left' /> */
+}
+{
+  /* <Dialog open={openModal}>Holaa</Dialog>
         <Drawer open={false}>hola</Drawer>
         <Popover>
           <ButtonPopover>holaa</ButtonPopover>
           <PopoverContent>erda</PopoverContent>
-        </Popover> */}
-      </DarkModeProvider>
-    </>
-  );
+        </Popover> */
 }

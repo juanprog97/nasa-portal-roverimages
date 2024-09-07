@@ -27,7 +27,7 @@
       "@/context": ["./src/context/index"],
       "@/hooks": ["./src/hooks/index"],
       "@/models": ["./src/models/index"],
-      "@/pages": ["./src/pages/*"],
+      "@/pages": ["./src/pages/index"],
       "@/services": ["./src/services/index"],
       "@/utils": ["./src/utils/index"],
       "@/tailwindConfig": ["./tailwind.config.ts"]

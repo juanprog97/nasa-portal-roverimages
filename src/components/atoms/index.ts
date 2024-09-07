@@ -3,6 +3,7 @@ export { default as ButtonArrow } from './ButtonArrow';
 export { default as ButtonCircle } from './ButtonCircle';
 export { default as ButtonOptions } from './ButtonOptions';
 export { default as CardBase } from './CardBase';
+export { default as CardFilter } from './CardFilter';
 export { default as Dialog } from './Dialog';
 export { default as Drawer } from './Drawer';
 export { default as Fab } from './Fab';

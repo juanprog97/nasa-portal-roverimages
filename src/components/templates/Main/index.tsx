@@ -1,11 +1,15 @@
-import { ListCardPhotosInfinite, Navbar } from '@/components/organisms';
+import { Content } from '@/components/templates';
 import style from './Main.module.scss';
+import { Navbar } from '@/components/templates';
+import { DarkModeProvider } from '@/context';
 
 const Main = () => {
   return (
     <main className={style.MainContainer}>
-      <Navbar />
-      <ListCardPhotosInfinite />
+      <DarkModeProvider>
+        <Navbar />
+        <Content />
+      </DarkModeProvider>
     </main>
   );
 };
