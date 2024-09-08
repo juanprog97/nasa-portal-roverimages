@@ -13,6 +13,7 @@ import { Icon } from '..';
 type CardFilterProps = {
   children?: any;
   isOpen?: boolean;
+  label?: string;
 };
 
 const variants = {
@@ -32,6 +33,7 @@ const variants = {
 const CardFilter: FC<CardFilterProps> = ({
   children,
   isOpen = true,
+  label,
 }: CardFilterProps) => {
   return (
     <motion.div
@@ -43,24 +45,18 @@ const CardFilter: FC<CardFilterProps> = ({
         <AccordionSummary
           expandIcon={
             <Icon
-              sx={{
-                fontSize: 20,
-                color: colors.blue[400],
-              }}
+              className={styles.IconArrow}
+              //   sx={{
+              //     fontSize: 20,
+              //     color: colors.blue[400],
+              //   }}
               icon='keyboard_arrow_down'
             />
           }
         >
-          <Typography sx={{ fontWeight: 'bold' }}>erdaaads</Typography>
+          <Typography sx={{ fontWeight: 'bold' }}>{label}</Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          {children}
-
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
+        <AccordionDetails>{children}</AccordionDetails>
       </Accordion>
     </motion.div>
   );

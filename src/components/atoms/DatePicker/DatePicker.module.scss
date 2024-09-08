@@ -1,0 +1,35 @@
+.DateStyle {
+  @apply dark:bg-skyblack-100;
+
+  [class*='MuiOutlinedInput-notchedOutline'] {
+    @apply dark:border-black-500;
+  }
+}
+
+.dialogCustomStyle {
+  [class*='MuiPickersLayout-contentWrapper'] {
+    @apply dark:bg-skyblack-200;
+  }
+}
+
+// :global {
+//   [class*='.MuiDialog-paper'] {
+//     background-color: #1a73e8;
+//   }
+// }
+
+// }
+
+//  [class*='.MuiDialog-paper'] {
+//       background-color: #1a73e8; /* Cambia el color de fondo del diálogo */
+//       color: white; /* Cambia el color del texto */
+//     }
+
+//     .MuiPickersDay-daySelected {
+//       background-color: #ff5722 !important; /* Cambia el color del día seleccionado */
+//     }
+
+//     /* Estilos para los botones */
+//     .MuiButton-root {
+//       color: white; /* Cambia el color del texto de los botones */
+//     }

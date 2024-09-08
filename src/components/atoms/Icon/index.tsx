@@ -17,6 +17,7 @@ type IconProps = {
   >;
   sx?: SxProps<Theme>;
   ariaHidden?: boolean;
+  className?: string;
 };
 
 const IconA: FC<IconProps> = ({
@@ -24,9 +25,15 @@ const IconA: FC<IconProps> = ({
   fontSize = 'large',
   sx = {},
   ariaHidden = false,
+  className,
 }: IconProps) => {
   return (
-    <IconWrapper aria-hidden={ariaHidden} fontSize={fontSize} sx={sx}>
+    <IconWrapper
+      className={className}
+      aria-hidden={ariaHidden}
+      fontSize={fontSize}
+      sx={sx}
+    >
       {icon}
     </IconWrapper>
   );

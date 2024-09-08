@@ -10,6 +10,7 @@ import {
   CardFilter,
   ButtonRadio,
   RangeInput,
+  DatePicker,
 } from '@/components/atoms';
 import { consoleMessage } from '@/utils';
 import { useEffect, useState } from 'react';
@@ -50,6 +51,7 @@ export function Home() {
       <div>saslsadlkalskdj</div>
       <div>saslsadlkalskdj</div>
       <div>saslsadlkalskdj</div>
+
       <GroupButtonOptions>
         <ButtonRadio value='era' label='First' />
         <ButtonRadio value='era2' label='Two' />
@@ -57,7 +59,9 @@ export function Home() {
       </GroupButtonOptions>
       <InputNumber label={'sadad'} max={'100'} min={'1'} />
       <CardFilter>SADSA</CardFilter>
+      <DatePicker label='dlkkasklj' />
       <RangeInput min={'2'} max={'100'} />
+
       {/* <Content /> */}
     </DarkModeProvider>
   );

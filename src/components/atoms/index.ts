@@ -5,6 +5,7 @@ export { default as ButtonOptionsChip } from './ButtonOptionsChip';
 export { default as ButtonRadio } from './ButtonRadio';
 export { default as CardBase } from './CardBase';
 export { default as CardFilter } from './CardFilter';
+export { default as DatePicker } from './DatePicker';
 export { default as Dialog } from './Dialog';
 export { default as Drawer } from './Drawer';
 export { default as Fab } from './Fab';
