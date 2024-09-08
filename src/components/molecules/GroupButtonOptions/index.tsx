@@ -20,7 +20,7 @@ const GroupButtonOptions: FC<GroupButtonOptionsProps> = ({
     <>
       <RadioGroup className={style.GroupListButtons}>
         {loading
-          ? Array(8)
+          ? Array(4)
               .fill({})
               .map((_) => <SkeletonRadioButton />)
           : children}

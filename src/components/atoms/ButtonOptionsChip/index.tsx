@@ -1,5 +1,5 @@
 'use client';
-import { FC, useRef, useState } from 'react';
+import { FC } from 'react';
 import {
   FormControlLabel,
   Radio,
@@ -7,9 +7,7 @@ import {
   Theme,
   Typography,
 } from '@mui/material';
-import { useDarkMode } from '@/hooks';
-import { colors } from '@/utils';
-import styles from './ButtonOptions.module.scss';
+import styles from './ButtonOptionsChip.module.scss';
 
 type ButtonOptionsProps = {
   value: string;

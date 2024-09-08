@@ -1,0 +1,12 @@
+.InputStyle {
+  @apply dark:bg-skyblack-100;
+  [class*='MuiFormLabel-root'] {
+    @apply dark:text-black-200;
+    &[class*='focused'] {
+      @apply dark:text-black-400;
+    }
+  }
+  [class*='MuiInputBase-root-MuiInput-root']::after {
+    @apply dark:border-b-skyblack-400;
+  }
+}
