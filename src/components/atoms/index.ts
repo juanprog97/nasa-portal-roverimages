@@ -8,6 +8,7 @@ export { default as CardFilter } from './CardFilter';
 export { default as DatePicker } from './DatePicker';
 export { default as Dialog } from './Dialog';
 export { default as Drawer } from './Drawer';
+export { default as Dropdown } from './Dropdown';
 export { default as Fab } from './Fab';
 export { default as Icon } from './Icon';
 export { default as indext } from './InputNumber/indext';

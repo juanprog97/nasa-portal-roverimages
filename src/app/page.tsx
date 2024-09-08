@@ -1,12 +1,5 @@
 'use client';
 import {
-  Button,
-  ButtonArrow,
-  Dialog,
-  Drawer,
-  Popover,
-  ButtonPopover,
-  PopoverContent,
   CardFilter,
   ButtonRadio,
   RangeInput,
@@ -26,6 +19,7 @@ import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
 import { Content, Navbar } from '@/components/templates';
 import { Radio } from '@mui/material';
 import InputNumber from '@/components/atoms/InputNumber/indext';
+import Dropdown from '@/components/atoms/Dropdown';
 
 export function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -61,6 +55,13 @@ export function Home() {
       <CardFilter>SADSA</CardFilter>
       <DatePicker label='dlkkasklj' />
       <RangeInput min={'2'} max={'100'} />
+      <Dropdown
+        label={'hola'}
+        data={[
+          { label: 'erda', value: 'aad' },
+          { label: 'erda2', value: 'aad4s' },
+        ]}
+      />
 
       {/* <Content /> */}
     </DarkModeProvider>

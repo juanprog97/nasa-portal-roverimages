@@ -8,3 +8,8 @@ export type FilterProps = {
   earth_date: string;
   camera: string;
 };
+
+export type DropdowmItemProps = {
+  label: string;
+  value: string;
+};

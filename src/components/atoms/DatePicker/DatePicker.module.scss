@@ -10,26 +10,16 @@
   [class*='MuiPickersLayout-contentWrapper'] {
     @apply dark:bg-skyblack-200;
   }
+  [class*='MuiPickersDay'] {
+    @apply font-bold dark:text-white;
+  }
+  [class*='MuiTypography-caption'] {
+    @apply font-semibold dark:text-white;
+  }
+  [class*='MuiPickersCalendarHeader-label'] {
+    @apply dark:text-whitedirty;
+  }
+  [class*='MuiPickersYear-yearButton'] {
+    @apply dark:text-whitedirty;
+  }
 }
-
-// :global {
-//   [class*='.MuiDialog-paper'] {
-//     background-color: #1a73e8;
-//   }
-// }
-
-// }
-
-//  [class*='.MuiDialog-paper'] {
-//       background-color: #1a73e8; /* Cambia el color de fondo del diálogo */
-//       color: white; /* Cambia el color del texto */
-//     }
-
-//     .MuiPickersDay-daySelected {
-//       background-color: #ff5722 !important; /* Cambia el color del día seleccionado */
-//     }
-
-//     /* Estilos para los botones */
-//     .MuiButton-root {
-//       color: white; /* Cambia el color del texto de los botones */
-//     }

@@ -1,0 +1,13 @@
+.StyleForm {
+  @apply dark:bg-skyblack-100;
+  [class*='MuiOutlinedInput-notchedOutline'] {
+    @apply dark:border-skyblack-400;
+  }
+}
+
+.StylePopover {
+  @apply dark:bg-skyblack-100;
+  [class*='Mui-selected'] {
+    @apply dark:bg-skyblack-300 dark:text-white;
+  }
+}

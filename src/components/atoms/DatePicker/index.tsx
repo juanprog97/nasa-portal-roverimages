@@ -27,10 +27,9 @@ const DatePicker: FC<DatePickerProps> = ({ startDate, endDate, onChange }) => {
         {...(startDate && { minDate: toDateTime(startDate) })}
         {...(endDate && { maxDate: toDateTime(endDate) })}
         onChange={handleOnChange}
-     
         slotProps={{
           popper: {
-            className: styles.dialogCustomStyle, // Aplica la clase SCSS al papel del diálogo del DatePicker
+            className: styles.dialogCustomStyle,
           },
         }}
       />
