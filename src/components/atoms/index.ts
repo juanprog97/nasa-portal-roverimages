@@ -13,5 +13,6 @@ export { default as indext } from './InputNumber/indext';
 export { default as LogoNasa } from './LogoNasa';
 export { default as PhotoImage } from './PhotoImage';
 export * from './Popover';
+export { default as RangeInput } from './RangeInput';
 export { default as Spinners } from './Spinners';
 export { default as SwitchBase } from './SwitchBase';

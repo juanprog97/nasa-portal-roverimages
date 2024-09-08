@@ -1,0 +1,14 @@
+.SliderStyle {
+  [class*='MuiSlider-track'] {
+    @apply dark:border-skyblack-400 dark:bg-skyblack-400;
+  }
+  [class*='MuiSlider-thumb'] {
+    @apply dark:bg-skyblack-400;
+  }
+  [class*='MuiSlider-rail '] {
+    @apply dark:border-skyblack-200 dark:bg-skyblack-200;
+  }
+  [class*='MuiSlider-mark '] {
+    @apply dark:bg-skyblack-400;
+  }
+}
