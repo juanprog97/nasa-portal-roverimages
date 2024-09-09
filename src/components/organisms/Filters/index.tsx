@@ -20,6 +20,7 @@ import {
 import { RoversDetails } from '@/models';
 import { devNull } from 'os';
 import { AnimatePresence, motion } from 'framer-motion';
+import { SWRProvider } from '@/context';
 
 type FiltersProps = {
   filterValue?: FilterProps;
@@ -30,7 +31,10 @@ const defaultFilter = {
   rover: 'perseverance',
 };
 
-const Filters: FC<FiltersProps> = ({ filterValue, onChange }: FiltersProps) => {
+const FiltersWrapper: FC<FiltersProps> = ({
+  filterValue,
+  onChange,
+}: FiltersProps) => {
   const [filter, setFilterValue] = useState<FilterProperties>(
     filterValue != undefined ? filterValue : defaultFilter
   );
@@ -41,7 +45,7 @@ const Filters: FC<FiltersProps> = ({ filterValue, onChange }: FiltersProps) => {
   const { filterState, setFilter } = useFilterState();
 
   useEffect(() => {
-    if (!!rovers) {
+    if (rovers && rovers.length > 0) {
       let roversData = rovers.map((rover: RoversDetails) => {
         const [cameras, id, name, ...roversDetails] = rovers;
         return {
@@ -112,7 +116,12 @@ const Filters: FC<FiltersProps> = ({ filterValue, onChange }: FiltersProps) => {
     }
   }, [filter]);
 
-  if (isLoading) return <Spinners type='loading' />;
+  if (isLoading)
+    return (
+      <div className='relative top-[30%] h-auto w-[500px]'>
+        <Spinners type='loading' />
+      </div>
+    );
   if (error) return <Spinners type='error' />;
   return (
     <div className={styles.ContainerGeneralFilters}>
@@ -152,12 +161,12 @@ const Filters: FC<FiltersProps> = ({ filterValue, onChange }: FiltersProps) => {
             exit={{ opacity: 0, scale: 0 }}
             className={styles.ContainerButtons}
           >
-            <Button color='blue' onClick={handleOnClickApplyFilter}>
-              Apply Filters
-            </Button>
             <Button color='blue' onClick={handleOnClickClearFilter}>
               <Icon icon='filter_alt_off' />
               Clear Filters
+            </Button>
+            <Button color='blue' onClick={handleOnClickApplyFilter}>
+              Apply Filters
             </Button>
           </motion.div>
         ) : null}
@@ -166,4 +175,11 @@ const Filters: FC<FiltersProps> = ({ filterValue, onChange }: FiltersProps) => {
   );
 };
 
+const Filters = (): JSX.Element => {
+  return (
+    <SWRProvider keyItem='filters'>
+      <FiltersWrapper />
+    </SWRProvider>
+  );
+};
 export default Filters;

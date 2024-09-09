@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styles from './Spinner.module.scss';
+import { style } from 'framer-motion/client';
 
 type AllowedTypeSpinner = 'loading' | 'finished' | 'error';
 
@@ -1313,16 +1314,17 @@ const Spinners = ({ type }: SpinnerProps) => {
   );
 
   const SvgFinish = () => (
-    <>
+    <div className='absolute top-[-50%] flex flex-col'>
       <a href='https://www.freepik.com/free-vector/cute-astronaut-standing-planet-cartoon-icon-illustration_11759993.htm#fromView=search&page=1&position=28&uuid=190891ca-4b0a-4234-9fa1-899c49cffb30'>
         <svg
+          className='translate-x-[100%]'
           id='Capa_1'
           width='80px'
           data-name='Capa 1'
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 267.1 493'
         >
-          <title>prueba</title>
+          <title>End</title>
           <circle cx='133.5' cy='359.5' r='130.8' fill='#ca412a' />
           <path
             d='M241.8,348.3c1.9,7,12.6,5.6,13-3.7s-6.5-11.2,0-16.3-13.5-12.7-4.4-23.8c-1.3-2.5-2.6-5-4.1-7.5C210,234.7,129.9,213.6,67.5,250a130.2,130.2,0,0,0-32.9,27.2c7.8-4.2,14.3-6.7,17.5-5.6,11.6,4.2,16.7-3.3,22.8-.3s-7.5,6.8-3.8,11.5,5.2,8.3,1,10.7,1.7,15.3-7.3,29.3-5.2,18.1,3.8,15.3,22.5-21.9,33.5-18.1,16.8,13.4,31.3,4.6,15.1-6.5,18.3,3.3-12.6,7.9.6,15.3,14.5.5,12.9,13.5-10,18.1-5.6,21.9,22.7-3,22.2-17.8,16.6,1.9,26.7-8.3,8.7,6.5,16.6-2.8S239.9,341.4,241.8,348.3Z'
@@ -1896,7 +1898,8 @@ const Spinners = ({ type }: SpinnerProps) => {
           </g>
         </svg>
       </a>
-    </>
+      <p className={styles.TextEnd}>We have no data recorded</p>
+    </div>
   );
 
   if (type == 'loading') {

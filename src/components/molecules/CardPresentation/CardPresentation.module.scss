@@ -10,9 +10,9 @@
 }
 
 .InteractionButton {
-  @apply flex w-full flex-row justify-around p-5;
+  @apply m-5 flex w-full flex-row justify-around;
   .buttonFullScreen {
-    @apply xs:absolute xs:right-[10%] xs:top-[5%] xs:opacity-0 xs:transition-opacity xs:duration-200 xs:ease-out xs:pointer-events-none h-[50px] w-[50px] self-end font-semibold;
+    @apply h-[50px] w-[50px] self-end font-semibold xs:pointer-events-none xs:absolute xs:right-[10%] xs:top-[5%] xs:opacity-0 xs:transition-opacity xs:duration-200 xs:ease-out;
   }
 }
 

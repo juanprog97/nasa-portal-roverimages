@@ -1,5 +1,5 @@
 import { ContainerFloat, Filters } from '@/components/organisms';
-import styles from './DrawerFilters.module.scss';
+import styles from './SectionOptions.module.scss';
 import { ButtonFloating } from '@/components/molecules';
 import { Drawer } from '@/components/atoms';
 import { useState } from 'react';

@@ -1,4 +1,5 @@
 .DrawerStyle {
+  @apply min-w-[350px];
   [class*='MuiDrawer-paper'] {
     @apply dark:bg-skyblack-400;
   }

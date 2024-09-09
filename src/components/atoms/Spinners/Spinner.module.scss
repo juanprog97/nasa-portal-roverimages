@@ -60,6 +60,10 @@ $i: 0;
   transform: rotateX(-75deg);
 }
 
+.TextEnd {
+  @apply text-xl dark:text-white;
+}
+
 .circle3 {
   border-radius: 50%;
   @apply border-[1px] border-solid border-darkbg dark:border-[#eee];

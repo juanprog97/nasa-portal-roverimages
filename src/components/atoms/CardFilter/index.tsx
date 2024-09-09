@@ -14,6 +14,7 @@ type CardFilterProps = {
   children?: any;
   isOpen?: boolean;
   label?: string;
+  className?: string;
 };
 
 const variants = {
@@ -34,6 +35,7 @@ const CardFilter: FC<CardFilterProps> = ({
   children,
   isOpen = true,
   label,
+  className,
 }: CardFilterProps) => {
   return (
     <motion.div
@@ -49,7 +51,7 @@ const CardFilter: FC<CardFilterProps> = ({
         >
           <Typography sx={{ fontWeight: 'bold' }}>{label}</Typography>
         </AccordionSummary>
-        <AccordionDetails>{children}</AccordionDetails>
+        <AccordionDetails className={className}>{children}</AccordionDetails>
       </Accordion>
     </motion.div>
   );

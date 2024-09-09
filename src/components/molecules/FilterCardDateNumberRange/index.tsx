@@ -8,8 +8,7 @@ import {
 import { RangeDate, toDateString, uuidv4 } from '@/utils';
 import React, { FC, useState } from 'react';
 import { GroupButtonOptions } from '..';
-import { AnimatePresence, motion } from 'framer-motion';
-import { relative } from 'path';
+import styles from './GroupButton.module.scss';
 import { DateTime } from 'luxon';
 
 type FilterCardDateNumberRangeProps = {
@@ -43,12 +42,15 @@ const FilterCardDateNumberRange: FC<FilterCardDateNumberRangeProps> = ({
     }
   };
   return (
-    <CardFilter label={labelFilter} isOpen={isOpen}>
-      <GroupButtonOptions className='flex-row' onChange={handleChangeOption}>
+    <CardFilter className={styles.ContainerClass} label={labelFilter} isOpen={isOpen}>
+      <GroupButtonOptions
+        className={styles.ButtonStyle}
+        onChange={handleChangeOption}
+      >
         <ButtonRadio value='sol' label='☀️Sol Date' />
         <ButtonRadio value='earth_date' label='🌎Earth Date' />
       </GroupButtonOptions>
-      <div className='mt-6'>
+      <div className='mx-auto'>
         {filterState == 'sol' ? (
           <RangeInput
             min={solDateRange.min}

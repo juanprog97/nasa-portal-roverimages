@@ -1,5 +1,5 @@
 .NavBarStyle {
-  @apply xs:px-6 fixed top-0 z-40 h-20 w-full p-[2%];
+  @apply fixed top-0 z-40 h-20 w-full p-[2%] xs:px-6;
 
   &[data-top='false'] {
     @apply pointer-events-none bg-transparent transition-all duration-100 ease-in-out;
@@ -17,5 +17,5 @@
 }
 
 .TextMessage {
-  @apply xs:block hidden px-2 text-sm font-semibold dark:text-white md:px-4 md:text-base xl:text-xl;
+  @apply hidden px-2 text-sm font-semibold dark:text-white xs:block md:px-4 md:text-base xl:text-xl;
 }

@@ -33,6 +33,7 @@ export const colors = {
     500: '#000000',
   },
   white: '#FFFFFF',
+
   transparent: 'transparent',
   whitedirty: '#F5F5F5',
   grey: '#E0E0E0',
