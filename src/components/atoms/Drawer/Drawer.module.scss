@@ -1,0 +1,5 @@
+.DrawerStyle {
+  [class*='MuiDrawer-paper'] {
+    @apply dark:bg-skyblack-400;
+  }
+}

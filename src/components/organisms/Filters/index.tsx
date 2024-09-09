@@ -5,7 +5,7 @@ import {
   OptionsItemProps,
   capitalizeFirstLetter,
 } from '@/utils';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import styles from './Filters.module.scss';
 
 import { Button, Icon, Spinners } from '@/components/atoms';
@@ -18,6 +18,7 @@ import {
 } from '@/components/molecules';
 import { RoversDetails } from '@/models';
 import { devNull } from 'os';
+import { AnimatePresence, motion } from 'framer-motion';
 
 type FiltersProps = {
   filterValue?: FilterProperties;
@@ -87,6 +88,29 @@ const Filters: FC<FiltersProps> = ({ filterValue, onChange }: FiltersProps) => {
     setRoverSelected(undefined);
   };
 
+  const filterIsAvailable = useMemo(() => {
+    const filterRequired = ['rover'];
+    const filterMutualRequired = ['sol', 'earth_date'];
+
+    const allRequiredFilterExist = filterRequired.every((key) =>
+      filter.hasOwnProperty(key)
+    );
+
+    const mutualFilterExists = filterMutualRequired.filter((key) =>
+      filter.hasOwnProperty(key)
+    );
+
+    const validMutualFilterExist = mutualFilterExists.length === 1;
+
+    if (allRequiredFilterExist && validMutualFilterExist) {
+      return true;
+    } else {
+      if (!allRequiredFilterExist || !validMutualFilterExist) {
+        return false;
+      }
+    }
+  }, [filter]);
+
   if (isLoading) return <Spinners type='loading' />;
   if (error) return <Spinners type='error' />;
   return (
@@ -119,17 +143,24 @@ const Filters: FC<FiltersProps> = ({ filterValue, onChange }: FiltersProps) => {
           />
         </>
       ) : null}
-
-      <div className={styles.ContainerButtons}>
-        <Button color='blue' onClick={handleOnClickApplyFilter}>
-          Apply Filters
-        </Button>
-        <Button color='blue' onClick={handleOnClickClearFilter}>
-          <Icon icon='filter_alt_off' />
-          Clear Filters
-        </Button>
-        {JSON.stringify(filter)}
-      </div>
+      <AnimatePresence>
+        {filterIsAvailable ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            className={styles.ContainerButtons}
+          >
+            <Button color='blue' onClick={handleOnClickApplyFilter}>
+              Apply Filters
+            </Button>
+            <Button color='blue' onClick={handleOnClickClearFilter}>
+              <Icon icon='filter_alt_off' />
+              Clear Filters
+            </Button>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 };

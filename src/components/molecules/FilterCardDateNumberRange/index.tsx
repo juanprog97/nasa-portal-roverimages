@@ -17,12 +17,14 @@ type FilterCardDateNumberRangeProps = {
   solDateRange: RangeDate;
   earthDateRange: RangeDate;
   onChange?: (value: string) => void;
+  isOpen?: boolean;
 };
 
 const FilterCardDateNumberRange: FC<FilterCardDateNumberRangeProps> = ({
   labelFilter,
   solDateRange,
   earthDateRange,
+  isOpen,
   onChange,
 }: FilterCardDateNumberRangeProps) => {
   const [filterState, setFilterState] = useState<string>('');
@@ -41,7 +43,7 @@ const FilterCardDateNumberRange: FC<FilterCardDateNumberRangeProps> = ({
     }
   };
   return (
-    <CardFilter label={labelFilter}>
+    <CardFilter label={labelFilter} isOpen={isOpen}>
       <GroupButtonOptions className='flex-row' onChange={handleChangeOption}>
         <ButtonRadio value='sol' label='☀️Sol Date' />
         <ButtonRadio value='earth_date' label='🌎Earth Date' />

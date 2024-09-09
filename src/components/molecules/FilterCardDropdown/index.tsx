@@ -8,12 +8,14 @@ type FilterCardDropdownProps = {
   labelFilter?: string;
   labelDropdown?: string;
   onChange: (value: string) => void;
+  isOpen?: boolean;
 };
 
 const FilterCardDropdown: FC<FilterCardDropdownProps> = ({
   data = [],
   labelFilter = '',
   labelDropdown = '',
+  isOpen,
   onChange = () => {},
 }: FilterCardDropdownProps) => {
   const handleOnChange = (value: string) => {
@@ -22,7 +24,7 @@ const FilterCardDropdown: FC<FilterCardDropdownProps> = ({
     }
   };
   return (
-    <CardFilter label={labelFilter}>
+    <CardFilter label={labelFilter} isOpen={isOpen}>
       <Dropdown label={labelDropdown} onChange={handleOnChange} data={data} />
     </CardFilter>
   );

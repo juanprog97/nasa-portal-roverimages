@@ -1,7 +1,7 @@
 .ContainerGeneralFilters {
-  @apply flex flex-col;
+  @apply flex h-full flex-col justify-between px-4;
 }
 
 .ContainerButtons {
-  @apply flex flex-row gap-4;
+  @apply mb-3 flex w-full flex-row justify-center gap-4;
 }
