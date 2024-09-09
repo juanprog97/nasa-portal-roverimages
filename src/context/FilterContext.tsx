@@ -17,9 +17,7 @@ export const FiltersContext = createContext<FiltersContextProps | undefined>(
 export const FiltersProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [filterHistory, setFilterHistory] = useLocalStorage('filter', {
-    rover: 'Perseverance',
-  });
+  const [filterHistory, setFilterHistory] = useLocalStorage('filter', {});
   const setTFilter = (value: FilterProperties) => {
     setFilterHistory(value);
   };
@@ -27,7 +25,7 @@ export const FiltersProvider: React.FC<{ children: ReactNode }> = ({
   return (
     <FiltersContext.Provider
       value={{
-        filterState: filterHistory as FilterProperties,
+        filterState: filterHistory as unknown as FilterProperties,
         setFilter: setTFilter,
       }}
     >

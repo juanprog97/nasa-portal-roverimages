@@ -1,6 +1,7 @@
 import {
   AdjustDate,
   FilterProperties,
+  FilterProps,
   IsDate,
   OptionsItemProps,
   capitalizeFirstLetter,
@@ -21,8 +22,8 @@ import { devNull } from 'os';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type FiltersProps = {
-  filterValue?: FilterProperties;
-  onChange?: (value: FilterProperties) => void;
+  filterValue?: FilterProps;
+  onChange?: (value: FilterProps) => void;
 };
 
 const defaultFilter = {
@@ -84,7 +85,7 @@ const Filters: FC<FiltersProps> = ({ filterValue, onChange }: FiltersProps) => {
   };
 
   const handleOnClickClearFilter = () => {
-    setFilterValue({});
+    setFilterValue(filter?.rover as FilterProps);
     setRoverSelected(undefined);
   };
 

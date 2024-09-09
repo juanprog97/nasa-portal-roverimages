@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply min-w-[200px];
+html {
+  &.dark {
+    body {
+      background-color: #30302d;
+    }
+  }
+  body {
+    background-color: #ffffff;
+  }
 }
 
 @layer utilities {

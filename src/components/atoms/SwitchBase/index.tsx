@@ -9,13 +9,15 @@ type SwitchBaseProps = {
   handleToggle?: () => void;
   type?: AllowedType;
   sx?: SxProps<Theme>;
+  checked?: boolean;
 };
 
 const SwitchBase: React.FC<SwitchBaseProps> = ({
   handleToggle = () => {},
   sx = (theme) => ({}),
+  checked,
 }: SwitchBaseProps) => {
-  return <Switch sx={sx} onChange={handleToggle} />;
+  return <Switch sx={sx} checked={checked} onChange={handleToggle} />;
 };
 
 export default SwitchBase;

@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { URLBASEROVER } from '@/utils';
+import { URLBASE } from '@/utils';
 import { fetchRoverDetails } from '@/services';
 import { roversDetailsAdapter } from '@/adapters/rovers.adapter';
 
@@ -9,7 +9,7 @@ const useLoadRovers = () => {
     return response.data.rovers;
   };
 
-  const { data, error, isLoading } = useSWR(URLBASEROVER, fetcher);
+  const { data, error, isLoading } = useSWR(URLBASE, fetcher);
 
   const rovers = roversDetailsAdapter(data);
   return {

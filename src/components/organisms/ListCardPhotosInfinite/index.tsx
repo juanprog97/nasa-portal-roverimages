@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { CardDataPresentation } from '@/models';
 import { CardPresentation } from '@/components/molecules';
 import { Spinners } from '@/components/atoms';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const variants = {
   open: {

@@ -31,21 +31,6 @@ import {
 } from '@/components/molecules/';
 
 export function Home() {
-  const [openModal, setOpenModal] = useState<boolean>(false);
-
-  const data: FavoriteSearch[] = [
-    { id: uuidv4().toString(), value: 'ep1', label: 'test1' },
-    { id: uuidv4().toString(), value: 'ep2', label: 'test2' },
-    { id: uuidv4().toString(), value: 'ep3', label: 'test3' },
-    { id: uuidv4().toString(), value: 'ep4', label: 'test4' },
-  ];
-  useEffect(() => {
-    consoleMessage();
-  }, []);
-
-  const handleChange = (newValue: string) => {
-    console.log(newValue);
-  };
   return (
     <FiltersProvider>
       <DarkModeProvider>

@@ -3,11 +3,7 @@ export interface FavoriteSearch {
   value: string;
   id: string;
 }
-export type FilterProps = {
-  sol: string;
-  earth_date: string;
-  camera: string;
-};
+export type FilterProps = Partial<FilterProperties>;
 
 export type OptionsItemProps = {
   label: string;

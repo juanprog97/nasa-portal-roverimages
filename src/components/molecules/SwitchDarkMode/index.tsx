@@ -2,6 +2,7 @@ import { SwitchBase } from '@/components/atoms';
 import { useDarkMode } from '@/hooks';
 import { Theme } from '@mui/material/styles';
 import { colors } from '@/utils';
+import { useEffect, useState } from 'react';
 
 const SwitchDarkMode = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
@@ -55,7 +56,13 @@ const SwitchDarkMode = () => {
     },
   });
 
-  return <SwitchBase sx={DarkModeSwitch} handleToggle={toggleDarkMode} />;
+  return (
+    <SwitchBase
+      sx={DarkModeSwitch}
+      checked={isDarkMode}
+      handleToggle={toggleDarkMode}
+    />
+  );
 };
 
 export default SwitchDarkMode;
