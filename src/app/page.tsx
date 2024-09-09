@@ -7,19 +7,28 @@ import {
 } from '@/components/atoms';
 import { consoleMessage } from '@/utils';
 import { useEffect, useState } from 'react';
-import { DarkModeProvider } from '@/context';
-import { ContainerFloat, ListCardPhotosInfinite } from '@/components/organisms';
+import { DarkModeProvider, FiltersProvider } from '@/context';
+import {
+  ContainerFloat,
+  Filters,
+  ListCardPhotosInfinite,
+} from '@/components/organisms';
 import {
   ButtonFloating,
   CardPresentation,
+  FilterCardDropdown,
   GroupButtonOptions,
 } from '@/components/molecules';
 import { FavoriteSearch, uuidv4 } from '@/utils';
 import ListFavoritesSearch from '@/components/organisms/ListFavoritesSearch';
-import { Content, Navbar } from '@/components/templates';
+import { Content, Navbar, SectionOptions } from '@/components/templates';
 import { Radio } from '@mui/material';
 import InputNumber from '@/components/atoms/InputNumber/indext';
 import Dropdown from '@/components/atoms/Dropdown';
+import {
+  FilterCardSelectOption,
+  FilterCardDateNumberRange,
+} from '@/components/molecules/';
 
 export function Home() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -38,33 +47,15 @@ export function Home() {
     console.log(newValue);
   };
   return (
-    <DarkModeProvider>
-      <Navbar />
-      <div>saslsadlkalskdj</div>
-      <div>saslsadlkalskdj</div>
-      <div>saslsadlkalskdj</div>
-      <div>saslsadlkalskdj</div>
-      <div>saslsadlkalskdj</div>
+    <FiltersProvider>
+      <DarkModeProvider>
+        <Navbar />
+        {/* <Filters /> */}
+        <Content />
 
-      <GroupButtonOptions>
-        <ButtonRadio value='era' label='First' />
-        <ButtonRadio value='era2' label='Two' />
-        <ButtonRadio value='era3' label='Three' />
-      </GroupButtonOptions>
-      <InputNumber label={'sadad'} max={'100'} min={'1'} />
-      <CardFilter>SADSA</CardFilter>
-      <DatePicker label='dlkkasklj' />
-      <RangeInput min={'2'} max={'100'} />
-      <Dropdown
-        label={'hola'}
-        data={[
-          { label: 'erda', value: 'aad' },
-          { label: 'erda2', value: 'aad4s' },
-        ]}
-      />
-
-      {/* <Content /> */}
-    </DarkModeProvider>
+        <SectionOptions />
+      </DarkModeProvider>
+    </FiltersProvider>
   );
 }
 

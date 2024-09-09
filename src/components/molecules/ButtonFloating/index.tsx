@@ -1,6 +1,7 @@
 import { Fab, Icon } from '@/components/atoms';
 import { FC } from 'react';
 import { colors } from '@/utils';
+import styles from './FabStyle.module.scss';
 
 type AllowedTypeButtonFloating = 'favorites' | 'filters';
 
@@ -40,7 +41,12 @@ const ButtonFloating: FC<ButtonFloating> = ({
   });
   if (type == 'filters') {
     return (
-      <Fab sx={filterButtonFab} ariaLabel={arialLabel} onClick={onClick}>
+      <Fab
+        sx={filterButtonFab}
+        className={styles.FabStyle}
+        ariaLabel={arialLabel}
+        onClick={onClick}
+      >
         <Icon icon='filter_alt' />
         <p className='pl-2 text-xl font-medium normal-case'>Filters</p>
       </Fab>
@@ -48,7 +54,12 @@ const ButtonFloating: FC<ButtonFloating> = ({
   }
   if (type == 'favorites') {
     return (
-      <Fab sx={FavoriteButtonFab} ariaLabel={arialLabel} onClick={onClick}>
+      <Fab
+        sx={FavoriteButtonFab}
+        className={styles.FabStyle}
+        ariaLabel={arialLabel}
+        onClick={onClick}
+      >
         <Icon icon='favorite' />
         <p className='pl-2 text-xl font-medium normal-case'>Favorites</p>
       </Fab>

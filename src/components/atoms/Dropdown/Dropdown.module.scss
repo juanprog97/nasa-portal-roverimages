@@ -3,10 +3,13 @@
   [class*='MuiOutlinedInput-notchedOutline'] {
     @apply dark:border-skyblack-400;
   }
+  [class*='MuiInputLabel-formControl'] {
+    @apply text-darkbg dark:text-white;
+  }
 }
 
 .StylePopover {
-  @apply dark:bg-skyblack-100;
+  @apply dark:bg-skyblack-300;
   [class*='Mui-selected'] {
     @apply dark:bg-skyblack-300 dark:text-white;
   }

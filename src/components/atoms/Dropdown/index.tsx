@@ -1,5 +1,5 @@
 'use client';
-import { DropdowmItemProps, uuidv4 } from '@/utils';
+import { OptionsItemProps, uuidv4 } from '@/utils';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select/SelectInput';
 import { style } from 'framer-motion/client';
@@ -7,7 +7,7 @@ import React, { FC, useState } from 'react';
 import styles from './Dropdown.module.scss';
 
 type DropdownProps = {
-  data?: DropdowmItemProps[];
+  data?: OptionsItemProps[];
   label: string;
   onChange?: (value: string) => void;
 };
@@ -37,7 +37,7 @@ const Dropdown: FC<DropdownProps> = ({
       >
         <MenuItem value={'All'}>All</MenuItem>
         {data
-          ? data.map((item: DropdowmItemProps) => (
+          ? data.map((item: OptionsItemProps) => (
               <MenuItem key={uuidv4()} value={item.value}>
                 {item.label}
               </MenuItem>

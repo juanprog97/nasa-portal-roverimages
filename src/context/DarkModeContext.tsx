@@ -27,15 +27,13 @@ type AllowedState = 'dark' | 'light';
 export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [stateTheme, setThemeMode] = useState<AllowedState>(
-    useLocalStorage('theme', () => {
-      if (typeof window !== 'undefined') {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light';
-      } else return 'light';
-    }) as unknown as AllowedState
-  );
+  const [stateTheme, setThemeMode] = useLocalStorage('theme', () => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    } else return 'light';
+  });
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(stateTheme == 'dark');
   useEffect(() => {
@@ -47,21 +45,23 @@ export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   const toggleDarkMode = () => {
-    setThemeMode((prevMode) => {
-      const newMode = prevMode == 'dark' ? 'light' : 'dark';
-      setIsDarkMode(newMode === 'dark');
-      if (newMode == 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      return newMode;
-    });
+    const newMode = stateTheme == 'dark' ? 'light' : 'dark';
+    setIsDarkMode(newMode === 'dark');
+    if (newMode == 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    setThemeMode(newMode);
   };
 
   return (
     <DarkModeContext.Provider
-      value={{ isDarkMode, stateTheme, toggleDarkMode }}
+      value={{
+        isDarkMode,
+        stateTheme: stateTheme as AllowedState,
+        toggleDarkMode,
+      }}
     >
       {children}
     </DarkModeContext.Provider>

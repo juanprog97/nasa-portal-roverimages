@@ -1,18 +1,18 @@
 .ButtonRadioStyle {
-  @apply flex justify-center rounded-md border-[2px] pr-4;
+  @apply flex justify-center rounded-md border-[2px] pr-4 capitalize;
 
   &[data-checked='true'] {
-    @apply border-skyblue-100 bg-skyblue-300 text-blue-100 dark:bg-skyblack-200 dark:text-white;
+    @apply border-skyblue-100 bg-skyblue-300 text-blue-100 dark:border-white dark:bg-skyblack-200 dark:text-white;
   }
   &[data-checked='false'] {
-    @apply border-skyblue-100 bg-skyblue-100 text-black-400 dark:bg-skyblack-100;
+    @apply border-skyblue-100 bg-skyblue-100 text-black-400 dark:border-skyblack-300 dark:border-skyblack-400 dark:bg-skyblack-100;
   }
 }
 
 .RadioButton {
-  @apply text-skyblue-400 dark:text-skyblack-300;
+  @apply text-skyblue-400 dark:text-black-400;
 
   &[class*='checked'] {
-    @apply text-skyblue-400 dark:text-skyblack-300;
+    @apply text-skyblue-400 dark:text-white;
   }
 }

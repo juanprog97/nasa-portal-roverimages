@@ -6,16 +6,23 @@ type FabProps = {
   sx?: SxProps<Theme>;
   ariaLabel?: string;
   onClick: () => void;
+  className?: string;
 };
 
 const Fab: FC<FabProps> = ({
   onClick = () => {},
   ariaLabel = 'none',
   children,
+  className,
   sx,
 }: FabProps) => {
   return (
-    <FabBase aria-label={ariaLabel} onClick={onClick} sx={sx}>
+    <FabBase
+      aria-label={ariaLabel}
+      className={className}
+      onClick={onClick}
+      sx={sx}
+    >
       {children}
     </FabBase>
   );

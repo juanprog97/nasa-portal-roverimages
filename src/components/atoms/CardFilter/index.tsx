@@ -41,17 +41,10 @@ const CardFilter: FC<CardFilterProps> = ({
       initial='closed'
       animate={isOpen ? 'open' : 'closed'}
     >
-      <Accordion className={styles.Accordion}>
+      <Accordion className={styles.Accordion} defaultExpanded>
         <AccordionSummary
           expandIcon={
-            <Icon
-              className={styles.IconArrow}
-              //   sx={{
-              //     fontSize: 20,
-              //     color: colors.blue[400],
-              //   }}
-              icon='keyboard_arrow_down'
-            />
+            <Icon className={styles.IconArrow} icon='keyboard_arrow_down' />
           }
         >
           <Typography sx={{ fontWeight: 'bold' }}>{label}</Typography>

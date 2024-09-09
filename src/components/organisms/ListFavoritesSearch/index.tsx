@@ -1,5 +1,5 @@
 'use client';
-import { ButtonOptions } from '@/components/atoms';
+import { ButtonOptionsChip } from '@/components/atoms';
 import { GroupButtonOptions } from '@/components/molecules';
 import { FavoriteSearch } from '@/utils';
 import { ChangeEvent, FC, useState } from 'react';
@@ -28,7 +28,7 @@ const ListFavoritesSearch: FC<ListFavoritesSearchProps> = ({
     <GroupButtonOptions>
       {listOptions && listOptions.length
         ? listOptions.map((options: FavoriteSearch, index: number) => (
-            <ButtonOptions
+            <ButtonOptionsChip
               key={options.id}
               selectedValue={currentValue}
               value={options.value}

@@ -7,7 +7,7 @@ type RangeInputProp = {
   max: string;
   labelMin?: string;
   labelMax?: string;
-  onChange?: () => void;
+  onChange?: (value: string) => void;
 };
 
 const RangeInput: FC<RangeInputProp> = ({
@@ -20,6 +20,9 @@ const RangeInput: FC<RangeInputProp> = ({
   const [value, setValue] = useState<number>(1);
   const handleOnChange = (_: Event, newValue: number | number[]) => {
     setValue(newValue as number);
+    if (!!onChange) {
+      onChange(newValue.toString());
+    }
   };
   const marks = [
     {
@@ -44,12 +47,12 @@ const RangeInput: FC<RangeInputProp> = ({
       />
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Typography
-          variant='body2'
           onClick={() => setValue(parseInt(min))}
           sx={{ cursor: 'pointer' }}
         >
           {min} min
         </Typography>
+        <Typography>{value} </Typography>
         <Typography
           variant='body2'
           onClick={() => setValue(parseInt(max))}

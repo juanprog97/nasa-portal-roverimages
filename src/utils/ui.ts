@@ -9,7 +9,20 @@ export type FilterProps = {
   camera: string;
 };
 
-export type DropdowmItemProps = {
+export type OptionsItemProps = {
   label: string;
   value: string;
+  details?: any;
+};
+
+export type RangeDate = {
+  min: string;
+  max: string;
+};
+
+export type FilterProperties = {
+  camera?: string;
+  earth_date?: string;
+  sol?: string;
+  rover?: string;
 };
