@@ -1,11 +1,12 @@
 'use client';
-import { CSSProperties, FC } from 'react';
+import { FC } from 'react';
 import {
   Icon as IconWrapper,
   IconPropsSizeOverrides,
   SxProps,
   Theme,
 } from '@mui/material';
+import styles from './IconButton.module.scss';
 
 import { OverridableStringUnion } from '@mui/types';
 
@@ -20,23 +21,22 @@ type IconProps = {
   className?: string;
 };
 
-const IconA: FC<IconProps> = ({
+const Icon: FC<IconProps> = ({
   icon = 'add_circle',
   fontSize = 'large',
-  sx = {},
+
   ariaHidden = false,
-  className,
+  className = '',
 }: IconProps) => {
   return (
     <IconWrapper
-      className={className}
+      className={`${className} ${styles.StyleIcon}`}
       aria-hidden={ariaHidden}
       fontSize={fontSize}
-      sx={sx}
     >
       {icon}
     </IconWrapper>
   );
 };
 
-export default IconA;
+export default Icon;

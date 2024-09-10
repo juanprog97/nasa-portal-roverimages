@@ -1,3 +1,4 @@
+'use client';
 import { ContainerFloat, Filters } from '@/components/organisms';
 import styles from './SectionOptions.module.scss';
 import { ButtonFloating } from '@/components/molecules';

@@ -6,7 +6,7 @@ import {
   OptionsItemProps,
   capitalizeFirstLetter,
 } from '@/utils';
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, Suspense, useEffect, useMemo, useState } from 'react';
 import styles from './Filters.module.scss';
 
 import { Button, Icon, Spinners } from '@/components/atoms';
@@ -192,9 +192,10 @@ const FiltersWrapper: FC<FiltersProps> = ({ onChange }: FiltersProps) => {
 
 const Filters = (): JSX.Element => {
   return (
-    <SWRProvider keyItem='filters'>
-      <FiltersWrapper />
-    </SWRProvider>
+
+      <SWRProvider keyItem='filters'>
+        <FiltersWrapper />
+      </SWRProvider>
   );
 };
 export default Filters;

@@ -2,7 +2,7 @@
 
 import { usePhotosScrollInfinite } from '@/hooks';
 import styles from './ListCardPhotosInfinite.module.scss';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { CardDataPresentation } from '@/models';
 import { CardPresentation } from '@/components/molecules';
 import { Spinners } from '@/components/atoms';

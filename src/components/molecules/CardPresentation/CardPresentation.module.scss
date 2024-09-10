@@ -9,6 +9,10 @@
   }
 }
 
+.iconStyle {
+  @apply text-[20px] text-redcolornasa;
+}
+
 .InteractionButton {
   @apply m-5 flex w-full flex-row justify-around;
   .buttonFullScreen {

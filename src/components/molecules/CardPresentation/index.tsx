@@ -71,10 +71,7 @@ const CardPresentation: FC<CardPresentationProps> = ({
         <ButtonCircle className={styles.ButtonCircle} onClick={handleClickLike}>
           <Icon
             icon={isFavorite ? 'favorite' : 'favorite_outlined'}
-            sx={{
-              fontSize: 20,
-              color: colors.redcolornasa,
-            }}
+            className={styles.iconStyle}
           />
         </ButtonCircle>
       </div>
