@@ -19,11 +19,7 @@ const useScrollInfinite = () => {
     const data = response.data;
     return data.hasOwnProperty('photos') ? data.photos : data.latest_photos;
   };
-  const SWR_OPTIONS = {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    dedupingInterval: 200,
-  };
+  const SWR_OPTIONS = {};
 
   const getKey = (pageIndex: number, previousPageData: any) => {
     if (previousPageData && !previousPageData.length) return null;

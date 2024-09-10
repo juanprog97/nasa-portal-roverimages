@@ -1,10 +1,14 @@
+'use client';
 export const createLocalStorageProvider = (storageKey: string) => {
   const getStorageKey = (key: string) => `${storageKey}:${key}`;
 
   return {
     get: (key: string) => {
-      const item = localStorage.getItem(getStorageKey(key));
-      return item ? JSON.parse(item) : undefined;
+      if (typeof window !== 'undefined') {
+        const item = localStorage.getItem(getStorageKey(key));
+        return item ? JSON.parse(item) : undefined;
+      }
+      return undefined;
     },
     set: (key: string, value: any) => {
       localStorage.setItem(getStorageKey(key), JSON.stringify(value));
@@ -20,10 +24,9 @@ export const createLocalStorageProvider = (storageKey: string) => {
       });
     },
     keys: function* () {
-      // Generador para devolver un iterador de claves
       for (const key of Object.keys(localStorage)) {
         if (key.startsWith(storageKey)) {
-          yield key.substring(storageKey.length + 1); // Quitar el prefijo
+          yield key.substring(storageKey.length + 1);
         }
       }
     },

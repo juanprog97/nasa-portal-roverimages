@@ -1,5 +1,5 @@
 .ButtonStyle {
-  @apply bg-greyborder flex items-center justify-center rounded-full border-2 border-white p-2 transition-colors duration-200 ease-in-out md:h-20 md:w-20 md:border-4;
+  @apply flex items-center justify-center rounded-full border-2 border-white bg-greyborder p-2 transition-colors duration-200 ease-in-out md:h-20 md:w-20 md:border-4;
 
   .ArrowStyle {
     @apply pointer-events-none flex duration-75 ease-in;

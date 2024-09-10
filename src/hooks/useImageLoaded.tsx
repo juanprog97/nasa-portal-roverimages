@@ -9,16 +9,19 @@ const useImageLoaded = () => {
   };
 
   useEffect(() => {
-    if (refImg.current) {
+    const currentRef = refImg.current;
+    if (currentRef) {
       const handleImageLoad = () => {
         onLoad();
       };
-      refImg.current.addEventListener('load', handleImageLoad);
+      currentRef.addEventListener('load', handleImageLoad);
       return () => {
-        refImg?.current?.removeEventListener('load', handleImageLoad);
+        if (currentRef) {
+          currentRef.removeEventListener('load', handleImageLoad);
+        }
       };
     }
-  });
+  }, []);
 
   return [refImg, loaded];
 };

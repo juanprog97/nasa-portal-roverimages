@@ -1,7 +1,7 @@
 'use client';
 import { CardFilter, Dropdown } from '@/components/atoms';
 import { OptionsItemProps } from '@/utils';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 type FilterCardDropdownProps = {
   data?: OptionsItemProps[];
@@ -9,6 +9,7 @@ type FilterCardDropdownProps = {
   labelDropdown?: string;
   onChange: (value: string) => void;
   isOpen?: boolean;
+  value?: string;
 };
 
 const FilterCardDropdown: FC<FilterCardDropdownProps> = ({
@@ -16,16 +17,24 @@ const FilterCardDropdown: FC<FilterCardDropdownProps> = ({
   labelFilter = '',
   labelDropdown = '',
   isOpen,
+  value = '',
   onChange = () => {},
 }: FilterCardDropdownProps) => {
+  const [camera, setCamera] = useState<string>(value);
   const handleOnChange = (value: string) => {
     if (!!onChange) {
       onChange(value);
     }
+    setCamera(value);
   };
   return (
     <CardFilter label={labelFilter} isOpen={isOpen}>
-      <Dropdown label={labelDropdown} onChange={handleOnChange} data={data} />
+      <Dropdown
+        value={camera}
+        label={labelDropdown}
+        onChange={handleOnChange}
+        data={data}
+      />
     </CardFilter>
   );
 };

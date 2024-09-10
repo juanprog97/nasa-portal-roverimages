@@ -2,9 +2,8 @@
 
 import { DarkModeProvider, FiltersProvider } from '@/context';
 import { Content, Navbar, SectionOptions } from '@/components/templates';
-import { Button } from '@/components/atoms';
 
-export function Home() {
+const Home = () => {
   return (
     <DarkModeProvider>
       <FiltersProvider>
@@ -15,6 +14,6 @@ export function Home() {
       </FiltersProvider>
     </DarkModeProvider>
   );
-}
+};
 
 export default Home;

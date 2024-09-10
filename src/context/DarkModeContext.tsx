@@ -1,3 +1,4 @@
+'use client';
 import { useLocalStorage } from '@/hooks';
 import React, {
   createContext,
@@ -36,22 +37,18 @@ export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   });
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(stateTheme == 'dark');
+
   useEffect(() => {
     if (stateTheme == 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, []);
+  }, [stateTheme]);
 
   const toggleDarkMode = () => {
     const newMode = stateTheme == 'dark' ? 'light' : 'dark';
     setIsDarkMode(newMode === 'dark');
-    if (newMode == 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
     setThemeMode(newMode);
   };
 

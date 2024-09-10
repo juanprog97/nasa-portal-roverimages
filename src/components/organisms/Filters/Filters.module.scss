@@ -2,9 +2,9 @@
   @apply flex h-full w-[90vw] flex-col gap-y-3 px-4 md:w-[450px];
 }
 .containerFilter {
-  @apply flex flex-col justify-between;
+  @apply flex flex-col justify-around;
 }
 
 .ContainerButtons {
-  @apply mb-3 flex w-full flex-row justify-center gap-4;
+  @apply mb-3 flex h-full w-full flex-row items-end justify-center gap-4;
 }

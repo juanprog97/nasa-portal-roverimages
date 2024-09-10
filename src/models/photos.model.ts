@@ -6,6 +6,3 @@ export interface CardDataPresentation {
   solDate: string;
   camera: string;
 }
-
-
-

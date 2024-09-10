@@ -1314,7 +1314,7 @@ const Spinners = ({ type }: SpinnerProps) => {
   );
 
   const SvgFinish = () => (
-    <div className='flex translate-y-11 flex-col items-center'>
+    <div className='flex translate-y-11 flex-col items-center pb-6'>
       <a href='https://www.freepik.com/free-vector/cute-astronaut-standing-planet-cartoon-icon-illustration_11759993.htm#fromView=search&page=1&position=28&uuid=190891ca-4b0a-4234-9fa1-899c49cffb30'>
         <svg
           className=''

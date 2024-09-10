@@ -34,18 +34,15 @@ const defaultFilter = {
   rover: 'perseverance',
 };
 
-const FiltersWrapper: FC<FiltersProps> = ({
-  filterValue,
-  onChange,
-}: FiltersProps) => {
-  const [filter, setFilterValue] = useState<FilterProperties>(
-    filterValue != undefined ? filterValue : defaultFilter
-  );
+const FiltersWrapper: FC<FiltersProps> = ({ onChange }: FiltersProps) => {
   const { rovers, error, isLoading } = useLoadRovers();
   const [roverOptions, setRoverOptions] = useState<OptionsItemProps[]>([]);
-  const [roverSelected, setRoverSelected] = useState<RoversDetails>();
-
   const { filterState, setFilter } = useFilterState();
+
+  const [filter, setFilterValue] = useState<FilterProperties>(
+    filterState != undefined ? filterState : defaultFilter
+  );
+  const [roverSelected, setRoverSelected] = useState<RoversDetails>();
 
   useEffect(() => {
     if (rovers && rovers.length > 0) {
@@ -58,11 +55,15 @@ const FiltersWrapper: FC<FiltersProps> = ({
         };
       });
       setRoverOptions(roversData);
+      let roverDetailSelected = rovers.filter(
+        (rover: RoversDetails) => rover.name.toLowerCase() == filter.rover
+      );
+      setRoverSelected(roverDetailSelected[0]);
     }
   }, [isLoading]);
 
   const handleOnChangeOptions = (value: any) => {
-    const roverDetailSelected = rovers.filter(
+    let roverDetailSelected = rovers.filter(
       (rover: RoversDetails) => rover.name.toLowerCase() == value
     );
     setRoverSelected(roverDetailSelected[0]);
@@ -133,14 +134,20 @@ const FiltersWrapper: FC<FiltersProps> = ({
       <div className={styles.containerFilter}>
         <FilterCardSelectOption
           onChange={handleOnChangeOptions}
+          value={filterState.rover}
           listOptions={roverOptions}
           labelFilter='Rovers'
         />
+
         {roverSelected ? (
           <>
             <FilterCardDateNumberRange
               onChange={handleOnChangeDate}
               labelFilter='Date'
+              value={{
+                earth_date: filterState?.earth_date,
+                sol: filterState?.sol,
+              }}
               solDateRange={{
                 min: '1',
                 max: roverSelected.maxSol.toString(),
@@ -154,30 +161,31 @@ const FiltersWrapper: FC<FiltersProps> = ({
             <FilterCardDropdown
               onChange={handleOnChangeCamera}
               data={roverSelected.cameras}
+              value={filterState?.camera}
               labelFilter='Cameras'
               labelDropdown='Camera'
             />
           </>
         ) : null}
-        <AnimatePresence>
-          {filterIsAvailable ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              className={styles.ContainerButtons}
-            >
-              <Button color='blue' onClick={handleOnClickClearFilter}>
-                <Icon icon='filter_alt_off' />
-                Clear Filters
-              </Button>
-              <Button color='blue' onClick={handleOnClickApplyFilter}>
-                Apply Filters
-              </Button>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
       </div>
+      <AnimatePresence>
+        {filterIsAvailable ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            className={styles.ContainerButtons}
+          >
+            <Button color='blue' onClick={handleOnClickClearFilter}>
+              <Icon icon='filter_alt_off' />
+              Clear Filters
+            </Button>
+            <Button color='blue' onClick={handleOnClickApplyFilter}>
+              Apply Filters
+            </Button>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 };

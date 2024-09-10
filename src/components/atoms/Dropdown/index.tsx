@@ -10,14 +10,18 @@ type DropdownProps = {
   data?: OptionsItemProps[];
   label: string;
   onChange?: (value: string) => void;
+  value?: string;
 };
 
 const Dropdown: FC<DropdownProps> = ({
   data = [],
   label,
   onChange,
+  value = '',
 }: DropdownProps) => {
-  const [value, setValue] = useState<string>('All');
+  const [valueCurrent, setValue] = useState<string>(
+    value == undefined ? 'All' : value
+  );
   const handleOnChange = (event: SelectChangeEvent) => {
     if (!!onChange) {
       onChange(event.target.value);
@@ -30,7 +34,7 @@ const Dropdown: FC<DropdownProps> = ({
       <Select
         labelId='select-options'
         id='demo-simple-select'
-        value={value}
+        value={valueCurrent}
         label='All'
         onChange={handleOnChange}
         MenuProps={{ classes: { paper: styles.StylePopover } }}

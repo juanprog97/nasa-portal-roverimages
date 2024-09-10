@@ -7,17 +7,9 @@ import { CardDataPresentation } from '@/models';
 import { CardPresentation } from '@/components/molecules';
 import { Spinners } from '@/components/atoms';
 import { motion } from 'framer-motion';
+import { SWRProvider } from '@/context';
 
-const variants = {
-  open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
-  },
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
-  },
-};
-
-const ListCardPhotosInfinite = () => {
+const ListCardPhotosInfiniteImp = (): JSX.Element => {
   const { photos, error, loadMore, isReachingEnd, isLoading, isValidating } =
     usePhotosScrollInfinite();
 
@@ -34,7 +26,7 @@ const ListCardPhotosInfinite = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isReachingEnd, isValidating]);
+  }, [isReachingEnd, isValidating, loadMore]);
 
   if (isLoading) return <Spinners type='loading' />;
   if (error) return <Spinners type='error' />;
@@ -56,5 +48,11 @@ const ListCardPhotosInfinite = () => {
     </div>
   );
 };
+
+export const ListCardPhotosInfinite = () => (
+  <SWRProvider keyItem='content'>
+    <ListCardPhotosInfiniteImp />
+  </SWRProvider>
+);
 
 export default ListCardPhotosInfinite;

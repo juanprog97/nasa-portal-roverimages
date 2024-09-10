@@ -19,7 +19,7 @@ const SwitchBase: React.FC<SwitchBaseProps> = ({
   className,
 }: SwitchBaseProps) => {
   return (
-    <Switch  checked={checked} className={className} onChange={handleToggle} />
+    <Switch checked={checked} className={className} onChange={handleToggle} />
   );
 };
 

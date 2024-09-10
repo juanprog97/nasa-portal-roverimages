@@ -8,6 +8,7 @@ type RangeInputProp = {
   labelMin?: string;
   labelMax?: string;
   onChange?: (value: string) => void;
+  value?: number;
 };
 
 const RangeInput: FC<RangeInputProp> = ({
@@ -16,8 +17,9 @@ const RangeInput: FC<RangeInputProp> = ({
   labelMin,
   labelMax,
   onChange,
+  value,
 }) => {
-  const [value, setValue] = useState<number>(1);
+  const [valueInput, setValue] = useState<number>(value ? value : 1);
   const handleOnChange = (_: Event, newValue: number | number[]) => {
     setValue(newValue as number);
     if (!!onChange) {
@@ -39,7 +41,7 @@ const RangeInput: FC<RangeInputProp> = ({
       <Slider
         className={styles.SliderStyle}
         marks={marks}
-        value={value}
+        value={valueInput}
         valueLabelDisplay='auto'
         min={parseInt(min)}
         max={parseInt(max)}
@@ -52,7 +54,7 @@ const RangeInput: FC<RangeInputProp> = ({
         >
           {min} min
         </Typography>
-        <Typography>{value} </Typography>
+        <Typography>{valueInput} </Typography>
         <Typography
           variant='body2'
           onClick={() => setValue(parseInt(max))}

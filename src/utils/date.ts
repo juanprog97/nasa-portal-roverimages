@@ -4,10 +4,16 @@ export const currentDate = () => {
   return DateTime.now();
 };
 
-export const toDateTime = (date: string): DateTime<boolean> => {
-  return DateTime.fromISO(date);
+export const toDateTime = (date: string): DateTime<boolean> | null => {
+  if (IsDate(date)) return DateTime.fromFormat(date, 'yyyy-MM-dd');
+  else return null;
 };
 
+export const parseDate = (dateString?: string): DateTime | undefined => {
+  if (!dateString) return undefined;
+  const parsedDate = DateTime.fromISO(dateString);
+  return parsedDate.isValid ? parsedDate : undefined;
+};
 export const toDateString = (value: DateTime<boolean> | null): string => {
   if (value != null && value.isValid) {
     return value.toISODate() as string;
@@ -25,7 +31,9 @@ export const AdjustDate = (
   let dateBase = DateTime.fromISO(date);
 
   if (dateBase.isValid) {
-    return dateBase.plus({ [unit]: amount }).toISODate();
+    return amount < 0
+      ? dateBase.minus({ [unit]: amount }).toISODate()
+      : dateBase.plus({ [unit]: amount }).toISODate();
   }
   return DateTime.now().toISODate();
 };

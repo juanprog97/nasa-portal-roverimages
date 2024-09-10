@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+'use client';
+import { useState } from 'react';
 
 const useLocalStorage = (key: string, initialState: any) => {
   const storedValue =
-    typeof window !== 'undefined' ? localStorage.getItem(key) : null;
+    !key || typeof window !== 'undefined' ? localStorage.getItem(key) : null;
+
   const initial = storedValue ? JSON.parse(storedValue) : initialState;
   const [state, setState] = useState<string>(initial);
 

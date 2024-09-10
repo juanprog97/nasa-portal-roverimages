@@ -1,3 +1,5 @@
+'use client';
+
 import { useLocalStorage } from '@/hooks';
 import { FilterProperties } from '@/utils';
 import { FC, ReactNode, createContext } from 'react';
@@ -14,9 +16,7 @@ export const FiltersContext = createContext<FiltersContextProps | undefined>(
   undefined
 );
 
-export const FiltersProvider: FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const FiltersProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [filterHistory, setFilterHistory] = useLocalStorage('filter', {});
   const setTFilter = (value: FilterProperties) => {
     setFilterHistory(value);
