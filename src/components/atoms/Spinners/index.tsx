@@ -1314,10 +1314,10 @@ const Spinners = ({ type }: SpinnerProps) => {
   );
 
   const SvgFinish = () => (
-    <div className='absolute top-[-50%] flex flex-col'>
+    <div className='flex translate-y-11 flex-col items-center'>
       <a href='https://www.freepik.com/free-vector/cute-astronaut-standing-planet-cartoon-icon-illustration_11759993.htm#fromView=search&page=1&position=28&uuid=190891ca-4b0a-4234-9fa1-899c49cffb30'>
         <svg
-          className='translate-x-[100%]'
+          className=''
           id='Capa_1'
           width='80px'
           data-name='Capa 1'
@@ -1898,7 +1898,7 @@ const Spinners = ({ type }: SpinnerProps) => {
           </g>
         </svg>
       </a>
-      <p className={styles.TextEnd}>We have no data recorded</p>
+      <p className={styles.TextEnd}>Nothing else to show.</p>
     </div>
   );
 

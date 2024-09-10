@@ -9,7 +9,7 @@ type ButtonProps = {
   color?: AllowedColor;
   label?: string;
   children?: any;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
 };
 const Button: React.FC<ButtonProps> = ({

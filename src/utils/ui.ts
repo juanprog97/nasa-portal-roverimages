@@ -1,3 +1,5 @@
+import { RoversDetails } from '@/models';
+
 export interface FavoriteSearch {
   label: string;
   value: string;
@@ -8,7 +10,7 @@ export type FilterProps = Partial<FilterProperties>;
 export type OptionsItemProps = {
   label: string;
   value: string;
-  details?: any;
+  details?: RoversDetails;
 };
 
 export type RangeDate = {

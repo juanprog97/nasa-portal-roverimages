@@ -11,6 +11,7 @@ import style from './ButtonRadio.module.scss';
 
 const ButtonRadio = (props: Omit<FormControlLabelProps, 'control'>) => {
   const radioGroup = useRadioGroup();
+
   let checked = false;
   if (radioGroup) {
     checked = radioGroup.value === props.value;

@@ -51,8 +51,8 @@ const ListCardPhotosInfinite = () => {
       </motion.div>
       <div className='fixed bottom-[0] flex h-[120px] w-full justify-center'>
         {isValidating && <Spinners type='loading' />}
-        {isReachingEnd && <Spinners type='finished' />}
       </div>
+      {isReachingEnd && <Spinners type='finished' />}
     </div>
   );
 };

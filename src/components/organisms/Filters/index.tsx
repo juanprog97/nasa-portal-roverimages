@@ -10,17 +10,20 @@ import { FC, useEffect, useMemo, useState } from 'react';
 import styles from './Filters.module.scss';
 
 import { Button, Icon, Spinners } from '@/components/atoms';
-import useSWR from 'swr';
 import { useFilterState, useLoadRovers } from '@/hooks';
 import {
+  AdapterFormatRoverDetails,
   FilterCardDateNumberRange,
   FilterCardDropdown,
   FilterCardSelectOption,
+  PopoverButton,
 } from '@/components/molecules';
 import { RoversDetails } from '@/models';
 import { devNull } from 'os';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SWRProvider } from '@/context';
+
+import { Tooltip } from '@mui/material';
 
 type FiltersProps = {
   filterValue?: FilterProps;
@@ -47,12 +50,11 @@ const FiltersWrapper: FC<FiltersProps> = ({
   useEffect(() => {
     if (rovers && rovers.length > 0) {
       let roversData = rovers.map((rover: RoversDetails) => {
-        const [cameras, id, name, ...roversDetails] = rovers;
         return {
           label: rover.name,
           id: rover.id,
           value: rover.name.toLowerCase(),
-          details: roversDetails,
+          details: rover,
         };
       });
       setRoverOptions(roversData);
@@ -125,52 +127,57 @@ const FiltersWrapper: FC<FiltersProps> = ({
   if (error) return <Spinners type='error' />;
   return (
     <div className={styles.ContainerGeneralFilters}>
-      <FilterCardSelectOption
-        onChange={handleOnChangeOptions}
-        listOptions={roverOptions}
-        labelFilter='Rovers'
-      />
-      {roverSelected ? (
-        <>
-          <FilterCardDateNumberRange
-            onChange={handleOnChangeDate}
-            labelFilter='Date'
-            solDateRange={{
-              min: '1',
-              max: roverSelected.maxSol.toString(),
-            }}
-            earthDateRange={{
-              min: AdjustDate(roverSelected.landingDate, 1, 'days'),
-              max: roverSelected.maxDateEarth,
-            }}
-          />
+      <PopoverButton adapterStructure={AdapterFormatRoverDetails(roverOptions)}>
+        <Icon icon='info' /> Information
+      </PopoverButton>
+      <div className={styles.containerFilter}>
+        <FilterCardSelectOption
+          onChange={handleOnChangeOptions}
+          listOptions={roverOptions}
+          labelFilter='Rovers'
+        />
+        {roverSelected ? (
+          <>
+            <FilterCardDateNumberRange
+              onChange={handleOnChangeDate}
+              labelFilter='Date'
+              solDateRange={{
+                min: '1',
+                max: roverSelected.maxSol.toString(),
+              }}
+              earthDateRange={{
+                min: AdjustDate(roverSelected.landingDate, 1, 'days'),
+                max: roverSelected.maxDateEarth,
+              }}
+            />
 
-          <FilterCardDropdown
-            onChange={handleOnChangeCamera}
-            data={roverSelected.cameras}
-            labelFilter='Cameras'
-            labelDropdown='Camera'
-          />
-        </>
-      ) : null}
-      <AnimatePresence>
-        {filterIsAvailable ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            className={styles.ContainerButtons}
-          >
-            <Button color='blue' onClick={handleOnClickClearFilter}>
-              <Icon icon='filter_alt_off' />
-              Clear Filters
-            </Button>
-            <Button color='blue' onClick={handleOnClickApplyFilter}>
-              Apply Filters
-            </Button>
-          </motion.div>
+            <FilterCardDropdown
+              onChange={handleOnChangeCamera}
+              data={roverSelected.cameras}
+              labelFilter='Cameras'
+              labelDropdown='Camera'
+            />
+          </>
         ) : null}
-      </AnimatePresence>
+        <AnimatePresence>
+          {filterIsAvailable ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              className={styles.ContainerButtons}
+            >
+              <Button color='blue' onClick={handleOnClickClearFilter}>
+                <Icon icon='filter_alt_off' />
+                Clear Filters
+              </Button>
+              <Button color='blue' onClick={handleOnClickApplyFilter}>
+                Apply Filters
+              </Button>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

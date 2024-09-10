@@ -1,5 +1,8 @@
 .ContainerGeneralFilters {
-  @apply flex h-full w-[90vw] flex-col justify-between px-4 md:w-[450px];
+  @apply flex h-full w-[90vw] flex-col gap-y-3 px-4 md:w-[450px];
+}
+.containerFilter {
+  @apply flex flex-col justify-between;
 }
 
 .ContainerButtons {
