@@ -1,0 +1,15 @@
+.ContainerImage {
+  @apply absolute flex h-[100vh] w-full items-center justify-center;
+}
+
+.ButtonCircleStyle {
+  @apply z-30 w-[50px];
+}
+
+.ButtonCircleArrow {
+  @apply flex aspect-square h-[50px] justify-center border-none bg-grey;
+}
+
+.ButtonArrowContainer {
+  @apply absolute z-50 flex h-[100vh] w-full flex-row items-center justify-between;
+}

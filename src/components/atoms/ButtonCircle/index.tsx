@@ -5,6 +5,7 @@ import Button, {
 } from '@mui/material/Button';
 import { OverridableStringUnion } from '@mui/types';
 import { FC } from 'react';
+import styles from './ButtonCircle.module.scss';
 
 type ButtonCircleProps = {
   variant?: OverridableStringUnion<
@@ -34,19 +35,9 @@ const ButtonCircle: FC<ButtonCircleProps> = ({
   className = '',
 }: ButtonCircleProps) => {
   return (
-    <Button
-      className={className}
-      onClick={onClick}
-      style={{
-        justifyContent: 'center',
-        borderRadius: '100%',
-        display: 'flex',
-      }}
-      variant={variant}
-      color={color}
-    >
+    <button className={`${styles.ButtonStyle} ${className}`} onClick={onClick}>
       {children}
-    </Button>
+    </button>
   );
 };
 

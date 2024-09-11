@@ -1,3 +1,6 @@
-.ModalStyle {
-  @apply bg-blue-100;
+.DialogStyle {
+  @apply flex justify-around;
+  [class*='MuiDialog-paper'] {
+    @apply flex w-[100vw] items-end bg-whitedirty text-darkbg dark:bg-darkbg dark:text-whitedirty;
+  }
 }

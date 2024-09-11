@@ -1,6 +1,10 @@
 'use client';
 
-import { DarkModeProvider, FiltersProvider } from '@/context';
+import {
+  DarkModeProvider,
+  FiltersProvider,
+  FullScreenProvider,
+} from '@/context';
 import { Content, Navbar, SectionOptions } from '@/components/templates';
 import dynamic from 'next/dynamic';
 
@@ -13,13 +17,15 @@ const ContentComponent = dynamic(
 
 const Home = () => {
   return (
-    <DarkModeProvider>
-      <FiltersProvider>
-        <Navbar />
-        <ContentComponent />
-        <SectionOptions />
-      </FiltersProvider>
-    </DarkModeProvider>
+    <FullScreenProvider>
+      <DarkModeProvider>
+        <FiltersProvider>
+          <Navbar />
+          <ContentComponent />
+          <SectionOptions />
+        </FiltersProvider>
+      </DarkModeProvider>
+    </FullScreenProvider>
   );
 };
 
