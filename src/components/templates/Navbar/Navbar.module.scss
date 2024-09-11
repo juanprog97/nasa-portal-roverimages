@@ -1,5 +1,5 @@
 .NavBarStyle {
-  @apply fixed top-0 z-40 h-20 w-full p-[2%] xs:px-6;
+  @apply fixed top-0 z-40 h-20 w-full p-[2%] xs:px-6 #{!important};
 
   &[data-top='false'] {
     @apply pointer-events-none bg-transparent transition-all duration-100 ease-in-out;

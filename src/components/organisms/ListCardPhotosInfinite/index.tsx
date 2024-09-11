@@ -41,7 +41,7 @@ const ListCardPhotosInfiniteImp = (): JSX.Element => {
           <CardPresentation index={index} key={photos.id} data={photos} />
         ))}
       </motion.div>
-      <div className='fixed bottom-[0] flex h-[120px] w-full justify-center'>
+      <div className='pointer-events-none fixed bottom-[0] flex h-[120px] w-full justify-center'>
         {isValidating && <Spinners type='loading' />}
       </div>
       {isReachingEnd && <Spinners type='finished' />}

@@ -177,7 +177,7 @@ const FiltersWrapper: FC<FiltersProps> = ({ onChange }: FiltersProps) => {
             className={styles.ContainerButtons}
           >
             <Button color='blue' onClick={handleOnClickClearFilter}>
-              <Icon icon='filter_alt_off' />
+              <Icon icon='filter_alt_off' fontSize='medium' />
               Clear Filters
             </Button>
             <Button color='blue' onClick={handleOnClickApplyFilter}>
@@ -192,10 +192,9 @@ const FiltersWrapper: FC<FiltersProps> = ({ onChange }: FiltersProps) => {
 
 const Filters = (): JSX.Element => {
   return (
-
-      <SWRProvider keyItem='filters'>
-        <FiltersWrapper />
-      </SWRProvider>
+    <SWRProvider keyItem='filters'>
+      <FiltersWrapper />
+    </SWRProvider>
   );
 };
 export default Filters;

@@ -10,7 +10,7 @@
 }
 
 .iconStyle {
-  @apply text-[20px] text-redcolornasa;
+  @apply pointer-events-none text-[35px] text-redcolornasa #{!important};
 }
 
 .InteractionButton {
@@ -21,7 +21,7 @@
 }
 
 .ButtonCircle {
-  @apply aspect-square h-auto w-6 items-center border-none shadow-md dark:bg-black-400;
+  @apply aspect-square h-auto w-6 items-center border-none shadow-md dark:bg-black-400 #{!important};
 }
 
 .detailInfo {

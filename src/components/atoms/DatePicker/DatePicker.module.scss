@@ -1,5 +1,5 @@
 .DateStyle {
-  @apply dark:bg-skyblack-100;
+  @apply dark:bg-skyblack-100 #{!important};
 
   [class*='MuiOutlinedInput-notchedOutline'] {
     @apply dark:border-black-500;
