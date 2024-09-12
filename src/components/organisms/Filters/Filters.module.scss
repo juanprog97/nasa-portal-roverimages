@@ -8,3 +8,13 @@
 .ContainerButtons {
   @apply mb-3 flex h-full w-full flex-row items-end justify-center gap-4;
 }
+
+.ButtonCircleStyleSectionA {
+  @apply z-30 h-[50px] w-[50px] self-end text-darkbg dark:text-white;
+  @screen sm {
+    @apply hidden;
+  }
+}
+.GroupButtonSection {
+  @apply flex flex-row justify-around;
+}

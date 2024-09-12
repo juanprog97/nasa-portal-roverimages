@@ -18,7 +18,7 @@ const SectionOptions = () => {
         <ButtonFloating type='favorites' arialLabel='Favorites' />
       </ContainerFloat>
       <Drawer open={openDrawer} onClose={setOpenDrawer}>
-        <Filters />
+        <Filters onClose={() => setOpenDrawer(false)} />
       </Drawer>
     </>
   );

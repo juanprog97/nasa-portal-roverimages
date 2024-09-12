@@ -5,8 +5,12 @@
   }
 }
 
-.ButtonCircleStyle {
-  @apply z-30 text-darkbg dark:text-white;
+.ButtonCircleStyleClose {
+  @apply z-30 h-[50px] text-darkbg dark:text-white landscape:h-[42px];
+}
+
+.ButtonCircleStyleInfo {
+  @apply absolute right-[0%] top-[89%] z-30 h-[50px] w-[50px] text-darkbg dark:text-white landscape:top-[80%];
 }
 
 .Iconclose {

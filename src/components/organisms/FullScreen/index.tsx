@@ -12,9 +12,11 @@ import {
   Icon,
   Spinners,
 } from '@/components/atoms';
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
+import { PopoverButton } from '@/components/molecules';
+import { CardDataPresentation } from '@/models';
 
 const FullScreen = () => {
   const { isOpen, index, nextImage, backImage, toogleFullScreen } =
@@ -54,6 +56,34 @@ const FullScreen = () => {
     trackMouse: true,
   });
 
+  const AdapterFormatPhotoDetails = (
+    photo: CardDataPresentation
+  ): JSX.Element => {
+    const { id, imgsrc, ...details } = photo;
+
+    return (
+      <div className='p-4'>
+        <h1 className='text-xl font-bold'>
+          Photo taken by the {details.roverName} rover
+        </h1>
+        <ul className='mb-5 mt-2'>
+          <li className='my-2'>
+            <strong>Camera: </strong>
+            {details.camera}
+          </li>
+          <li className='my-2'>
+            <strong>🌎 Earth Date: </strong>
+            {details.earthDate}
+          </li>
+          <li className='my-2'>
+            <strong>☀️ Sol Date: </strong>
+            {details.solDate}
+          </li>
+        </ul>
+      </div>
+    );
+  };
+
   const SliderImages = (): JSX.Element => (
     <>
       <div className={styles.ButtonArrowContainer}>
@@ -88,10 +118,17 @@ const FullScreen = () => {
 
       <ButtonCircle
         onClick={toogleFullScreen}
-        className={styles.ButtonCircleStyle}
+        className={styles.ButtonCircleStyleClose}
       >
         <Icon icon='close' className={styles.Iconclose} />
       </ButtonCircle>
+
+      <PopoverButton
+        className={styles.ButtonCircleStyleInfo}
+        adapterStructure={AdapterFormatPhotoDetails(photos[index])}
+      >
+        <Icon icon='info' />
+      </PopoverButton>
     </>
   );
 

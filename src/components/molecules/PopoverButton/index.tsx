@@ -5,12 +5,14 @@ import { Popover } from '@mui/material';
 import React, { FC, ReactNode, useState } from 'react';
 type PopoverButtonProps = {
   children: any;
-  adapterStructure: ReactNode;
+  adapterStructure?: ReactNode;
+  className?: string;
 };
 
 const PopoverButton: FC<PopoverButtonProps> = ({
   children,
   adapterStructure,
+  className,
 }: PopoverButtonProps) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -25,7 +27,7 @@ const PopoverButton: FC<PopoverButtonProps> = ({
 
   return (
     <>
-      <Button onClick={handleClick} color='red'>
+      <Button className={className} onClick={handleClick} color='red'>
         {children}
       </Button>
 

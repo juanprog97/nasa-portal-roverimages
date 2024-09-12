@@ -9,7 +9,7 @@ import {
 import { FC, Suspense, useEffect, useMemo, useState } from 'react';
 import styles from './Filters.module.scss';
 
-import { Button, Icon, Spinners } from '@/components/atoms';
+import { Button, ButtonCircle, Icon, Spinners } from '@/components/atoms';
 import { useFilterState, useLoadRovers } from '@/hooks';
 import {
   AdapterFormatRoverDetails,
@@ -23,18 +23,20 @@ import { devNull } from 'os';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SWRProvider } from '@/context';
 
-import { Tooltip } from '@mui/material';
-
 type FiltersProps = {
   filterValue?: FilterProps;
   onChange?: (value: FilterProps) => void;
+  onClose?: () => void;
 };
 
 const defaultFilter = {
   rover: 'perseverance',
 };
 
-const FiltersWrapper: FC<FiltersProps> = ({ onChange }: FiltersProps) => {
+const FiltersWrapper: FC<FiltersProps> = ({
+  onChange,
+  onClose,
+}: FiltersProps) => {
   const { rovers, error, isLoading } = useLoadRovers();
   const [roverOptions, setRoverOptions] = useState<OptionsItemProps[]>([]);
   const { filterState, setFilter } = useFilterState();
@@ -96,6 +98,12 @@ const FiltersWrapper: FC<FiltersProps> = ({ onChange }: FiltersProps) => {
     setRoverSelected(undefined);
   };
 
+  const handleCloseSection = () => {
+    if (!!onClose) {
+      onClose();
+    }
+  };
+
   const filterIsAvailable = useMemo(() => {
     const filterRequired = ['rover'];
     const filterMutualRequired = ['sol', 'earth_date'];
@@ -128,9 +136,20 @@ const FiltersWrapper: FC<FiltersProps> = ({ onChange }: FiltersProps) => {
   if (error) return <Spinners type='error' />;
   return (
     <div className={styles.ContainerGeneralFilters}>
-      <PopoverButton adapterStructure={AdapterFormatRoverDetails(roverOptions)}>
-        <Icon icon='info' /> Information
-      </PopoverButton>
+      <div className={styles.GroupButtonSection}>
+        <PopoverButton
+          
+          adapterStructure={AdapterFormatRoverDetails(roverOptions)}
+        >
+          <Icon icon='info' /> Information
+        </PopoverButton>
+        <ButtonCircle
+          onClick={handleCloseSection}
+          className={styles.ButtonCircleStyleSectionA}
+        >
+          <Icon icon='close' className={styles.Iconclose} />
+        </ButtonCircle>
+      </div>
       <div className={styles.containerFilter}>
         <FilterCardSelectOption
           onChange={handleOnChangeOptions}
@@ -190,10 +209,10 @@ const FiltersWrapper: FC<FiltersProps> = ({ onChange }: FiltersProps) => {
   );
 };
 
-const Filters = (): JSX.Element => {
+const Filters: FC<FiltersProps> = ({ onClose }: FiltersProps): JSX.Element => {
   return (
     <SWRProvider keyItem='filters'>
-      <FiltersWrapper />
+      <FiltersWrapper onClose={onClose} />
     </SWRProvider>
   );
 };
