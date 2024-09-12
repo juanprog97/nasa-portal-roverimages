@@ -1,13 +1,15 @@
 'use client';
 'use client';
-import { ListCardPhotosInfinite } from '@/components/organisms';
-import FullScreen from '@/components/organisms/FullScreen';
+import {
+  FullScreenPhotosContent,
+  ListCardPhotosInfinite,
+} from '@/components/organisms';
 
 const Content = () => {
   return (
     <>
       <ListCardPhotosInfinite />;
-      <FullScreen />
+      <FullScreenPhotosContent />
     </>
   );
 };

@@ -18,7 +18,7 @@ import { useSwipeable } from 'react-swipeable';
 import { PopoverButton } from '@/components/molecules';
 import { CardDataPresentation } from '@/models';
 
-const FullScreen = () => {
+const FullScreenPhotosContent = () => {
   const { isOpen, index, nextImage, backImage, toogleFullScreen } =
     useFullScreen();
 
@@ -145,4 +145,4 @@ const FullScreen = () => {
   );
 };
 
-export default FullScreen;
+export default FullScreenPhotosContent;
