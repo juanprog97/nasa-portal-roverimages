@@ -1,5 +1,5 @@
 .DialogStyle {
-  @apply flex justify-around;
+  @apply flex h-auto max-w-[100%] justify-around md:h-[100vh] md:w-[100vw];
   [class*='MuiDialog-paper'] {
     @apply flex w-[100vw] items-end bg-whitedirty text-darkbg dark:bg-darkbg dark:text-whitedirty;
   }

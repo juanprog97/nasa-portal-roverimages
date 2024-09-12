@@ -1,23 +1,109 @@
+'use client';
 import styles from './FullScreen.module.scss';
-import { useFullScreen } from '@/hooks';
-import { ButtonArrow, ButtonCircle, Dialog, Icon } from '@/components/atoms';
+import {
+  useFullScreen,
+  useKeyEventDetect,
+  usePhotosScrollInfinite,
+} from '@/hooks';
+import {
+  ButtonArrow,
+  ButtonCircle,
+  Dialog,
+  Icon,
+  Spinners,
+} from '@/components/atoms';
+import { useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useSwipeable } from 'react-swipeable';
 
 const FullScreen = () => {
   const { isOpen, index, nextImage, backImage, toogleFullScreen } =
     useFullScreen();
 
-  return (
-    <Dialog open={true}>
+  const { keyPressed } = useKeyEventDetect();
+
+  const { photos, isLoading, error, loadMore, isValidating, isReachingEnd } =
+    usePhotosScrollInfinite();
+  useEffect(() => {
+    if (keyPressed == 'ArrowLeft' && !isLoading && !isValidating) {
+      if (index !== 0) {
+        backImage();
+      }
+    } else if (
+      keyPressed == 'ArrowRight' &&
+      !isLoading &&
+      !isValidating &&
+      !isReachingEnd
+    ) {
+      if (index == photos.length - 1) {
+        loadMore();
+      } else {
+        nextImage();
+      }
+    }
+  }, [keyPressed]);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () =>
+      !isLoading && !isValidating && !isReachingEnd
+        ? index == photos.length - 1
+          ? loadMore()
+          : nextImage()
+        : () => {},
+    onSwipedRight: () => (!isLoading && !isValidating ? backImage() : () => {}),
+    trackMouse: true,
+  });
+
+  const SliderImages = (): JSX.Element => (
+    <>
       <div className={styles.ButtonArrowContainer}>
-        <ButtonArrow direction='left' />
-        <ButtonArrow direction='right' />
+        <ButtonArrow
+          disableState={isValidating}
+          onClick={index == 0 ? () => {} : backImage}
+          direction='left'
+        />
+
+        <ButtonArrow
+          disableHidden={isReachingEnd}
+          disableState={isValidating}
+          onClick={index == photos.length - 1 ? loadMore : nextImage}
+          direction='right'
+        />
       </div>
-      <div className={styles.ContainerImage}>
-        <img src='https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00002/ids/edr/browse/edl/EDF_0002_0667110740_696ECV_N0010052EDLC00002_0010LUJ01_1200.jpg' />
-      </div>
-      <ButtonCircle className={styles.ButtonCircleStyle}>
-        <Icon icon='close' />
+      {isValidating ? (
+        <Spinners type='loading' />
+      ) : (
+        <div className={styles.ContainerImage}>
+          <AnimatePresence>
+            <motion.img
+              key={photos[index].imgsrc}
+              initial={{ x: 300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -300, opacity: 0 }}
+              src={photos[index].imgsrc}
+            />
+          </AnimatePresence>
+        </div>
+      )}
+
+      <ButtonCircle
+        onClick={toogleFullScreen}
+        className={styles.ButtonCircleStyle}
+      >
+        <Icon icon='close' className={styles.Iconclose} />
       </ButtonCircle>
+    </>
+  );
+
+  return (
+    <Dialog actions={handlers} open={isOpen}>
+      {isLoading ? (
+        <Spinners type='loading' />
+      ) : error ? (
+        <Spinners type='error' />
+      ) : (
+        <SliderImages />
+      )}
     </Dialog>
   );
 };

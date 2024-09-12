@@ -67,6 +67,11 @@ const config: Config = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
+      screens: {
+       
+        'landscape-md': {'raw': '(orientation: landscape) and (max-width: 1024px)'},
+        'landscape-sm': {'raw': '(orientation: landscape) and (max-width: 640px)'},
+      },
       backgroundImage: {
         'image-template': "url('/images/template-galaxy.webp')",
       },

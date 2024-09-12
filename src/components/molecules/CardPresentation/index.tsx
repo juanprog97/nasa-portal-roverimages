@@ -13,9 +13,9 @@ import { RefObject } from 'react';
 
 type CardPresentationProps = {
   data: CardDataPresentation;
-  index?: number;
+  index: number;
   onChangeLike?: (id: string, isLike: boolean) => void;
-  onClickFullScreen?: (id: string) => void;
+  onClickFullScreen?: (index: number) => void;
 };
 
 const CardPresentation: FC<CardPresentationProps> = ({
@@ -25,6 +25,7 @@ const CardPresentation: FC<CardPresentationProps> = ({
   index,
 }: CardPresentationProps) => {
   const [isFavorite, setStateFavorite] = useState<boolean>(false);
+  const [indexCard, _t] = useState<number>(index);
 
   const handleClickLike = () => {
     if (!!onChangeLike) {
@@ -34,7 +35,7 @@ const CardPresentation: FC<CardPresentationProps> = ({
   };
   const handleClickFullScreen = () => {
     if (!!onClickFullScreen) {
-      onClickFullScreen(data.id);
+      onClickFullScreen(indexCard);
     }
   };
 

@@ -1,15 +1,22 @@
 .ContainerImage {
-  @apply absolute flex h-[100vh] w-full items-center justify-center;
+  @apply absolute flex h-[100vh] w-full touch-auto items-center justify-center;
+  img {
+    @apply landscape-md:aspect-[6/2.8] landscape-md:object-contain;
+  }
 }
 
 .ButtonCircleStyle {
-  @apply z-30 w-[50px];
+  @apply z-30;
+}
+
+.Iconclose {
+  @apply landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
 }
 
 .ButtonCircleArrow {
-  @apply flex aspect-square h-[50px] justify-center border-none bg-grey;
+  @apply flex aspect-square h-[20px] justify-center border-none bg-grey;
 }
 
 .ButtonArrowContainer {
-  @apply absolute z-50 flex h-[100vh] w-full flex-row items-center justify-between;
+  @apply absolute z-20 flex h-[100vh] w-full flex-row items-center justify-between;
 }

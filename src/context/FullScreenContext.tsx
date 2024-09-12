@@ -12,6 +12,7 @@ interface FullScreenContextProps {
   index: number;
   nextImage: () => void;
   backImage: () => void;
+  openImage: (index: number) => void;
   toogleFullScreen: () => void;
 }
 export const FullScreenContext = createContext<
@@ -22,15 +23,22 @@ export const FullScreenProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [counterImage, setCounterImage] = useState<number>(-1);
+
   const [isOpenFullscreen, setIsOpenFullscreen] = useState<boolean>(false);
   const handleNextImage = () => {
     setCounterImage((counterImage) => counterImage + 1);
   };
   const handleBackImage = () => {
-    setCounterImage((counterImage) => counterImage - 1);
+    setCounterImage((counterImage) =>
+      counterImage == 0 ? counterImage : counterImage - 1
+    );
   };
   const handleIsOpenFullscreen = () => {
     setIsOpenFullscreen((val) => !val);
+  };
+  const handleOpenImage = (index: number) => {
+    handleIsOpenFullscreen();
+    setCounterImage(index);
   };
 
   return (
@@ -40,6 +48,7 @@ export const FullScreenProvider: FC<{ children: ReactNode }> = ({
         index: counterImage,
         nextImage: handleNextImage,
         backImage: handleBackImage,
+        openImage: handleOpenImage,
         toogleFullScreen: handleIsOpenFullscreen,
       }}
     >

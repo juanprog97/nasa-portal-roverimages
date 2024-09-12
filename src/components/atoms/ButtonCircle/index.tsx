@@ -34,8 +34,16 @@ const ButtonCircle: FC<ButtonCircleProps> = ({
   color = 'inherit',
   className = '',
 }: ButtonCircleProps) => {
+  const handleClickButton = () => {
+    if (!!onClick) {
+      onClick();
+    }
+  };
   return (
-    <button className={`${styles.ButtonStyle} ${className}`} onClick={onClick}>
+    <button
+      className={`${styles.ButtonStyle} ${className}`}
+      onClick={handleClickButton}
+    >
       {children}
     </button>
   );

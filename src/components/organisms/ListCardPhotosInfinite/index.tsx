@@ -1,6 +1,6 @@
 'use client';
 
-import { usePhotosScrollInfinite } from '@/hooks';
+import { useFullScreen, usePhotosScrollInfinite } from '@/hooks';
 import styles from './ListCardPhotosInfinite.module.scss';
 import { Suspense, useEffect } from 'react';
 import { CardDataPresentation } from '@/models';
@@ -12,6 +12,7 @@ import { SWRProvider } from '@/context';
 const ListCardPhotosInfiniteImp = (): JSX.Element => {
   const { photos, error, loadMore, isReachingEnd, isLoading, isValidating } =
     usePhotosScrollInfinite();
+  const { openImage } = useFullScreen();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,8 +38,14 @@ const ListCardPhotosInfiniteImp = (): JSX.Element => {
         animate='open'
         className={styles.ContainerListCard}
       >
+        
         {photos.map((photos: CardDataPresentation, index: number) => (
-          <CardPresentation index={index} key={photos.id} data={photos} />
+          <CardPresentation
+            onClickFullScreen={openImage}
+            index={index}
+            key={photos.id}
+            data={photos}
+          />
         ))}
       </motion.div>
       <div className='pointer-events-none fixed bottom-[0] flex h-[120px] w-full justify-center'>

@@ -1,5 +1,5 @@
 .ButtonStyle {
-  @apply m-5 flex cursor-pointer rounded-full border-2 border-white p-3 #{!important};
+  @apply pointer-events-auto m-5 flex cursor-pointer rounded-full border-2 border-white p-3 #{!important};
 
   &:hover {
     @apply bg-black-400;

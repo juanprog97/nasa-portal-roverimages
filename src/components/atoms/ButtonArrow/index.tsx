@@ -10,16 +10,25 @@ type AllowedStringDiretion = 'left' | 'right';
 type ButtonArrowProps = {
   direction?: AllowedStringDiretion;
   onClick?: () => void;
+  disableHidden?: boolean;
+  disableState: boolean;
 };
 
 const ButtonArrow: FC<ButtonArrowProps> = ({
   direction = 'left',
   onClick = () => {},
+  disableHidden,
+  disableState,
 }: ButtonArrowProps) => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
   return (
-    <button className={styles.ButtonStyle} onClick={onClick}>
+    <button
+      data-state={disableHidden}
+      className={styles.ButtonStyle}
+      onClick={onClick}
+      disabled={disableState}
+    >
       <div data-direction={direction} className={styles.ArrowStyle}>
         <Icon
           icon={direction == 'right' ? 'arrow_forward_ios' : 'arrow_back_ios'}

@@ -16,12 +16,12 @@
 .InteractionButton {
   @apply m-5 flex w-full flex-row justify-around;
   .buttonFullScreen {
-    @apply h-[50px] w-[50px] self-end font-semibold xs:pointer-events-none xs:absolute xs:right-[10%] xs:top-[5%] xs:opacity-0 xs:transition-opacity xs:duration-200 xs:ease-out;
+    @apply h-[50px] w-[50px] self-center font-semibold xs:pointer-events-none xs:absolute xs:right-[10%] xs:top-[5%] xs:opacity-0 xs:transition-opacity xs:duration-200 xs:ease-out;
   }
 }
 
 .ButtonCircle {
-  @apply aspect-square h-auto w-6 items-center border-none shadow-md dark:bg-black-400 #{!important};
+  @apply h-[4rem] w-[4rem] items-center justify-center border-none shadow-md dark:bg-black-400 #{!important};
 }
 
 .detailInfo {

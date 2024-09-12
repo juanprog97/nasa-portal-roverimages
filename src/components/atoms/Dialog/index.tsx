@@ -8,11 +8,13 @@ type DialogProps = {
   open?: boolean;
   children?: any;
   className?: string;
+  actions: any;
 };
 
 const Dialog: FC<DialogProps> = ({
   open = false,
   children,
+  actions,
   className,
 }: DialogProps) => {
   const { isDarkMode } = useDarkMode();
@@ -20,8 +22,9 @@ const Dialog: FC<DialogProps> = ({
   return (
     <DialogBase
       fullScreen={true}
+      {...actions}
       className={`${styles.DialogStyle} ${className}`}
-      open={true}
+      open={open}
     >
       {children}
     </DialogBase>
