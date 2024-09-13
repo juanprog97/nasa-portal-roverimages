@@ -17,7 +17,7 @@ const ListCardPhotosInfiniteImp = (): JSX.Element => {
   const { photos, error, loadMore, isReachingEnd, isLoading, isValidating } =
     usePhotosScrollInfinite();
   const { openImage } = useFullScreen();
-  const { addFavorite, deleteFavorite, isPhotoLike } = useLoadFavoriteImages();
+  const { addFavorite, deleteFavorite, isPhotoLike,  } = useLoadFavoriteImages();
 
   const handleLikeImage = (index: number | string, isLike: boolean) => {
     if (isLike) {

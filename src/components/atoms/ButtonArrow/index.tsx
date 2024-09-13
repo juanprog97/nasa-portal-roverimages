@@ -11,14 +11,14 @@ type ButtonArrowProps = {
   direction?: AllowedStringDiretion;
   onClick?: () => void;
   disableHidden?: boolean;
-  disableState: boolean;
+  disableState?: boolean;
 };
 
 const ButtonArrow: FC<ButtonArrowProps> = ({
   direction = 'left',
   onClick = () => {},
   disableHidden,
-  disableState,
+  disableState = true,
 }: ButtonArrowProps) => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down('sm'));

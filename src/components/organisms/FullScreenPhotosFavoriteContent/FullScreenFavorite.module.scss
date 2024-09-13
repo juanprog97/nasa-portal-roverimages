@@ -13,6 +13,12 @@
   @apply absolute right-[0%] top-[88%] z-30 h-[50px] w-[50px] text-darkbg dark:text-white landscape-md:top-[75%];
 }
 
+.ButtonCircleStyleDelete {
+  @apply absolute left-[0%] top-[88%] z-30 h-[50px] text-darkbg dark:text-white landscape-md:top-[75%] landscape-md:h-[50px];
+}
+
+
+
 .Iconclose {
   @apply landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
 }

@@ -3,7 +3,7 @@
 import { useLocalStorage } from '@/hooks';
 import { CardDataPresentation as photoDetails } from '@/models';
 import { FilterProperties } from '@/utils';
-import { FC, ReactNode, createContext } from 'react';
+import { FC, ReactNode, createContext, useCallback, useState } from 'react';
 
 /**
  * UseFavoriteImages
@@ -13,6 +13,7 @@ interface FavoritesImagesContextProps {
   listImagesFavorite: photoDetails[];
   addFavorite: (photos: photoDetails) => void;
   deleteFavorite: (id: number) => void;
+  deleteManyFavorite: (id: number[]) => void;
   isPhotoLike: (id: number | string) => boolean;
 }
 export const FavoritesImagesContext = createContext<
@@ -26,6 +27,10 @@ export const FavoritesImagesProvider: FC<{ children: ReactNode }> = ({
     [key: string | number]: photoDetails;
   }>('photos-favorite', {});
 
+  const [dataFavorite, setDataFavorite] = useState<{
+    [key: string | number]: photoDetails;
+  }>(dataImagesFavorite);
+
   const objectToArray = (data: {
     [key: string | number]: photoDetails;
   }): photoDetails[] => {
@@ -35,31 +40,47 @@ export const FavoritesImagesProvider: FC<{ children: ReactNode }> = ({
     return arrayData;
   };
 
-  const handleIslikeImage = (id: number | string) => {
-    return id in dataImagesFavorite;
-  };
+  const handleIslikeImage = useCallback(
+    (id: number | string) => {
+      return id in dataFavorite;
+    },
+    [dataFavorite]
+  );
 
   const addImageFavoriteHandle = (value: photoDetails) => {
     let objectAdd: { [key: string | number]: photoDetails } = {};
     objectAdd[value.id] = value;
 
-    const dataObject = { ...dataImagesFavorite, ...objectAdd };
+    const dataObject = { ...dataFavorite, ...objectAdd };
+    setDataFavorite(dataObject);
     setDataImagesFavorite(dataObject);
   };
 
-  const deleteImageFavoriteHandle = (id: number | string) => {
-    const { [id]: _, ...deleteItem } = dataImagesFavorite;
+  const deleteImageFavoriteHandle = (id: number) => {
+    debugger;
+    const { [id]: _, ...deleteItem } = dataFavorite;
+    setDataFavorite(deleteItem);
     setDataImagesFavorite(deleteItem);
+  };
+
+  const deleteImagesFavoriteHandle = (id: number[]) => {
+    let newData = { ...dataFavorite };
+
+    id.forEach((id) => {
+      const { [id]: _, ...rest } = newData;
+      newData = rest;
+    });
+    setDataFavorite(newData);
+    setDataImagesFavorite(newData);
   };
 
   return (
     <FavoritesImagesContext.Provider
       value={{
-        listImagesFavorite: objectToArray(
-          dataImagesFavorite
-        ) as unknown as photoDetails[],
+        listImagesFavorite: objectToArray(dataFavorite),
         addFavorite: addImageFavoriteHandle,
         deleteFavorite: deleteImageFavoriteHandle,
+        deleteManyFavorite: deleteImagesFavoriteHandle,
         isPhotoLike: handleIslikeImage,
       }}
     >

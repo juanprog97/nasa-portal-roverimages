@@ -3,25 +3,24 @@
 import { FC, ReactNode, createContext, useState } from 'react';
 
 /**
- * UseFullScreen
+ * UseFullScreenFavorite
  * @property {AllowedState} openState- state openState.
  */
-interface FullScreenContextProps {
+interface FullScreenFavoriteContextProps {
   isOpen: boolean;
   index: number;
   nextImage: () => void;
   backImage: () => void;
-  openImage: (index: number) => void;
   toogleFullScreen: () => void;
 }
-export const FullScreenContext = createContext<
-  FullScreenContextProps | undefined
+export const FullScreenFavoriteContext = createContext<
+  FullScreenFavoriteContextProps | undefined
 >(undefined);
 
-export const FullScreenProvider: FC<{ children: ReactNode }> = ({
+export const FullScreenFavoriteProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [counterImage, setCounterImage] = useState<number>(-1);
+  const [counterImage, setCounterImage] = useState<number>(0);
 
   const [isOpenFullscreen, setIsOpenFullscreen] = useState<boolean>(false);
   const handleNextImage = () => {
@@ -34,24 +33,21 @@ export const FullScreenProvider: FC<{ children: ReactNode }> = ({
   };
   const handleIsOpenFullscreen = () => {
     setIsOpenFullscreen((val) => !val);
-  };
-  const handleOpenImage = (index: number) => {
-    handleIsOpenFullscreen();
-    setCounterImage(index);
+    setCounterImage(0);
   };
 
   return (
-    <FullScreenContext.Provider
+    <FullScreenFavoriteContext.Provider
       value={{
         isOpen: isOpenFullscreen,
         index: counterImage,
         nextImage: handleNextImage,
         backImage: handleBackImage,
-        openImage: handleOpenImage,
+
         toogleFullScreen: handleIsOpenFullscreen,
       }}
     >
       {children}
-    </FullScreenContext.Provider>
+    </FullScreenFavoriteContext.Provider>
   );
 };

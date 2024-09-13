@@ -2,6 +2,7 @@
 'use client';
 import {
   FullScreenPhotosContent,
+  FullScreenPhotosFavoriteContent,
   ListCardPhotosInfinite,
 } from '@/components/organisms';
 
@@ -10,6 +11,7 @@ const Content = () => {
     <>
       <ListCardPhotosInfinite />;
       <FullScreenPhotosContent />
+      <FullScreenPhotosFavoriteContent />
     </>
   );
 };

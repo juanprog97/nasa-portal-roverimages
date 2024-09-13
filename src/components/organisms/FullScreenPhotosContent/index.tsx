@@ -22,8 +22,7 @@ import { CardDataPresentation } from '@/models';
 const FullScreenPhotosContent = () => {
   const { isOpen, index, nextImage, backImage, toogleFullScreen } =
     useFullScreen();
-  const { } = useLoadFavoriteImages()
-  
+
   const { keyPressed } = useKeyEventDetect();
 
   const { photos, isLoading, error, loadMore, isValidating, isReachingEnd } =

@@ -26,14 +26,12 @@ const CardPresentation: FC<CardPresentationProps> = ({
   onClickFullScreen = () => {},
   index,
 }: CardPresentationProps) => {
-  const [isFavorite, setStateFavorite] = useState<boolean>(isLike);
   const [indexCard, _t] = useState<number>(index);
 
   const handleClickLike = () => {
     if (!!onChangeLike) {
-      onChangeLike(index, !isFavorite);
+      onChangeLike(index, !isLike);
     }
-    setStateFavorite((value) => !value);
   };
   const handleClickFullScreen = () => {
     if (!!onClickFullScreen) {
@@ -73,7 +71,7 @@ const CardPresentation: FC<CardPresentationProps> = ({
         </Button>
         <ButtonCircle className={styles.ButtonCircle} onClick={handleClickLike}>
           <Icon
-            icon={isFavorite ? 'favorite' : 'favorite_outlined'}
+            icon={isLike ? 'favorite' : 'favorite_outlined'}
             className={styles.iconStyle}
           />
         </ButtonCircle>

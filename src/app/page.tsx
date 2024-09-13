@@ -4,6 +4,8 @@ import {
   DarkModeProvider,
   FavoritesImagesProvider,
   FiltersProvider,
+  FullScreenFavoriteContext,
+  FullScreenFavoriteProvider,
   FullScreenProvider,
 } from '@/context';
 import { Content, Navbar, SectionOptions } from '@/components/templates';
@@ -19,15 +21,17 @@ const ContentComponent = dynamic(
 const Home = () => {
   return (
     <FullScreenProvider>
-      <DarkModeProvider>
-        <FiltersProvider>
-          <FavoritesImagesProvider>
-            <Navbar />
-            <ContentComponent />
-            <SectionOptions />
-          </FavoritesImagesProvider>
-        </FiltersProvider>
-      </DarkModeProvider>
+      <FullScreenFavoriteProvider>
+        <DarkModeProvider>
+          <FiltersProvider>
+            <FavoritesImagesProvider>
+              <Navbar />
+              <ContentComponent />
+              <SectionOptions />
+            </FavoritesImagesProvider>
+          </FiltersProvider>
+        </DarkModeProvider>
+      </FullScreenFavoriteProvider>
     </FullScreenProvider>
   );
 };
