@@ -14,22 +14,24 @@ import { RefObject } from 'react';
 type CardPresentationProps = {
   data: CardDataPresentation;
   index: number;
-  onChangeLike?: (id: string, isLike: boolean) => void;
+  isLike: boolean;
+  onChangeLike?: (index: number, isLike: boolean) => void;
   onClickFullScreen?: (index: number) => void;
 };
 
 const CardPresentation: FC<CardPresentationProps> = ({
   data,
-  onChangeLike = (id, isLike: boolean) => {},
+  isLike = false,
+  onChangeLike = (id: number | string, isLike: boolean) => {},
   onClickFullScreen = () => {},
   index,
 }: CardPresentationProps) => {
-  const [isFavorite, setStateFavorite] = useState<boolean>(false);
+  const [isFavorite, setStateFavorite] = useState<boolean>(isLike);
   const [indexCard, _t] = useState<number>(index);
 
   const handleClickLike = () => {
     if (!!onChangeLike) {
-      onChangeLike(data.id, isFavorite);
+      onChangeLike(index, !isFavorite);
     }
     setStateFavorite((value) => !value);
   };

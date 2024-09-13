@@ -1,14 +1,13 @@
 'use client';
 import { useState } from 'react';
 
-const useLocalStorage = (key: string, initialState: any) => {
+const useLocalStorage = <T,>(key: string, initialState: T) => {
   const storedValue =
-    !key || typeof window !== 'undefined' ? localStorage.getItem(key) : null;
+    typeof window !== 'undefined' ? localStorage.getItem(key) : null;
+  const initial = storedValue ? (JSON.parse(storedValue) as T) : initialState;
+  const [state, setState] = useState<T>(initial);
 
-  const initial = storedValue ? JSON.parse(storedValue) : initialState;
-  const [state, setState] = useState<string>(initial);
-
-  const returnedNewState = (newState: any) => {
+  const returnedNewState = (newState: T) => {
     setState(newState);
     localStorage.setItem(key, JSON.stringify(newState));
   };

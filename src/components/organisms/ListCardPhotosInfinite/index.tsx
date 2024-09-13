@@ -1,6 +1,10 @@
 'use client';
 
-import { useFullScreen, usePhotosScrollInfinite } from '@/hooks';
+import {
+  useFullScreen,
+  useLoadFavoriteImages,
+  usePhotosScrollInfinite,
+} from '@/hooks';
 import styles from './ListCardPhotosInfinite.module.scss';
 import { Suspense, useEffect } from 'react';
 import { CardDataPresentation } from '@/models';
@@ -13,6 +17,15 @@ const ListCardPhotosInfiniteImp = (): JSX.Element => {
   const { photos, error, loadMore, isReachingEnd, isLoading, isValidating } =
     usePhotosScrollInfinite();
   const { openImage } = useFullScreen();
+  const { addFavorite, deleteFavorite, isPhotoLike } = useLoadFavoriteImages();
+
+  const handleLikeImage = (index: number | string, isLike: boolean) => {
+    if (isLike) {
+      addFavorite(photos[index]);
+    } else {
+      deleteFavorite(photos[index].id);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,13 +51,14 @@ const ListCardPhotosInfiniteImp = (): JSX.Element => {
         animate='open'
         className={styles.ContainerListCard}
       >
-        
-        {photos.map((photos: CardDataPresentation, index: number) => (
+        {photos.map((photo: CardDataPresentation, index: number) => (
           <CardPresentation
+            onChangeLike={handleLikeImage}
+            isLike={isPhotoLike(photo.id)}
             onClickFullScreen={openImage}
             index={index}
-            key={photos.id}
-            data={photos}
+            key={photo.id}
+            data={photo}
           />
         ))}
       </motion.div>

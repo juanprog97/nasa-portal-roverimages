@@ -2,6 +2,7 @@
 
 import {
   DarkModeProvider,
+  FavoritesImagesProvider,
   FiltersProvider,
   FullScreenProvider,
 } from '@/context';
@@ -20,9 +21,11 @@ const Home = () => {
     <FullScreenProvider>
       <DarkModeProvider>
         <FiltersProvider>
-          <Navbar />
-          <ContentComponent />
-          <SectionOptions />
+          <FavoritesImagesProvider>
+            <Navbar />
+            <ContentComponent />
+            <SectionOptions />
+          </FavoritesImagesProvider>
         </FiltersProvider>
       </DarkModeProvider>
     </FullScreenProvider>

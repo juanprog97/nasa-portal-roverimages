@@ -3,6 +3,7 @@ import styles from './FullScreen.module.scss';
 import {
   useFullScreen,
   useKeyEventDetect,
+  useLoadFavoriteImages,
   usePhotosScrollInfinite,
 } from '@/hooks';
 import {
@@ -21,7 +22,8 @@ import { CardDataPresentation } from '@/models';
 const FullScreenPhotosContent = () => {
   const { isOpen, index, nextImage, backImage, toogleFullScreen } =
     useFullScreen();
-
+  const { } = useLoadFavoriteImages()
+  
   const { keyPressed } = useKeyEventDetect();
 
   const { photos, isLoading, error, loadMore, isValidating, isReachingEnd } =

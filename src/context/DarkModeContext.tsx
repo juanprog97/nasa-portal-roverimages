@@ -28,7 +28,9 @@ type AllowedState = 'dark' | 'light';
 export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [stateTheme, setThemeMode] = useLocalStorage('theme', () => {
+  const [stateTheme, setThemeMode] = useLocalStorage<
+    AllowedState | (() => AllowedState)
+  >('theme', () => {
     if (typeof window !== 'undefined') {
       return window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
