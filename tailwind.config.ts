@@ -68,9 +68,12 @@ const config: Config = {
     },
     extend: {
       screens: {
-       
-        'landscape-md': {'raw': '(orientation: landscape) and (max-width: 1024px)'},
-        'landscape-sm': {'raw': '(orientation: landscape) and (max-width: 640px)'},
+        'landscape-md': {
+          raw: '(orientation: landscape) and (max-width: 1280px)',
+        },
+        'landscape-sm': {
+          raw: '(orientation: landscape) and (max-width: 640px)',
+        },
       },
       backgroundImage: {
         'image-template': "url('/images/template-galaxy.webp')",

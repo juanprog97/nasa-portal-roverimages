@@ -22,5 +22,5 @@
 }
 
 .ButtonArrowContainer {
-  @apply absolute z-20 flex h-[100vh] w-full flex-row items-center justify-between;
+  @apply absolute z-20 flex h-[100vh] w-full flex-row items-center justify-between landscape-md:hidden;
 }
