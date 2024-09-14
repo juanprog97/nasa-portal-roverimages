@@ -5,7 +5,7 @@
     @apply pointer-events-none invisible;
   }
   .ArrowStyle {
-    @apply pointer-events-none flex duration-75 ease-in #{!important};
+    @apply pointer-events-none flex text-[25px] duration-75 ease-in #{!important};
     &[data-direction='left'] {
       @apply translate-x-[15%];
     }
