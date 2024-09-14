@@ -2,7 +2,6 @@
 const nextConfig = {
   basePath: '/nasa-mars-rovers',
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

@@ -67,9 +67,7 @@ const FullScreenPhotosFavoriteContent = () => {
     trackMouse: true,
   });
 
-  const AdapterFormatPhotoDetails = (
-    photo: CardDataPresentation
-  ): JSX.Element => {
+  const AdapterFormatPhotoDetails = (photo: PhotosDetail): JSX.Element => {
     const { id, imgsrc, ...details } = photo;
 
     return (
@@ -134,8 +132,8 @@ const FullScreenPhotosFavoriteContent = () => {
           </>
         ) : (
           <h1 className='text-3xl'>
-            You don't have any favorite images yet. Browse through the gallery
-            and save the ones you like!
+            You don&apos;t have any favorite images yet. Browse through the
+            gallery and save the ones you like!
           </h1>
         )}
       </div>
