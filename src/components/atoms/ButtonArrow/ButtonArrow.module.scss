@@ -1,12 +1,11 @@
 .ButtonStyle {
-  @apply m-4 hidden items-center justify-center rounded-full border-none border-r-black-300 bg-greyborder p-2 transition-colors duration-200 ease-in-out dark:border-2 dark:border-white md:flex md:h-16 md:w-16 md:border-4;
-  @apply landscape:h-[3rem] landscape:w-[3rem];
+  @apply m-4 hidden items-center justify-center rounded-full border-none border-r-black-300 bg-greyborder p-2 transition-colors duration-200 ease-in-out dark:border-2 dark:border-white md:flex md:h-16 md:w-16 md:border-4 landscape:h-[3rem] landscape:w-[3rem] #{!important};
 
   &[data-state='true'] {
     @apply pointer-events-none invisible;
   }
   .ArrowStyle {
-    @apply pointer-events-none flex duration-75 ease-in;
+    @apply pointer-events-none flex duration-75 ease-in #{!important};
     &[data-direction='left'] {
       @apply translate-x-[15%];
     }

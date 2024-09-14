@@ -18,7 +18,10 @@
 }
 
 .Iconclose {
-  @apply landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
+  @apply text-[16px] landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
+}
+.IconState{
+  @apply text-[16px] landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
 }
 
 .ButtonCircleArrow {

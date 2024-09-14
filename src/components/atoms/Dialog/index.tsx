@@ -21,6 +21,7 @@ const Dialog: FC<DialogProps> = ({
 
   return (
     <DialogBase
+      tabIndex={-1}
       fullScreen={true}
       {...actions}
       className={`${styles.DialogStyle} ${className}`}

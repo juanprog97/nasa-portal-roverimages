@@ -150,6 +150,7 @@ const FullScreenPhotosFavoriteContent = () => {
           className={styles.ButtonCircleStyleDelete}
         >
           <Icon
+            className={styles.IconState}
             icon={
               listImagesFavorite[index].id in listDataChange
                 ? 'favorite'
