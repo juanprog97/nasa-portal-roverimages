@@ -10,10 +10,14 @@
 }
 
 .ButtonCircleStyleSectionA {
-  @apply z-30 h-[50px] w-[50px] self-end text-darkbg dark:text-white;
+  @apply z-30 h-[50px] w-[50px] self-center text-darkbg dark:text-white;
   @screen sm {
     @apply hidden;
   }
+}
+
+.Iconclose {
+  @apply text-[25px] #{!important};
 }
 .GroupButtonSection {
   @apply flex flex-row justify-around;
