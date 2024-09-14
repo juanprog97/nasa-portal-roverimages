@@ -6,7 +6,7 @@
 }
 
 .ButtonCircleStyleClose {
-  @apply z-30 h-[50px] text-darkbg dark:text-white landscape-md:h-[42px] #{!important};
+  @apply z-30 h-[50px] w-[50px] text-darkbg dark:text-white landscape-md:h-[42px] #{!important};
 }
 
 .ButtonCircleStyleInfo {
@@ -14,14 +14,14 @@
 }
 
 .ButtonCircleStyleDelete {
-  @apply absolute left-[0%] top-[88%] z-30 h-[50px] text-darkbg dark:text-white landscape-md:top-[75%] landscape-md:h-[50px] #{!important};
+  @apply absolute left-[0%] top-[88%] z-30 h-[50px] w-[50px] text-darkbg dark:text-white landscape-md:top-[75%] landscape-md:h-[50px] #{!important};
 }
 
 .Iconclose {
-  @apply text-[16px] landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
+  @apply text-[20px] landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
 }
-.IconState{
-  @apply text-[16px] landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
+.IconState {
+  @apply text-[18px] landscape-md:h-[16px] landscape-md:w-[16px] landscape-md:p-0 landscape-md:text-[16px] #{!important};
 }
 
 .ButtonCircleArrow {
