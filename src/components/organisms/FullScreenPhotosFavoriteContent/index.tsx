@@ -6,8 +6,10 @@ import {
   useKeyEventDetect,
   useLoadFavoriteImages,
   usePhotosScrollInfinite,
+  useTutorialLearn,
 } from '@/hooks';
 import {
+  AnimationMoveSwipe,
   ButtonArrow,
   ButtonCircle,
   Dialog,
@@ -27,6 +29,8 @@ const FullScreenPhotosFavoriteContent = () => {
   const { keyPressed } = useKeyEventDetect();
   const { listImagesFavorite, addFavorite, deleteManyFavorite } =
     useLoadFavoriteImages();
+
+  const { stateTutorial, setLearnedTutorial } = useTutorialLearn();
 
   const [listDataChange, setListDataChange] = useState<{
     [key: string | number]: PhotosDetail;
@@ -61,9 +65,18 @@ const FullScreenPhotosFavoriteContent = () => {
   };
 
   const handlers = useSwipeable({
-    onSwipedLeft: () =>
-      index < listImagesFavorite.length - 1 ? nextImage() : () => {},
-    onSwipedRight: () => backImage(),
+    onSwipedLeft: () => {
+      if (!stateTutorial) {
+        setLearnedTutorial(true);
+      }
+      return index < listImagesFavorite.length - 1 ? nextImage() : () => {};
+    },
+    onSwipedRight: () => {
+      if (!stateTutorial) {
+        setLearnedTutorial(true);
+      }
+      return backImage();
+    },
     trackMouse: true,
   });
 
@@ -95,6 +108,7 @@ const FullScreenPhotosFavoriteContent = () => {
 
   const SliderImages = (): JSX.Element => (
     <>
+      <AnimationMoveSwipe learned={stateTutorial} />
       <div className={styles.ButtonArrowContainer}>
         {listImagesFavorite.length > 0 ? (
           <>

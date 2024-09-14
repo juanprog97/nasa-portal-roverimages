@@ -9,3 +9,4 @@ export { default as useLoadRovers } from './useLoadRovers';
 export { default as useLocalStorage } from './useLocalStorage';
 export { default as usePhotosScrollInfinite } from './usePhotosScrollInfinite';
 export { default as useScrollObserver } from './useScrollObserver';
+export { default as useTutorialLearn } from './useTutorialLearn';

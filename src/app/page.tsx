@@ -10,6 +10,7 @@ import {
 } from '@/context';
 import { Content, Navbar, SectionOptions } from '@/components/templates';
 import dynamic from 'next/dynamic';
+import { AnimationMoveSwipe } from '@/components/atoms';
 
 const ContentComponent = dynamic(
   () => import('@/components/templates/Content'),

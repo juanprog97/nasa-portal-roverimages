@@ -5,15 +5,17 @@ import {
   useKeyEventDetect,
   useLoadFavoriteImages,
   usePhotosScrollInfinite,
+  useTutorialLearn,
 } from '@/hooks';
 import {
+  AnimationMoveSwipe,
   ButtonArrow,
   ButtonCircle,
   Dialog,
   Icon,
   Spinners,
 } from '@/components/atoms';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 import { PopoverButton } from '@/components/molecules';
@@ -22,6 +24,8 @@ import { CardDataPresentation } from '@/models';
 const FullScreenPhotosContent = () => {
   const { isOpen, index, nextImage, backImage, toogleFullScreen } =
     useFullScreen();
+
+  const { stateTutorial, setLearnedTutorial } = useTutorialLearn();
 
   const { keyPressed } = useKeyEventDetect();
 
@@ -47,13 +51,22 @@ const FullScreenPhotosContent = () => {
   }, [keyPressed]);
 
   const handlers = useSwipeable({
-    onSwipedLeft: () =>
-      !isLoading && !isValidating && !isReachingEnd
+    onSwipedLeft: () => {
+      if (!stateTutorial) {
+        setLearnedTutorial(true);
+      }
+      return !isLoading && !isValidating && !isReachingEnd
         ? index == photos.length - 1
           ? loadMore()
           : nextImage()
-        : () => {},
-    onSwipedRight: () => (!isLoading && !isValidating ? backImage() : () => {}),
+        : () => {};
+    },
+    onSwipedRight: () => {
+      if (!stateTutorial) {
+        setLearnedTutorial(true);
+      }
+      return !isLoading && !isValidating ? backImage() : () => {};
+    },
     trackMouse: true,
   });
 
@@ -87,6 +100,7 @@ const FullScreenPhotosContent = () => {
 
   const SliderImages = (): JSX.Element => (
     <>
+      <AnimationMoveSwipe learned={stateTutorial} />
       <div className={styles.ButtonArrowContainer}>
         <ButtonArrow
           disableState={isValidating}
@@ -140,7 +154,9 @@ const FullScreenPhotosContent = () => {
       ) : error ? (
         <Spinners type='error' />
       ) : (
-        <SliderImages />
+        <>
+          <SliderImages />
+        </>
       )}
     </Dialog>
   );

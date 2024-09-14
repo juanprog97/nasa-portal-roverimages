@@ -30,6 +30,7 @@
       "@/pages": ["./src/pages/index"],
       "@/services": ["./src/services/index"],
       "@/utils": ["./src/utils/index"],
+      "@/assets/*": ["./src/assets/*"],
       "@/tailwindConfig": ["./tailwind.config.ts"]
     }
   },
