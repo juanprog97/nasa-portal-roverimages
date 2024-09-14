@@ -57,7 +57,6 @@ export const FavoritesImagesProvider: FC<{ children: ReactNode }> = ({
   };
 
   const deleteImageFavoriteHandle = (id: number) => {
-    debugger;
     const { [id]: _, ...deleteItem } = dataFavorite;
     setDataFavorite(deleteItem);
     setDataImagesFavorite(deleteItem);
