@@ -10,7 +10,7 @@
 }
 
 .ButtonCircleStyleSectionA {
-  @apply z-30 h-[50px] w-[50px] self-center text-darkbg dark:text-white;
+  @apply z-30 h-[50px] w-[50px] self-center text-darkbg dark:text-white #{!important};
   @screen sm {
     @apply hidden;
   }
