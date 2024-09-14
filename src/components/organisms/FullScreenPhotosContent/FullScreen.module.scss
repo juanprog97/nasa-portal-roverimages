@@ -6,11 +6,11 @@
 }
 
 .ButtonCircleStyleClose {
-  @apply z-30 h-[50px] text-darkbg dark:text-white landscape-md:h-[42px];
+  @apply z-30 h-[50px] text-darkbg dark:text-white landscape-md:h-[42px] #{!important};
 }
 
 .ButtonCircleStyleInfo {
-  @apply absolute right-[0%] top-[88%] z-30 h-[50px] w-[50px] text-darkbg dark:text-white landscape-md:top-[75%];
+  @apply absolute right-[0%] top-[88%] z-30 h-[50px] w-[50px] text-darkbg dark:text-white landscape-md:top-[75%] #{!important};
 }
 
 .Iconclose {
@@ -18,9 +18,9 @@
 }
 
 .ButtonCircleArrow {
-  @apply flex aspect-square h-[20px] justify-center border-none bg-grey;
+  @apply flex aspect-square h-[20px] justify-center border-none bg-grey #{!important};
 }
 
 .ButtonArrowContainer {
-  @apply absolute z-20 flex h-[100vh] w-full flex-row items-center justify-between landscape-md:hidden;
+  @apply absolute z-20 flex h-[100vh] w-full flex-row items-center justify-between landscape-md:hidden #{!important};
 }
