@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { URLBASE } from '@/utils';
 import { fetchRoverDetails } from '@/services';
-import { roversDetailsAdapter } from '@/adapters/rovers.adapter';
+import { roversDetailsAdapter } from '@/adapters';
 
 const useLoadRovers = () => {
   const fetcher = async (url: string) => {

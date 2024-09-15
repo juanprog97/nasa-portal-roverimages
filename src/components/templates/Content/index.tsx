@@ -4,7 +4,7 @@ import {
   FullScreenPhotosContent,
   FullScreenPhotosFavoriteContent,
   ListCardPhotosInfinite,
-} from '@/components/organisms';
+} from '@/organisms';
 
 const Content = () => {
   return (

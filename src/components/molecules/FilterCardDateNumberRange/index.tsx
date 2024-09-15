@@ -1,10 +1,5 @@
 'use client';
-import {
-  ButtonRadio,
-  CardFilter,
-  RangeInput,
-  DatePicker,
-} from '@/components/atoms';
+import { ButtonRadio, CardFilter, RangeInput, DatePicker } from '@/atoms';
 import { FilterProperties, RangeDate, toDateString, uuidv4 } from '@/utils';
 import React, { FC, useState } from 'react';
 import { GroupButtonOptions } from '..';

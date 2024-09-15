@@ -1,8 +1,8 @@
 'use client';
 import { useScrollObserver } from '@/hooks';
 import styles from './Navbar.module.scss';
-import { LogoNasa } from '@/components/atoms';
-import { SwitchDarkMode } from '@/components/molecules';
+import { LogoNasa } from '@/atoms';
+import { SwitchDarkMode } from '@/molecules';
 import { useEffect, useState } from 'react';
 
 const Navbar = () => {

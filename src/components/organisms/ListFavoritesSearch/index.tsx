@@ -1,6 +1,6 @@
 'use client';
-import { ButtonOptionsChip } from '@/components/atoms';
-import { GroupButtonOptions } from '@/components/molecules';
+import { ButtonOptionsChip } from '@/atoms';
+import { GroupButtonOptions } from '@/molecules';
 import { FavoriteSearch } from '@/utils';
 import { ChangeEvent, FC, useState } from 'react';
 

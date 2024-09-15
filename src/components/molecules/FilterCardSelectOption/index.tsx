@@ -1,5 +1,5 @@
 'use client';
-import { ButtonRadio, CardFilter } from '@/components/atoms';
+import { ButtonRadio, CardFilter } from '@/atoms';
 import { OptionsItemProps, uuidv4 } from '@/utils';
 import { FC, useState } from 'react';
 import { GroupButtonOptions } from '..';

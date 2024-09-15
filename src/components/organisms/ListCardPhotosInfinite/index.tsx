@@ -8,8 +8,8 @@ import {
 import styles from './ListCardPhotosInfinite.module.scss';
 import { Suspense, useEffect } from 'react';
 import { CardDataPresentation } from '@/models';
-import { CardPresentation } from '@/components/molecules';
-import { Spinners } from '@/components/atoms';
+import { CardPresentation } from '@/molecules';
+import { Spinners } from '@/atoms';
 import { motion } from 'framer-motion';
 import { SWRProvider } from '@/context';
 
@@ -17,13 +17,13 @@ const ListCardPhotosInfiniteImp = (): JSX.Element => {
   const { photos, error, loadMore, isReachingEnd, isLoading, isValidating } =
     usePhotosScrollInfinite();
   const { openImage } = useFullScreen();
-  const { addFavorite, deleteFavorite, isPhotoLike,  } = useLoadFavoriteImages();
+  const { addFavorite, deleteFavorite, isPhotoLike } = useLoadFavoriteImages();
 
-  const handleLikeImage = (index: number | string, isLike: boolean) => {
+  const handleLikeImage = (index: number, isLike: boolean) => {
     if (isLike) {
       addFavorite(photos[index]);
     } else {
-      deleteFavorite(photos[index].id);
+      deleteFavorite(parseInt(photos[index].id));
     }
   };
 

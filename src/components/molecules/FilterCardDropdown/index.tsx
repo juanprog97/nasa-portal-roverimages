@@ -1,5 +1,5 @@
 'use client';
-import { CardFilter, Dropdown } from '@/components/atoms';
+import { CardFilter, Dropdown } from '@/atoms';
 import { OptionsItemProps } from '@/utils';
 import React, { FC, useState } from 'react';
 

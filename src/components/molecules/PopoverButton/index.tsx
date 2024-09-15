@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/atoms';
+import { Button } from '@/atoms';
 import { Popover } from '@mui/material';
 import React, { FC, ReactNode, useState } from 'react';
 type PopoverButtonProps = {

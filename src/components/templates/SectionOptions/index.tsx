@@ -1,8 +1,8 @@
 'use client';
-import { ContainerFloat, Filters } from '@/components/organisms';
+import { ContainerFloat, Filters } from '@/organisms';
 import styles from './SectionOptions.module.scss';
-import { ButtonFloating } from '@/components/molecules';
-import { Drawer } from '@/components/atoms';
+import { ButtonFloating } from '@/molecules';
+import { Drawer } from '@/atoms';
 import { useState } from 'react';
 import { useFullScreenFavorite } from '@/hooks';
 

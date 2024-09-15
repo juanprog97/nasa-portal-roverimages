@@ -1,4 +1,4 @@
-import { Fab, Icon } from '@/components/atoms';
+import { Fab, Icon } from '@/atoms';
 import { FC } from 'react';
 import { colors } from '@/utils';
 import styles from './FabStyle.module.scss';

@@ -1,6 +1,6 @@
 'use client';
 import { FC } from 'react';
-import { Icon } from '@/components/atoms';
+import { Icon } from '@/atoms';
 import styles from './ButtonArrow.module.scss';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';

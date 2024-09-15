@@ -3,7 +3,6 @@ import styles from './FullScreenFavorite.module.scss';
 import {
   useFullScreen,
   useFullScreenFavorite,
-  useKeyEventDetect,
   useLoadFavoriteImages,
   usePhotosScrollInfinite,
   useTutorialLearn,
@@ -15,18 +14,18 @@ import {
   Dialog,
   Icon,
   Spinners,
-} from '@/components/atoms';
+} from '@/atoms';
 import { ReactNode, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
-import { PopoverButton, CardPresentation } from '@/components/molecules';
+import { PopoverButton, CardPresentation } from '@/molecules';
 import { CardDataPresentation as PhotosDetail } from '@/models';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const FullScreenPhotosFavoriteContent = () => {
   const { isOpen, index, nextImage, backImage, toogleFullScreen } =
     useFullScreenFavorite();
 
-  const { keyPressed } = useKeyEventDetect();
   const { listImagesFavorite, addFavorite, deleteManyFavorite } =
     useLoadFavoriteImages();
 
@@ -36,17 +35,16 @@ const FullScreenPhotosFavoriteContent = () => {
     [key: string | number]: PhotosDetail;
   }>({});
 
-  useEffect(() => {
-    if (keyPressed == 'ArrowLeft') {
-      if (index > 0) {
-        backImage();
-      }
-    } else if (keyPressed == 'ArrowRight') {
-      if (index < listImagesFavorite.length - 1) {
-        nextImage();
-      }
+  useHotkeys('ArrowLeft', () => {
+    if (index > 0) {
+      backImage();
     }
-  }, [keyPressed]);
+  });
+  useHotkeys('ArrowRight', () => {
+    if (index < listImagesFavorite.length - 1) {
+      nextImage();
+    }
+  });
 
   const handleChangeStateFavorite = () => {
     if (listImagesFavorite[index].id in listDataChange) {
@@ -145,7 +143,7 @@ const FullScreenPhotosFavoriteContent = () => {
             </AnimatePresence>
           </>
         ) : (
-          <h1 className='text-3xl'>
+          <h1 className='px-[1rem] text-center text-base md:text-3xl'>
             You don&apos;t have any favorite images yet. Browse through the
             gallery and save the ones you like!
           </h1>

@@ -18,20 +18,20 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/atoms": ["./src/components/atoms/*"],
-      "@/molecules": ["./src/components/molecules/*"],
-      "@/organisms": ["./src/components/organisms/*"],
-      "@/templates": ["./src/components/templates/*"],
+      "@/atoms": ["./src/components/atoms/index"],
+      "@/molecules": ["./src/components/molecules/index"],
+      "@/organisms": ["./src/components/organisms/index"],
+      "@/templates": ["./src/components/templates/index"],
+      "@/templates/*": ["./src/components/templates/*"],
       "@/adapters": ["./src/adapters/index"],
       "@/context": ["./src/context/index"],
       "@/hooks": ["./src/hooks/index"],
+      "@/hooks/*": ["./src/hooks/*"],
       "@/models": ["./src/models/index"],
       "@/pages": ["./src/pages/index"],
       "@/services": ["./src/services/index"],
       "@/utils": ["./src/utils/index"],
-      "@/assets/*": ["./src/assets/*"],
-      "@/tailwindConfig": ["./tailwind.config.ts"]
+      "@/assets/*": ["./src/assets/*"]
     }
   },
   "include": [
@@ -40,7 +40,8 @@
     "types/custom-types.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "jest.setup.ts"
   ],
   "exclude": ["node_modules"]
 }

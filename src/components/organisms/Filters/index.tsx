@@ -9,7 +9,7 @@ import {
 import { FC, Suspense, useEffect, useMemo, useState } from 'react';
 import styles from './Filters.module.scss';
 
-import { Button, ButtonCircle, Icon, Spinners } from '@/components/atoms';
+import { Button, ButtonCircle, Icon, Spinners } from '@/atoms';
 import { useFilterState, useLoadRovers } from '@/hooks';
 import {
   AdapterFormatRoverDetails,
@@ -17,7 +17,7 @@ import {
   FilterCardDropdown,
   FilterCardSelectOption,
   PopoverButton,
-} from '@/components/molecules';
+} from '@/molecules';
 import { RoversDetails } from '@/models';
 import { devNull } from 'os';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -138,7 +138,6 @@ const FiltersWrapper: FC<FiltersProps> = ({
     <div className={styles.ContainerGeneralFilters}>
       <div className={styles.GroupButtonSection}>
         <PopoverButton
-          
           adapterStructure={AdapterFormatRoverDetails(roverOptions)}
         >
           <Icon icon='info' /> Information

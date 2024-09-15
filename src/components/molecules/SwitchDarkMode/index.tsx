@@ -1,5 +1,5 @@
 'use client';
-import { SwitchBase } from '@/components/atoms';
+import { SwitchBase } from '@/atoms';
 import { useDarkMode } from '@/hooks';
 import styles from './SwitchDarkMode.module.scss';
 import { useEffect, useState } from 'react';

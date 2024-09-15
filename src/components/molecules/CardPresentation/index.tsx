@@ -1,10 +1,4 @@
-import {
-  Button,
-  ButtonCircle,
-  CardBase,
-  Icon,
-  PhotoImage,
-} from '@/components/atoms';
+import { Button, ButtonCircle, CardBase, Icon, PhotoImage } from '@/atoms';
 import { CardDataPresentation } from '@/models';
 import React, { FC, MutableRefObject, useState } from 'react';
 import styles from './CardPresentation.module.scss';

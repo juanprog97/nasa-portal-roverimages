@@ -4,7 +4,12 @@ import { FC, ReactNode, createContext, useState } from 'react';
 
 /**
  * UseFullScreen
- * @property {AllowedState} openState- state openState.
+ * @property {AllowedState} isOpen- state openState.
+ *  @property {AllowedState} index- state number.
+ *  @property {AllowedState} nextImage- next Image function.
+ *  @property {AllowedState} backImage- back Image Function.
+ *   @property {AllowedState} openImage- open Image Function.
+ *   @property {AllowedState} toogleFullScreen- change State view Function.
  */
 interface FullScreenContextProps {
   isOpen: boolean;
@@ -21,7 +26,7 @@ export const FullScreenContext = createContext<
 export const FullScreenProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [counterImage, setCounterImage] = useState<number>(-1);
+  const [counterImage, setCounterImage] = useState<number>(0);
 
   const [isOpenFullscreen, setIsOpenFullscreen] = useState<boolean>(false);
   const handleNextImage = () => {

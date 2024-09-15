@@ -7,33 +7,35 @@ import {
   FullScreenFavoriteContext,
   FullScreenFavoriteProvider,
   FullScreenProvider,
+  PhotoScrollInfiniteProvider,
 } from '@/context';
-import { Content, Navbar, SectionOptions } from '@/components/templates';
+import { Content, Navbar, SectionOptions } from '@/templates';
 import dynamic from 'next/dynamic';
-import { AnimationMoveSwipe } from '@/components/atoms';
+import { HotkeysProvider } from 'react-hotkeys-hook';
 
-const ContentComponent = dynamic(
-  () => import('@/components/templates/Content'),
-  {
-    ssr: false,
-  }
-);
+const ContentComponent = dynamic(() => import('@/templates/Content'), {
+  ssr: false,
+});
 
 const Home = () => {
   return (
-    <FullScreenProvider>
-      <FullScreenFavoriteProvider>
-        <DarkModeProvider>
-          <FiltersProvider>
-            <FavoritesImagesProvider>
-              <Navbar />
-              <ContentComponent />
-              <SectionOptions />
-            </FavoritesImagesProvider>
-          </FiltersProvider>
-        </DarkModeProvider>
-      </FullScreenFavoriteProvider>
-    </FullScreenProvider>
+    <HotkeysProvider initiallyActiveScopes={['settings']}>
+      <FiltersProvider>
+        <PhotoScrollInfiniteProvider>
+          <FullScreenProvider>
+            <FullScreenFavoriteProvider>
+              <DarkModeProvider>
+                <FavoritesImagesProvider>
+                  <Navbar />
+                  <ContentComponent />
+                  <SectionOptions />
+                </FavoritesImagesProvider>
+              </DarkModeProvider>
+            </FullScreenFavoriteProvider>
+          </FullScreenProvider>
+        </PhotoScrollInfiniteProvider>
+      </FiltersProvider>
+    </HotkeysProvider>
   );
 };
 

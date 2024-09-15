@@ -2,8 +2,6 @@
 import styles from './FullScreen.module.scss';
 import {
   useFullScreen,
-  useKeyEventDetect,
-  useLoadFavoriteImages,
   usePhotosScrollInfinite,
   useTutorialLearn,
 } from '@/hooks';
@@ -14,12 +12,13 @@ import {
   Dialog,
   Icon,
   Spinners,
-} from '@/components/atoms';
-import { ReactNode, useEffect, useState } from 'react';
+} from '@/atoms';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
-import { PopoverButton } from '@/components/molecules';
+import { PopoverButton } from '@/molecules';
 import { CardDataPresentation } from '@/models';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const FullScreenPhotosContent = () => {
   const { isOpen, index, nextImage, backImage, toogleFullScreen } =
@@ -27,45 +26,50 @@ const FullScreenPhotosContent = () => {
 
   const { stateTutorial, setLearnedTutorial } = useTutorialLearn();
 
-  const { keyPressed } = useKeyEventDetect();
-
   const { photos, isLoading, error, loadMore, isValidating, isReachingEnd } =
     usePhotosScrollInfinite();
-  useEffect(() => {
-    if (keyPressed == 'ArrowLeft' && !isLoading && !isValidating) {
-      if (index !== 0) {
-        backImage();
-      }
-    } else if (
-      keyPressed == 'ArrowRight' &&
-      !isLoading &&
-      !isValidating &&
-      !isReachingEnd
-    ) {
+
+  useHotkeys('ArrowLeft', () => {
+    if (!isLoading && !isValidating) {
+      if (index > 0) backImage();
+    }
+  });
+  useHotkeys('ArrowRight', () => {
+    if (!isLoading && !isValidating) {
       if (index == photos.length - 1) {
-        loadMore();
+        if (!isReachingEnd) {
+          loadMore();
+        }
       } else {
         nextImage();
       }
     }
-  }, [keyPressed]);
+  });
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       if (!stateTutorial) {
         setLearnedTutorial(true);
       }
-      return !isLoading && !isValidating && !isReachingEnd
-        ? index == photos.length - 1
-          ? loadMore()
-          : nextImage()
-        : () => {};
+      if (!isLoading && !isValidating) {
+        if (index == photos.length - 1) {
+          if (!isReachingEnd) {
+            return loadMore();
+          }
+        } else {
+          nextImage();
+        }
+      }
     },
     onSwipedRight: () => {
       if (!stateTutorial) {
         setLearnedTutorial(true);
       }
-      return !isLoading && !isValidating ? backImage() : () => {};
+      return !isLoading && !isValidating
+        ? index > 0
+          ? backImage()
+          : () => {}
+        : () => {};
     },
     trackMouse: true,
   });
@@ -73,29 +77,32 @@ const FullScreenPhotosContent = () => {
   const AdapterFormatPhotoDetails = (
     photo: CardDataPresentation
   ): JSX.Element => {
-    const { id, imgsrc, ...details } = photo;
-
-    return (
-      <div className='p-4'>
-        <h1 className='text-xl font-bold'>
-          Photo taken by the {details.roverName} rover
-        </h1>
-        <ul className='mb-5 mt-2'>
-          <li className='my-2'>
-            <strong>Camera: </strong>
-            {details.camera}
-          </li>
-          <li className='my-2'>
-            <strong>🌎 Earth Date: </strong>
-            {details.earthDate}
-          </li>
-          <li className='my-2'>
-            <strong>☀️ Sol Date: </strong>
-            {details.solDate}
-          </li>
-        </ul>
-      </div>
-    );
+    if (photo == undefined) {
+      return <></>;
+    } else {
+      const { id, imgsrc, ...details } = photo;
+      return (
+        <div className='p-4'>
+          <h1 className='text-xl font-bold'>
+            Photo taken by the {details.roverName} rover
+          </h1>
+          <ul className='mb-5 mt-2'>
+            <li className='my-2'>
+              <strong>Camera: </strong>
+              {details.camera}
+            </li>
+            <li className='my-2'>
+              <strong>🌎 Earth Date: </strong>
+              {details.earthDate}
+            </li>
+            <li className='my-2'>
+              <strong>☀️ Sol Date: </strong>
+              {details.solDate}
+            </li>
+          </ul>
+        </div>
+      );
+    }
   };
 
   const SliderImages = (): JSX.Element => (
@@ -104,12 +111,13 @@ const FullScreenPhotosContent = () => {
       <div className={styles.ButtonArrowContainer}>
         <ButtonArrow
           disableState={isValidating}
+          disableHidden={index == 0}
           onClick={index == 0 ? () => {} : backImage}
           direction='left'
         />
 
         <ButtonArrow
-          disableHidden={isReachingEnd}
+          disableHidden={isReachingEnd && index == photos.length - 1}
           disableState={isValidating}
           onClick={index == photos.length - 1 ? loadMore : nextImage}
           direction='right'
@@ -121,11 +129,11 @@ const FullScreenPhotosContent = () => {
         <div className={styles.ContainerImage}>
           <AnimatePresence>
             <motion.img
-              key={photos[index].imgsrc}
+              key={photos[index]?.imgsrc}
               initial={{ x: 300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -300, opacity: 0 }}
-              src={photos[index].imgsrc}
+              src={photos[index]?.imgsrc}
             />
           </AnimatePresence>
         </div>
@@ -149,7 +157,7 @@ const FullScreenPhotosContent = () => {
 
   return (
     <Dialog actions={handlers} open={isOpen}>
-      {isLoading ? (
+      {isLoading || isValidating ? (
         <Spinners type='loading' />
       ) : error ? (
         <Spinners type='error' />
