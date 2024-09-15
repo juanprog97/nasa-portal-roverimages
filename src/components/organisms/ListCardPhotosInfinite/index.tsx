@@ -49,6 +49,7 @@ const ListCardPhotosInfiniteImp = (): JSX.Element => {
       <motion.div
         initial={false}
         animate='open'
+        role="card-container-list"
         className={styles.ContainerListCard}
       >
         {photos.map((photo: CardDataPresentation, index: number) => (

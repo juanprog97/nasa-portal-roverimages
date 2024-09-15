@@ -2,7 +2,6 @@ export { default as useDarkMode } from './useDarkMode';
 export { default as useFilterState } from './useFilterState';
 export { default as useFullScreen } from './useFullScreen';
 export { default as useFullScreenFavorite } from './useFullScreenFavorite';
-export { default as useImageLoaded } from './useImageLoaded';
 export { default as useLoadFavoriteImages } from './useLoadFavoriteImages';
 export { default as useLoadRovers } from './useLoadRovers';
 export { default as useLocalStorage } from './useLocalStorage';

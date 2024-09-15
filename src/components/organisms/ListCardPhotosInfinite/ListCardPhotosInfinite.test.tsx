@@ -7,11 +7,14 @@ import {
   useLoadFavoriteImages,
 } from '@/hooks';
 import { SWRProvider } from '@/context';
+import { CardDataPresentation } from '@/models';
+import React from 'react';
 
 jest.mock('@/hooks', () => ({
   usePhotosScrollInfinite: jest.fn(),
   useFullScreen: jest.fn(),
   useLoadFavoriteImages: jest.fn(),
+  useImageLoaded: jest.fn(),
 }));
 
 describe('ListCardPhotosInfinite', () => {
@@ -39,7 +42,7 @@ describe('ListCardPhotosInfinite', () => {
     });
   });
 
-  it('muestra un spinner de carga cuando isLoading es true', () => {
+  it('Show Loading Screen', () => {
     (usePhotosScrollInfinite as jest.Mock).mockReturnValueOnce({
       photos: [],
       error: null,
@@ -55,13 +58,13 @@ describe('ListCardPhotosInfinite', () => {
       </SWRProvider>
     );
 
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByTestId('loading-screen')).toBeInTheDocument();
   });
 
-  it('muestra un spinner de error cuando ocurre un error', () => {
+  it('Show Loading Screen', () => {
     (usePhotosScrollInfinite as jest.Mock).mockReturnValueOnce({
       photos: [],
-      error: new Error('Error al cargar fotos'), // Simula un error
+      error: new Error(''),
       isLoading: false,
       loadMore: jest.fn(),
       isReachingEnd: false,
@@ -74,34 +77,53 @@ describe('ListCardPhotosInfinite', () => {
       </SWRProvider>
     );
 
-    // Verificar que el spinner de error se muestra
-    expect(screen.getByText(/error/i)).toBeInTheDocument();
+    expect(screen.getByTestId('error-screen')).toBeInTheDocument();
   });
 
-  it('renderiza una lista de fotos correctamente', () => {
-    const mockPhotos = [
-      { id: '1', title: 'Foto 1' },
-      { id: '2', title: 'Foto 2' },
+  it('render photo list ', async () => {
+    const mockPhotos: CardDataPresentation[] = [
+      {
+        id: '2',
+        imgsrc: 'Foto 1',
+        earthDate: '15/05/2020',
+        roverName: 'Curiosity',
+        solDate: '50',
+        camera: 'Camera',
+      },
+      {
+        id: '1',
+        imgsrc: 'Photo1',
+        earthDate: '15/08/2020',
+        roverName: 'Curiosity',
+        solDate: '60',
+        camera: 'Camera',
+      },
     ];
 
     (usePhotosScrollInfinite as jest.Mock).mockReturnValueOnce({
-      photos: mockPhotos, // Simula que hay fotos disponibles
+      photos: mockPhotos,
       error: null,
       isLoading: false,
       loadMore: jest.fn(),
       isReachingEnd: false,
       isValidating: false,
     });
+    (useFullScreen as jest.Mock).mockReturnValueOnce({
+      openImage: jest.fn(),
+    });
+
+    (useLoadFavoriteImages as jest.Mock).mockReturnValueOnce({
+      addFavorite: jest.fn(),
+      deleteFavorite: jest.fn(),
+      isPhotoLike: jest.fn().mockReturnValue(false),
+    });
 
     render(
       <SWRProvider keyItem='content'>
         <ListCardPhotosInfinite />
       </SWRProvider>
     );
-
-    // Verificar que las fotos se renderizan
-    mockPhotos.forEach((photo) => {
-      expect(screen.getByText(photo.title)).toBeInTheDocument();
-    });
+    const containerListCard = screen.getByRole('card-container-list');
+    expect(containerListCard.children).toHaveLength(2);
   });
 });

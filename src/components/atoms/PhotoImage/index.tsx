@@ -1,7 +1,7 @@
 'use client';
-import { RefObject } from 'react';
+import { RefObject, useRef } from 'react';
 import styles from './PhotoImage.module.scss';
-import { useImageLoaded } from '@/hooks';
+import { useImageLoad } from '@custom-react-hooks/use-image-load';
 
 type PhotoNasaProps = {
   src?: string;
@@ -14,15 +14,25 @@ const PhotoImage: React.FC<PhotoNasaProps> = ({
   alt = '',
   cssProps = '',
 }: PhotoNasaProps) => {
-  const [refImg, loaded] = useImageLoaded();
+  const refImgLazyLoad = useRef<HTMLImageElement>(null);
+  const lazyLoadState = useImageLoad(
+    {
+      thumbnailSrc: src,
+      fullSrc: src,
+    },
+    refImgLazyLoad
+  );
 
   return (
-    <div data-loaded={loaded} className={`${styles.ImgContainer}${cssProps}`}>
+    <div
+      data-loaded={lazyLoadState.isLoading}
+      className={`${styles.ImgContainer}${cssProps}`}
+    >
       <img
         loading='lazy'
-        ref={refImg as RefObject<HTMLImageElement>}
+        ref={refImgLazyLoad}
         alt={alt}
-        src={src}
+        src={lazyLoadState.src}
       />
     </div>
   );

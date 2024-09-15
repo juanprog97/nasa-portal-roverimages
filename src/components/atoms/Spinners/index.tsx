@@ -12,7 +12,7 @@ const Spinners = ({ type }: SpinnerProps) => {
   const SpaceAround = () => {
     return (
       <>
-        <div id={styles.universe}>
+        <div data-testid='loading-screen' id={styles.universe}>
           <div id={styles.galaxy}>
             <div className={styles.circle1}></div>
             <div className={styles.circle2}></div>
@@ -47,6 +47,7 @@ const Spinners = ({ type }: SpinnerProps) => {
     <>
       <a href='https://www.freepik.com/free-vector/404-error-design-with-astronaut_1534909.htm'>
         <svg
+          data-testid='error-screen'
           width='500px'
           xmlns='http://www.w3.org/2000/svg'
           xmlnsXlink='http://www.w3.org/1999/xlink'
@@ -56,17 +57,17 @@ const Spinners = ({ type }: SpinnerProps) => {
             <clipPath id='clip-path' transform='translate(69 -0.3)'>
               <circle cx='249.9' cy='250.3' r='250' fill='none' />
             </clipPath>
-            <clipPath id='clip-path-2' transform='translate(69 -0.3)'>
+            <clipPath id='clipPath-2' transform='translate(69 -0.3)'>
               <rect x='-0.1' y='0.3' width='500' height='500' fill='none' />
             </clipPath>
           </defs>
           <title>Error</title>
           <g>
             <g id='Capa_1' data-name='Capa 1'>
-              <g clip-path='url(#clip-path)'>
+              <g clipPath='url(#clip-path)'>
                 <rect x='68.9' width='500' height='500' fill='#1c1c1c' />
                 <rect x='68.9' width='500' height='500' opacity='0.09' />
-                <g clip-path='url(#clip-path-2)'>
+                <g clipPath='url(#clip-path-2)'>
                   <path
                     d='M179.1,265.1H104.5a7.1,7.1,0,0,1-7.1-7.1h0a7.1,7.1,0,0,1,7.1-7.2h74.6a7.2,7.2,0,0,1,7.2,7.2h0A7.1,7.1,0,0,1,179.1,265.1Z'
                     transform='translate(69 -0.3)'
@@ -164,15 +165,15 @@ const Spinners = ({ type }: SpinnerProps) => {
                     fill='#262628'
                   />
                 </g>
-                <g clip-path='url(#clip-path-2)'>
+                <g clipPath='url(#clip-path-2)'>
                   <path
                     d='M241.8,278.6l27.3-8.7a22.5,22.5,0,0,1,28.4,14.6l6.2,19.2a22.1,22.1,0,1,0,42-13.5l-2-6.1a22.6,22.6,0,0,1,14.6-28.4l13-4.2'
                     transform='translate(69 -0.3)'
                     fill='none'
                     stroke='#fff'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='4.83'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='4.83'
                   />
                   <path
                     d='M178.1,182.3h18.7a4.3,4.3,0,0,1,4.3,4.3v5a0,0,0,0,1,0,0H173.7a0,0,0,0,1,0,0v-5A4.3,4.3,0,0,1,178.1,182.3Z'
@@ -184,8 +185,8 @@ const Spinners = ({ type }: SpinnerProps) => {
                     transform='translate(69 -0.3)'
                     fill='none'
                     stroke='#497c74'
-                    stroke-miterlimit='10'
-                    stroke-width='4.37'
+                    strokeMiterlimit='10'
+                    strokeWidth='4.37'
                   />
                   <rect
                     x='173.8'
@@ -297,9 +298,9 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='224.9'
                     fill='none'
                     stroke='#a2e8e0'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='5.37'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='5.37'
                   />
                   <rect
                     x='195.4'
@@ -378,9 +379,9 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='331.7'
                     fill='none'
                     stroke='#a2e8e0'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='4.83'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='4.83'
                   />
                   <rect
                     x='202.4'
@@ -453,9 +454,9 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='314'
                     fill='none'
                     stroke='#a2e8e0'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='5.37'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='5.37'
                   />
                   <polygon
                     points='324 288.6 273.5 304.9 296.6 305 305.7 302.1 324 288.6'
@@ -590,9 +591,9 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='328.7'
                     fill='none'
                     stroke='#a2e8e0'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='4.83'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='4.83'
                   />
                   <path
                     d='M262.1,297a7.9,7.9,0,0,0,10.1,5.1,8.1,8.1,0,0,0,5.2-10.1l-3-9.4-15.4,5Z'
@@ -606,9 +607,9 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='296.3'
                     fill='none'
                     stroke='#a2e8e0'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='5.37'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='5.37'
                   />
                   <path
                     d='M257.9,363.8H261a0,0,0,0,1,0,0v1.1a2,2,0,0,1-2,2h-1.1a0,0,0,0,1,0,0v-3.1A0,0,0,0,1,257.9,363.8Z'
@@ -670,9 +671,9 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='229.4'
                     fill='none'
                     stroke='#68989b'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='6.44'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='6.44'
                   />
                   <line
                     x1='258.4'
@@ -681,9 +682,9 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='241.4'
                     fill='none'
                     stroke='#79b4b5'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='6.44'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='6.44'
                   />
                   <line
                     x1='259.1'
@@ -692,23 +693,23 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='236.6'
                     fill='none'
                     stroke='#cdfff6'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='5.37'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='5.37'
                   />
                   <text
                     transform='translate(212.7 142.3)'
-                    font-size='90.14'
+                    fontSize='90.14'
                     fill='#fff'
-                    font-family='BritannicBold, Britannic Bold'
+                    fontFamily='BritannicBold, Britannic Bold'
                   >
                     Error
                   </text>
                   <text
                     transform='translate(265.8 73.1)'
-                    font-size='32.53'
+                    fontSize='32.53'
                     fill='#d8311c'
-                    font-family='BankGothicBold, BankGothic'
+                    fontFamily='BankGothicBold, BankGothic'
                   >
                     Oops!
                   </text>
@@ -1099,8 +1100,8 @@ const Spinners = ({ type }: SpinnerProps) => {
                     transform='translate(69 -0.3)'
                     fill='none'
                     stroke='#3b3e43'
-                    stroke-miterlimit='10'
-                    stroke-width='3.8'
+                    strokeMiterlimit='10'
+                    strokeWidth='3.8'
                   />
                   <path
                     d='M159.7,425.5l-33.5,34.3a13.7,13.7,0,0,1-19.4.2h0a13.7,13.7,0,0,1-.2-19.4l33.5-34.3a13.7,13.7,0,0,1,19.4-.2h0A13.7,13.7,0,0,1,159.7,425.5Z'
@@ -1190,8 +1191,8 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='426'
                     fill='none'
                     stroke='#52565a'
-                    stroke-miterlimit='10'
-                    stroke-width='3.13'
+                    strokeMiterlimit='10'
+                    strokeWidth='3.13'
                   />
                   <path
                     d='M74,423.8a2.4,2.4,0,0,1,.1,4.7,2.4,2.4,0,0,1-2.4-2.4A2.3,2.3,0,0,1,74,423.8Z'
@@ -1292,15 +1293,15 @@ const Spinners = ({ type }: SpinnerProps) => {
                     y2='250.9'
                     fill='none'
                     stroke='#dc6920'
-                    stroke-linecap='round'
-                    stroke-miterlimit='10'
-                    stroke-width='5.91'
+                    strokeLinecap='round'
+                    strokeMiterlimit='10'
+                    strokeWidth='5.91'
                   />
                   <rect x='68.9' width='500' height='500' fill='none' />
                   <text
                     transform='translate(0.9 61.7)'
-                    font-size='12'
-                    font-family='BritannicBold, Britannic Bold'
+                    fontSize='12'
+                    fontFamily='BritannicBold, Britannic Bold'
                   >
                     Lorem ipsum
                   </text>
@@ -1314,7 +1315,10 @@ const Spinners = ({ type }: SpinnerProps) => {
   );
 
   const SvgFinish = () => (
-    <div className='flex translate-y-11 flex-col items-center pb-6'>
+    <div
+      data-testid='finish-screen'
+      className='flex translate-y-11 flex-col items-center pb-6'
+    >
       <a href='https://www.freepik.com/free-vector/cute-astronaut-standing-planet-cartoon-icon-illustration_11759993.htm#fromView=search&page=1&position=28&uuid=190891ca-4b0a-4234-9fa1-899c49cffb30'>
         <svg
           className=''
@@ -1803,8 +1807,8 @@ const Spinners = ({ type }: SpinnerProps) => {
             transform='translate(0.1 -3.5)'
             fill='#d3801e'
             stroke='#282828'
-            stroke-miterlimit='10'
-            stroke-width='0'
+            strokeMiterlimit='10'
+            strokeWidth='0'
           />
           <line x1='72' y1='63.2' x2='81.7' y2='62.2' fill='#e5f6f9' />
           <path
@@ -1863,8 +1867,8 @@ const Spinners = ({ type }: SpinnerProps) => {
               transform='translate(0.1 -3.5)'
               fill='#2d3368'
               stroke='#282828'
-              stroke-miterlimit='10'
-              stroke-width='0'
+              strokeMiterlimit='10'
+              strokeWidth='0'
             />
           </g>
           <g opacity='0.5'>
@@ -1892,8 +1896,8 @@ const Spinners = ({ type }: SpinnerProps) => {
               transform='translate(0.1 -3.5)'
               fill='#2d3368'
               stroke='#282828'
-              stroke-miterlimit='10'
-              stroke-width='0'
+              strokeMiterlimit='10'
+              strokeWidth='0'
             />
           </g>
         </svg>
