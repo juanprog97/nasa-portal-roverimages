@@ -1,12 +1,6 @@
 import React from 'react';
 import { useRadioGroup } from '@mui/material/RadioGroup';
-import {
-  FormControlLabel,
-  FormControlLabelProps,
-  Radio,
-  styled,
-} from '@mui/material';
-import { colors } from '@/utils/';
+import { FormControlLabel, FormControlLabelProps, Radio } from '@mui/material';
 import style from './ButtonRadio.module.scss';
 
 const ButtonRadio = (props: Omit<FormControlLabelProps, 'control'>) => {
