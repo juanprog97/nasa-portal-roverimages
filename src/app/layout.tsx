@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { roboto } from './font';
 import './globals.scss';
-import { consoleMessage } from '../utils/console';
 
 export const metadata: Metadata = {
   title: 'NASA MARS ROVERS',
@@ -14,7 +13,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  consoleMessage();
   return (
     <html lang='en'>
       <head>

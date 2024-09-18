@@ -12,11 +12,12 @@ import {
 import { Content, Navbar, SectionOptions } from '@/templates';
 import dynamic from 'next/dynamic';
 import { HotkeysProvider } from 'react-hotkeys-hook';
+import { consoleMessage } from '../utils/console';
 
 const ContentComponent = dynamic(() => import('@/templates/Content'), {
   ssr: false,
 });
-
+consoleMessage();
 const Home = () => {
   return (
     <HotkeysProvider initiallyActiveScopes={['settings']}>
